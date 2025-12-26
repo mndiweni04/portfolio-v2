@@ -1,6 +1,6 @@
-import CoverPg from '@/components/cover-page';
+import Projects from '@/components/projects';
 export const metadata = { title: 'About Mandla' };
 
 export default function AboutPage() {
-  return <CoverPg />;
+  return <Projects />;
 }

@@ -1,0 +1,81 @@
+/* --- Navbar (Desktop) --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* Ensure these variables are defined in globals.css, or replace with hex codes */
+    background-color: var(--color-gray-light-1, #f8f8f8);
+    display: flex;
+    justify-content: center;
+    gap: 2rem; 
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.navbar a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-gray-dark-1, #545454);
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+/* The Underline Animation Line */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-blue-dark-1, #00387f); 
+    transition: width 0.3s ease, left 0.3s ease;
+    transform: translateX(-50%);
+}
+
+/* Hover Effects */
+.navbar a:hover {
+    color: var(--color-blue-dark-1, #00387f);
+}
+
+.navbar a:hover::after {
+    width: 100%;
+    left: 50%;
+}
+
+/* Active Page State (Keeps the link highlighted) */
+.active-link {
+    color: var(--color-blue-dark-1, #00387f) !important;
+}
+
+.active-link::after {
+    width: 100% !important;
+    left: 50% !important;
+}
+
+/* Scroll Visibility Classes */
+.navbar.hidden {
+    top: -80px;
+}
+
+.navbar.visible {
+    top: 0;
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-around; 
+        gap: 0.25rem; 
+        padding: 0.75rem 0.5rem; 
+    }
+
+    .navbar a {
+        font-size: 0.9rem; 
+        padding: 0.5rem 0.25rem; 
+    }
+}

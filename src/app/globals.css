@@ -1,42 +1,82 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --color-gray-light-1: #f8f8f8;
+    --color-gray-dark-1: #545454;
+    --color-blue-dark-1: #00387f; 
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    /* Sets the base background color for the whole page */
+    background-color: var(--color-gray-light-1); 
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.wrap {
+    /* Removed background-image properties */
+    background-color: var(--color-gray-light-1); /* Ensures consistent background */
+    min-height: 100vh;
+    z-index: 0;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#projects {
+    min-height: 100vh;
+    padding-top: 80px;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.scroll-container {
+    width: 100%;
+    padding-top: 100px; /* Merged your two .scroll-container blocks */
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    scroll-snap-align: start;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Footer --- */
+.pgFooter {
+    background-color: darkslategrey;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CopyRight {
+    color: white;
+    font-size: 1.2rem;
+    justify-self: center;
+}
+
+/* Mobile styling */
+@media (max-width: 768px) {
+    .nav-menu {
+        padding: 1rem;
+    }
+    
+    .about-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        width: 100%;
+        padding: 1rem;
+    }
 }
