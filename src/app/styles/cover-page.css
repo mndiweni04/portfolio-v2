@@ -22,17 +22,19 @@ html {
 }
 
 .profile {
-    height: 100vh;
+    height: 85vh;
     display: grid;
     place-items: center;
+    align-items: center;    
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
 } 
 
 .photo img {
     width: 100%;
-    border-radius: 50%;
-    max-width: 300px;
+    border-radius: 50% 50% 1% 1%;
+    max-width: 400px;
+    max-height: 400px;
     display: block;
     position: relative;
 }
@@ -43,7 +45,7 @@ html {
 }
 
 .bio .name {
-    font-size: 2.8rem;
+    font-size: 3rem;
     color: var(--timeline-circle-theme);
     margin: 0;
     margin-top: 1rem;
@@ -51,15 +53,17 @@ html {
 }
 
 .bio .prof {
-    font-size: 2rem;
-    color: var(--timeline-circle-theme);
+    font-size: 1.8rem;
+    color: var(--profile-theme);
     margin: 0;
     font-weight: bold;
 }
 
 .bio .paragraph {
     color: var(--timeline-circle-theme);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    padding: 15px 0px;
+    max-width: 55ch;
 }
 
 .download-cv-btn {
