@@ -29,8 +29,8 @@ function CoverPg(){
                         link.click();
                         document.body.removeChild(link);
                     }}
-                    className="btnDownload" >
-                Download CV
+                    className="download-cv-btn" >
+                    Download CV
                 </button>
             </div>
         </div>

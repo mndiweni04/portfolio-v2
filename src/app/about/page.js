@@ -1,4 +1,4 @@
-import AboutMe from '@/components/aboutme';
+import AboutMe from '../../components/aboutme';
 export const metadata = { title: 'About Mandla' };
 
 export default function AboutPage() {
