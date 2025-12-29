@@ -22,12 +22,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="..." data-theme="dark">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <HeroBackground>
           <div className="wrap">
             <Navbar /> 
             
-            {/* Add Toggle Button Here */}
             <ThemeToggle />
             
             <main className="scroll-container">
@@ -35,7 +34,7 @@ export default function RootLayout({ children }) {
             </main>
 
             <div className="pgFooter">
-              <p className="CopyRight">© 2025 Mandla Ndiweni. All Rights Reseverd</p>
+              <p className="CopyRight">© 2025 Mandla Ndiweni. All Rights Reserved</p>
             </div>
           </div>
         </HeroBackground>

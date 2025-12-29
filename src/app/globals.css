@@ -1,4 +1,3 @@
-/* --- 1. GLOBAL RESET (Fixes Layout Structure) --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,23 +5,23 @@
 }
 
 :root {
+  /* --- MATH VARIABLES (Fixes DevTools) --- */
+  --MATH-PI: 3.14159;
+
   /* --- THEME VARIABLES --- */
   --bg-color: #0f172a;          
   --text-color: #f8fafc;        
   --text-secondary: #94a3b8;    
   --glow-color: rgba(56, 189, 248, 0.15);
   
-  /* Glass Variables */
   --glass-bg: rgba(20, 20, 20, 0.6);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   --apple-blur: saturate(180%) blur(20px);
 
-  /* --- BUTTON COLORS --- */
   --profile-theme: #38bdf8; 
   --color-blue-dark-1: #0ea5e9; 
   
-  /* Legacy Mapping */
   --timeline-circle-theme: var(--text-color); 
   --color-gray-dark-1: var(--text-color);
   --coloor-black-font: var(--text-color);
@@ -30,7 +29,6 @@
   --color-gray-light-3: #334155; 
   --pgbar-length: 100%;
 
-  /* Whites */
   --color-white-100: #ffffff;
   --color-white-80: rgba(255, 255, 255, 0.8);
   --color-white-10: rgba(255, 255, 255, 0.1);
@@ -38,19 +36,18 @@
   --color-white-05: rgba(255, 255, 255, 0.05);
   --color-white-03: rgba(255, 255, 255, 0.03);
 
-  /* Blacks / shadows */
   --color-black-10: rgba(0, 0, 0, 0.1);
   --color-black-20: rgba(0, 0, 0, 0.2);
 
-  /* Grays */
   --color-gray-333-100: rgb(51, 52, 57);
   --color-gray-333-0: rgba(51, 52, 57, 0);
   --color-gray-300: #cdcdcd;
 
-  /* Accent / primary */
   --color-primary-40: rgba(70, 130, 191, 0.4);
+  --color-tiffany: #0abab5; /* Added missing variable referenced in DevTools */
+  --color-gray-dark-2: #666; /* Added missing variable referenced in AboutMe */
+  --color-gray-dark-3: #444; /* Added missing variable referenced in DevTools */
 
-  /* semantic aliases */
   --color-white: var(--color-white-100);
 }
 
@@ -69,22 +66,27 @@
   --profile-theme: #007aff;    
   --color-blue-dark-1: #0056b3; 
   --color-gray-light-3: #dedede;
+  
+  --color-gray-dark-2: #888;
+  --color-gray-dark-3: #ccc;
 }
 
-/* --- 2. FORCE BACKGROUND THEME (Fixes Dark Block) --- */
-html, body {
-  height: 100%; 
+html {
+  overflow-x: visible;
+}
+
+body {
   width: 100%;
+  min-height: 100vh;
   scroll-behavior: smooth;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden; /* Prevents horizontal scroll */
   
-  /* !important ensures this wins over any rogue component styles */
   background-color: var(--bg-color) !important; 
   color: var(--text-color) !important;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- 3. LAYOUT STRUCTURE --- */
 .hero-container {
   min-height: 100vh;
   width: 100%;
@@ -110,13 +112,11 @@ html, body {
 
 .scroll-container {
   flex: 1; 
-  display: flex;
-  flex-direction: column;
-  padding-top: 100px; /* Space for Navbar */
+  display: block;
+  padding-top: 100px;
   width: 100%;
 }
 
-/* --- 5. FOOTER & COMPONENTS --- */
 .pgFooter {
   width: 100%;
   height: 80px;
@@ -138,7 +138,6 @@ html, body {
   font-weight: 500;
 }
 
-/* Glass Buttons */
 .glass-panel, .glass-button {
   background: var(--glass-bg);        
   -webkit-backdrop-filter: var(--apple-blur);
@@ -156,7 +155,6 @@ html, body {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Solid Buttons */
 .btnSubmit, .download-cv-btn {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;

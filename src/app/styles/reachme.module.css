@@ -1,0 +1,153 @@
+﻿/* src/app/styles/reachme.module.css */
+
+.ReachMe {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: 4rem;
+    align-items: start;
+
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+
+    width: 100%;
+    max-width: 1100px;
+    justify-self: stretch;
+    align-self: stretch;
+    margin: 6rem auto 4rem auto;
+    padding: 3rem;
+}
+
+.contact-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Changed from 'form.contact-form' to just class for easier module usage */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--timeline-circle-theme);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-details, .follow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-section {
+    font-size: 1.1rem;
+    display: flex; 
+    align-items: center;
+    gap: 15px;
+    color: var(--timeline-circle-theme);
+    margin: 0.5rem 0;
+}
+
+.info-section svg { 
+    color: var(--profile-theme);
+    width: 22px;
+    height: 22px;
+}
+
+.link a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.link a:hover {
+    color: var(--profile-theme);
+}
+
+.name-surname {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+/* FIX: Scope tag selectors to the container class */
+.ReachMe input, 
+.ReachMe textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid var(--glass-border); 
+    border-radius: 12px;
+    color: var(--text-color); 
+    transition: all 0.3s ease;
+}
+
+/* FIX: Use :global() to access the theme attribute on html/body */
+:global([data-theme="light"]) .ReachMe input,
+:global([data-theme="light"]) .ReachMe textarea {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #1d1d1f;
+}
+
+.ReachMe input:focus, 
+.ReachMe textarea:focus {
+    outline: none;
+    border-color: var(--profile-theme); 
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+:global([data-theme="light"]) .ReachMe input:focus, 
+:global([data-theme="light"]) .ReachMe textarea:focus {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.ReachMe input::placeholder,
+.ReachMe textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+:global([data-theme="light"]) .ReachMe input::placeholder,
+:global([data-theme="light"]) .ReachMe textarea::placeholder {
+    color: #555;
+    opacity: 0.7;
+}
+
+.btnSubmit, .btnClear {
+    width: 100%;
+    margin-top: 1rem;
+    font-family: inherit;
+}
+
+@media (max-width: 768px) {
+    .ReachMe {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 2rem;
+        width: 95%;
+    }
+    
+    .name-surname {
+        grid-template-columns: 1fr;
+    }
+}

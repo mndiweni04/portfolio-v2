@@ -1,6 +1,6 @@
 import DevTools from '../../components/devTools';
-export const metadata = { title: 'About Mandla' };
+export const metadata = { title: 'Dev Tools - Mandla Ndiweni' };
 
-export default function AboutPage() {
+export default function ToolsPage() {
   return <DevTools />;
 }

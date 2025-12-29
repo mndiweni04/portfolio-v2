@@ -4,25 +4,27 @@ import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "dark";
+    // Check if running on client
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "dark";
+    }
+    return "dark"; // Default fallback for server
   });
 
   useEffect(() => {
-    // Update the DOM to match the current theme state
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.body.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   return (
     <button 
       onClick={toggleTheme} 
       className="glass-button"
+      suppressHydrationWarning 
       style={{ 
         position: "fixed", 
         bottom: "20px", 
@@ -31,6 +33,7 @@ export default function ThemeToggle() {
         padding: "10px 15px",
         fontSize: "1.2rem"
       }}
+      aria-label="Toggle Dark/Light Mode"
     >
       {theme === "dark" ? "☀️" : "🌙"}
     </button>

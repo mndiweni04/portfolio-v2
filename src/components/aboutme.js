@@ -4,23 +4,25 @@ import Image from 'next/image';
 import '../app/styles/aboutme.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faRunning, faMusic, faBookReader, faTshirt, faHeart, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
-import prtImg1 from '../../public/images/prtImg1.jpg';
-import prtImg2 from '../../public/images/prtImg2.jpg';
-import prtImg3 from '../../public/images/prtImg3.jpg';
-import prtImg4 from '../../public/images/prtImg4.jpg';
-import prtImg5 from '../../public/images/prtImg5.jpg';
 
-const Images = [prtImg1, prtImg2, prtImg3, prtImg4, prtImg5];
+// FIX: Use string paths for public images
+const Images = [
+    '/images/prtImg1.jpg',
+    '/images/prtImg2.jpg',
+    '/images/prtImg3.jpg',
+    '/images/prtImg4.jpg',
+    '/images/prtImg5.jpg'
+];
 
 function AboutMe(){
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
-    const interval = setInterval(() => {
-        setIndex(prev => (prev + 1) % Images.length); 
-    }, 3500); 
+        const interval = setInterval(() => {
+            setIndex(prev => (prev + 1) % Images.length); 
+        }, 3500); 
 
-    return () => clearInterval(interval); 
+        return () => clearInterval(interval); 
     }, []);
 
     return(
@@ -117,7 +119,6 @@ function AboutMe(){
                 </div>
             </div>
         </div>
-        
     )
 }
 
