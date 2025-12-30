@@ -5,7 +5,6 @@ import '../app/styles/aboutme.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faRunning, faMusic, faBookReader, faTshirt, faHeart, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 
-// FIX: Use string paths for public images
 const Images = [
     '/images/prtImg1.jpg',
     '/images/prtImg2.jpg',

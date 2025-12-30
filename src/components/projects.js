@@ -12,7 +12,6 @@ const Projects = () => {
   const projects = [
     {
       title: "Employee Management System",
-      // Path relative to the 'public' folder
       image: "/images/emp-app.jpg", 
       description: "A desktop application with CRUD functionality built to manage employee data, applying OOP principles and integrated with PostgreSQL for database operations.",
       techStack: ["Java", "Java Swing", "PostgreSQL", "OOP", "CRUD"],
@@ -73,13 +72,12 @@ const Projects = () => {
         {projects.map((project, index) => (
           <SwiperSlide key={index}>
             <div className="project-card">
-              {/* Width and Height are required for string paths in Next.js */}
               <Image 
                 src={project.image} 
                 alt={project.title} 
                 width={800} 
                 height={500}
-                style={{ width: '100%', height: 'auto' }} // Ensures it stays responsive
+                style={{ width: '100%', height: 'auto' }} 
               />
               <div className="project-info">
                 <h3>{project.title}</h3>

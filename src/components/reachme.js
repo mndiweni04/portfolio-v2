@@ -1,4 +1,3 @@
-/* src/components/reachme.js */
 'use client';
 import { useRef, useState } from 'react';
 import '../app/styles/reachme.css';
@@ -15,6 +14,7 @@ function ReachMe() {
         e.preventDefault();
         setStatus("Sending...");
 
+        // Replace with your actual EmailJS keys
         emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", form.current, "YOUR_PUBLIC_KEY")
           .then((result) => {
               setStatus("Message Sent! ✅");
@@ -40,7 +40,7 @@ function ReachMe() {
                     </div>
                     <div className="info-item">
                         <FontAwesomeIcon icon={faLinkedin}/>
-                        <a href="https://www.linkedin.com/in/mandla-ndiweni-74a35a2a1/" target="_blank" rel="noreferrer">Mandla Ndiweni LinkedIn</a>
+                        <a href="#" target="_blank" rel="noreferrer">Mandla Ndiweni LinkedIn</a>
                     </div>
                 </div>
 

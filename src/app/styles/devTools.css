@@ -197,26 +197,3 @@
 	font-size: 0.9rem;
 	}
 }
-
-/* examples of replacements */
-.some-shadow {
-  box-shadow: 0 4px 12px var(--color-black-20);
-}
-.some-stroke {
-  stroke: var(--color-gray-300);
-}
-.pulse-shadow {
-  box-shadow: 0 0 0 6px var(--color-gray-333-0);
-  box-shadow: 0 0 0 0px var(--color-gray-333-100);
-}
-.card {
-  box-shadow: 0 10px 40px var(--color-black-10);
-  background-color: var(--color-white-05);
-  border: 2px solid var(--color-primary-40);
-}
-.text-light {
-  color: var(--color-white);
-}
-.panel {
-  background-color: var(--color-white-80);
-}

@@ -5,7 +5,7 @@
 }
 
 :root {
-  /* --- MATH VARIABLES (Fixes DevTools) --- */
+  /* --- MATH VARIABLES --- */
   --MATH-PI: 3.14159;
 
   /* --- THEME VARIABLES --- */
@@ -44,9 +44,9 @@
   --color-gray-300: #cdcdcd;
 
   --color-primary-40: rgba(70, 130, 191, 0.4);
-  --color-tiffany: #0abab5; /* Added missing variable referenced in DevTools */
-  --color-gray-dark-2: #666; /* Added missing variable referenced in AboutMe */
-  --color-gray-dark-3: #444; /* Added missing variable referenced in DevTools */
+  --color-tiffany: #0abab5; 
+  --color-gray-dark-2: #666; 
+  --color-gray-dark-3: #444; 
 
   --color-white: var(--color-white-100);
 }
