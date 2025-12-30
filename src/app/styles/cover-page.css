@@ -1,139 +1,158 @@
-﻿html{
+﻿.profile, .profile * {
+    box-sizing: border-box;
+}
+
+html {
     font-size: 100%;
     font-family: 'PT Sans', sans-serif;
 }
 
 .profile {
-    display: grid;
-    place-items: center;
-    align-items: center;    
-    grid-template-columns: 1fr 2fr;
-} 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
 
-.photo img {
+.profile .name {
+    font-size: 8rem;
+    color: var(--timeline-circle-theme);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.1;
     width: 100%;
-    border-radius: 50% 50% 1% 1%;
-    max-width: 400px;
-    max-height: 400px;
-    display: block;
-    position: relative;
 }
 
 .bio {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    align-items: center;            
+    gap: 3rem;
+    width: 100%;
+}
+
+.CVimg {
+    justify-self: end; 
+    width: 100%;
+    max-width: 400px; 
+}
+
+.CVimg img {
+    width: 100%;
+    height: auto;
+    border-radius: 50% 50% 1% 1%;
+    display: block;
+    object-fit: cover;
+}
+
+.bcard {
+    justify-self: start;
     text-align: left;
-    max-width: 750px;
 }
 
-.bio .name {
-    font-size: 3rem;
-    color: var(--timeline-circle-theme);
-    margin: 0;
-    margin-top: 1rem;
-    font-weight: bold;
-}
-
-.bio .prof {
-    font-size: 1.8rem;
+.prof {
+    font-size: 4rem;
     color: var(--profile-theme);
-    margin: 0;
+    margin: 0 0 1rem 0;
     font-weight: bold;
+    width: 730px; 
 }
 
-.bio .paragraph {
+/* --- ICON PYRAMID STYLES --- */
+.icon-pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; 
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.icon-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem; 
+}
+
+/* FontAwesome SVGs usually respond to font-size for scaling */
+.tech-icon {
+    font-size: 3.5rem; 
+    color: var(--timeline-circle-theme);
+    width: 3.5rem; /* Explicit width helps prevent layout jumping */
+    height: 3.5rem;
+}
+
+.logo-placeholder-text {
+    font-size: 0.6rem;
+    color: var(--timeline-circle-theme);
+}
+/* ------------------------------- */
+
+.intro-section {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center; 
+}
+
+.intro-para {
+    max-width: 1000px;
+    text-align: center;
+}
+
+.paragraph {
     color: var(--timeline-circle-theme);
     font-size: 1.4rem;
-    padding: 15px 0px;
-    max-width: 55ch;
+    line-height: 1.5;
+    margin-bottom: 2rem;
 }
 
 .download-cv-btn {
     display: inline-block;
     padding: 1rem 2rem;
-}
-
-.intro-section {
-    padding: 0 1rem;
-    color: var(--timeline-circle-theme);
-    display: grid;
-    grid-template-columns: 1fr 2fr 3fr;
-    position: relative;
-}
-
-.intro-section {
-    font-size: 1.5rem;
-    width: 500px;
-}
-
-.intro-section .title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.hero-shadow {
-  box-shadow: 0 6px 10px var(--color-black-10);
-}
-.hero-glass {
-  background: var(--color-white-10);
+    background-color: var(--timeline-circle-theme);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
 }
 
 @media (max-width: 1024px) {
-    html {
-        font-size: 90%;
-    }
-    .profile {
-        grid-template-columns: 1fr;
-        padding: 2rem 1rem;
-        height: auto;
-    }
+    html { font-size: 90%; }
+
     .bio {
+        grid-template-columns: 1fr; 
         text-align: center;
+        gap: 2rem;
     }
-    .intro-section {
-        grid-template-columns: 1fr;
-        text-align: center;
+
+    .CVimg {
+        justify-self: center; 
     }
-    .intro-section .follow,
-    .intro-section {
-        width: 100%;
-        margin-bottom: 2rem;
+
+    .bcard {
+        justify-self: center; 
+        text-align: center;   
     }
-    .download-cv-btn {
-        display: block;
-        margin: 1rem auto;
-        max-width: 250px;
+    
+    .prof {
+        width: 100%; 
+    }
+
+    .profile .name {
+        font-size: 5rem;
     }
 }
 
 @media (max-width: 768px) {
-    html {
-        font-size: 80%;
-    }
-    .bio .name {
-        font-size: 2.2rem;
-    }
-    .bio .prof {
-        font-size: 1.5rem;
-    }
-    .bio .paragraph {
-        font-size: 1.2rem;
-    }
-    .intro-section {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-    }
+    html { font-size: 80%; }
+    
+    .profile .name { font-size: 3.5rem; }
+    
+    .tech-icon { font-size: 2.5rem; width: 2.5rem; height: 2.5rem; }
+    .icon-row { gap: 2rem; }
 }
-
-@media (max-width: 500px) {
-    html {
-        font-size: 70%;
-    }
-    .photo img {
-        max-width: 200px;
-    }
-    .intro-section .title {
-        font-size: 2rem;
-    }
-}
-

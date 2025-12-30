@@ -1,25 +1,62 @@
 'use client';
 import Image from 'next/image';
 import CvImage from '../../public/images/CvImg2.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faReact } from '@fortawesome/free-brands-svg-icons';
+import { faDatabase, faHandshake, faCode } from '@fortawesome/free-solid-svg-icons';
+
 import '../app/styles/cover-page.css';
 
 function CoverPg(){
     return(
         <div className="profile">
 
-            <div className='photo'>
-                <Image src={CvImage} alt='Mandla Ndiweni CV Image' className='grid-image'/>
-            </div>
+            <h1 className='name'>Mandla Ndiweni</h1>
 
             <div className='bio'>
-                <h1 className='name'>Mandla Ndiweni</h1>
-                <p className='prof'>Full Stack Developer</p>
+                <div className='CVimg'>
+                    <Image src={CvImage} alt='Mandla Ndiweni CV Image' className='grid-image'/>
+                </div>
+
+                <div className='bcard'>
+                    <h2 className='prof'>A Full Stack Developer</h2>
+                    <p className='bcard-para'>As a recent Software & Web Development graduate from Belgium Campus ITversity, 
+                        I offer a strong foundation in Full Stack development, specifically React.js, Node.js, C#, and SQL. 
+                        Beyond code, I bridge the gap between technical logic and business needs, 
+                        leveraging experience in IoT hardware integration and a background in direct sales to communicate complex concepts effectively.</p>
+                </div>
+            </div>
+            
+            {/* --- ICON PYRAMID SECTION --- */}
+            <div className="icon-pyramid">
+                {/* Row 1: 2 Icons (React | C#) */}
+                <div className="icon-row">
+                    <FontAwesomeIcon icon={faReact} className="tech-icon" title="React.js" />
+                    <FontAwesomeIcon icon={faCode} className="tech-icon" title="C# / Backend Logic" />
+                </div>
+
+                {/* Row 2: 3 Items (SQL | Logo Placeholder | Sales) */}
+                <div className="icon-row">
+                    <FontAwesomeIcon icon={faDatabase} className="tech-icon" title="SQL / Database" />
+                    
+                    {/* Placeholder for Belgium Campus Logo */}
+                    <div className="bc-logo-container">
+                        <Image src="/images/bc.png" alt="Belgium Campus Logo" width={60} height={60} className="bc-logo" />
+                    </div>
+
+                    <FontAwesomeIcon icon={faHandshake} className="tech-icon" title="Sales & Communication" />
+                </div>
+            </div>
+            {/* -------------------------------- */}
+
+            <div className='intro-para'>
                 <p className="paragraph">
-                    Aspiring Full Stack Developer and recent graduate of Belgium Campus ITversity (Diploma in Software & Web Development). 
-                    I offer a strong foundation in both frontend and backend technologies, including React.js, Node.js, C#, and raw SQL for complex data management. 
-                    My technical agility is demonstrated by my work co-developing anti-sleep IoT glasses, a team project integrating hardware sensors with software logic. 
-                    Additionally, my experience in direct sales has honed my ability to communicate technical concepts to non-technical stakeholders. 
-                    I am now seeking a Full Stack internship to apply my skills in a professional environment.
+                   I am now actively seeking a Full Stack internship where I can not only learn 
+                   from experienced mentors but also make an immediate impact. I am eager to apply 
+                   my academic knowledge to production-level environments, tackling real-world 
+                   challenges with clean, efficient code. My goal is to join a forward-thinking 
+                   team that values adaptability and problem-solving, allowing me to refine my 
+                   skillset while contributing to meaningful software solutions.
                 </p>
                 <button onClick={() => {
                         const link = document.createElement('a');
