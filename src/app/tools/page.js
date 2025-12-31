@@ -1,6 +1,6 @@
-import DevTools from '../../components/devTools';
+import TechStack from '../../components/TechStack';
 export const metadata = { title: 'Dev Tools - Mandla Ndiweni' };
 
 export default function ToolsPage() {
-  return <DevTools />;
+  return <TechStack />;
 }
