@@ -1,17 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/navbar"; 
 import HeroBackground from "../components/HeroBackground"; 
 import ThemeToggle from "../components/ThemeToggle";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Initialize Nunito
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"], // Loading the weights needed for design
 });
 
 export const metadata = {
@@ -22,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${nunito.variable} antialiased`}>
         <HeroBackground>
           <div className="wrap">
             <Navbar /> 

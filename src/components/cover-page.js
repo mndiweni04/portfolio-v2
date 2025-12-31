@@ -3,7 +3,7 @@ import Image from 'next/image';
 import CvImage from '../../public/images/CvImg2.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact } from '@fortawesome/free-brands-svg-icons';
-import { faDatabase, faHandshake, faCode } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase, faHandshake, faCode, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 
 import '../app/styles/cover-page.css';
 
@@ -20,34 +20,37 @@ function CoverPg(){
 
                 <div className='bcard'>
                     <h2 className='prof'>A Full Stack Developer</h2>
-                    <p className='bcard-para'>As a recent Software & Web Development graduate from Belgium Campus ITversity, 
+                    <p className='bcard-para'>
+                        As a recent Software & Web Development graduate from{' '}
+                        <a 
+                            href="https://www.belgiumcampus.ac.za/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-link"
+                        >
+                            Belgium Campus ITversity
+                        </a>, 
                         I offer a strong foundation in Full Stack development, specifically React.js, Node.js, C#, and SQL. 
                         Beyond code, I bridge the gap between technical logic and business needs, 
-                        leveraging experience in IoT hardware integration and a background in direct sales to communicate complex concepts effectively.</p>
+                        leveraging experience in IoT hardware integration and a background in direct sales to communicate complex concepts effectively.
+                    </p>
                 </div>
             </div>
             
-            {/* --- ICON PYRAMID SECTION --- */}
             <div className="icon-pyramid">
-                {/* Row 1: 2 Icons (React | C#) */}
+                {/* Row 1: 2 Icons */}
                 <div className="icon-row">
                     <FontAwesomeIcon icon={faReact} className="tech-icon" title="React.js" />
                     <FontAwesomeIcon icon={faCode} className="tech-icon" title="C# / Backend Logic" />
                 </div>
 
-                {/* Row 2: 3 Items (SQL | Logo Placeholder | Sales) */}
+                {/* Row 2: 3 Icons */}
                 <div className="icon-row">
                     <FontAwesomeIcon icon={faDatabase} className="tech-icon" title="SQL / Database" />
-                    
-                    {/* Placeholder for Belgium Campus Logo */}
-                    <div className="bc-logo-container">
-                        <Image src="/images/bc.png" alt="Belgium Campus Logo" width={60} height={60} className="bc-logo" />
-                    </div>
-
+                    <FontAwesomeIcon icon={faLaptopCode} className="tech-icon" title="Software Development" />
                     <FontAwesomeIcon icon={faHandshake} className="tech-icon" title="Sales & Communication" />
                 </div>
             </div>
-            {/* -------------------------------- */}
 
             <div className='intro-para'>
                 <p className="paragraph">
