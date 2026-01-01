@@ -1,3 +1,4 @@
+/*src/app/globals.css*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -113,7 +114,12 @@ body {
   flex: 1; 
   display: block;
   padding-top: 100px;
+  /* Global page gutters */
+  padding-left: clamp(1.5rem, 4vw, 4rem);
+  padding-right: clamp(1.5rem, 4vw, 4rem);
+
   width: 100%;
+  box-sizing: border-box;
 }
 
 .pgFooter {
