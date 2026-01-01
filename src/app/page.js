@@ -1,6 +1,6 @@
 import CoverPg from '../components/cover-page';
-export const metadata = { title: 'About Mandla' };
+export const metadata = { title: 'Home' };
 
-export default function AboutPage() {
+export default function CoverPage() {
   return <CoverPg />;
 }
