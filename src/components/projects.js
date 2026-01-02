@@ -14,7 +14,40 @@ import '../app/styles/projects.css';
 // --- DATA: Flagship Work (Text-Only, Detailed) ---
 const flagshipProjects = [
     {
-        id: 'f1',
+        id: 'f2',
+        title: "Portfolio V1",
+        date: "Mar 2025",
+        shortDesc: "A concise and engaging personal portfolio created for a college project. This portfolio is designed to give the "+
+                   "viewer a quick overview of who I am by showcasing my skills, interests, and background. It is a single-page application"+
+                   " built with React.js and features interactive animations, including subtle zoom effects and colour changes on hover.",
+        techStack: ["Next.js 14", "React", "CSS Modules", "Netlify"],
+        githubLink: "https://github.com/mndiweni04/My-Portfolio",
+        liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
+        // Case Study Details
+        problem: "For my college project, I was tasked with creating a digital portfolio to showcase my skills, interests, and background."+
+                 " The portfolio had to be interactive, mobile-friendly, render quickly, include a working contact service, and consist "+
+                 "of Home, About, Projects, Tech Stack, and Contact pages. The challenge was delivering all these features while maintaining"+
+                 " a clean, professional look.",
+        solution: "I built a Single-Page Application (SPA) using React.js for fast rendering and smooth navigation via a fixed navbar. "+
+                  "Key interactive elements included: "+
+                  "<ul><li>Hover effects on buttons for subtle feedback</li>"+
+                  "<li>Automatic image carousel on the About Me page</li>"+
+                  "<li>Clickable project carousel with GitHub and live demo links</li>"+
+                  "<li>Dev Tools animations to visually represent skills</li>"+
+                  "<li>A functional Contact page using Email.js</li></ul> "+
+                  "This approach ensured interactivity, usability, and a professional presentation of my abilities, while demonstrating"+
+                  " React fundamentals like component composition, state management, and array handling.",
+        journey: "Most of the work involved refining layouts and exploring CSS techniques, combined with building reusable React "+
+                 "components. Managing state, handling multiple iterations in carousels, and coordinating animations strengthened "+
+                 "my understanding of SPA architecture and interactive UI design.",
+        reflections: "<ul><li>SPAs are fast but can feel restrictive if content is too long.</li><li>Visual indicators like "+
+                      "percentages don’t fully convey skill.</li><li>Portfolio tone and naming must be professional to make a "+
+                      "strong impression.</li><li>Client-side React apps may not be indexed by recruiter bots, so discoverability"+
+                      " can be an issue.</li></ul> I improved my React skills, CSS design, and ability to create interactive, "+
+                      "user-friendly interfaces."
+    },
+    {
+        id: 'f3',
         title: "Employee Management System",
         date: "Oct 2024",
         shortDesc: "A secure, desktop-based workforce management solution featuring Role-Based Access Control and encrypted data persistence.",
@@ -28,33 +61,28 @@ const flagshipProjects = [
         reflections: "This project solidified my understanding of database normalization (3NF) and the importance of sanitizing inputs to prevent SQL injection."
     },
     {
-        id: 'f2',
-        title: "Portfolio V2",
-        date: "Jan 2025",
-        shortDesc: "A high-performance digital identity built on the Next.js App Router, featuring a custom-built liquid glass design system.",
-        techStack: ["Next.js 14", "React", "CSS Modules", "Netlify"],
-        githubLink: "https://github.com/mndiweni04/My-Portfolio",
-        liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
-        // Case Study Details
-        problem: "Standard portfolio templates lacked the unique 'glassmorphism' aesthetic I wanted and suffered from poor SEO performance.",
-        solution: "Developed a custom design system using CSS variables for consistent glass effects. Migrated to Next.js to leverage server-side rendering and improved core web vitals.",
-        journey: "I spent significant time refining the CSS backdrop-filters to ensure compatibility across Safari and Chrome. The animation logic required complex state management for the overlay systems.",
-        reflections: "Mastering the Next.js App Router and client/server boundary was a key takeaway, along with advanced CSS layout techniques."
-    },
-    {
-        id: 'f3',
-        title: "Smart Scheduler",
-        date: "Aug 2024",
-        shortDesc: "An algorithmic scheduling tool that detects conflict overlaps in complex timetables and suggests optimal slot allocation.",
-        techStack: ["C#", ".NET", "WinForms", "MSSQL"],
-        githubLink: "https://github.com/mndiweni04/Array-Manipulation",
+        id: 'f1',
+        title: "Anti-Sleep IoT Glasses",
+        date: "September 2024",
+        shortDesc: "A real-time driver drowsiness detection system using IR sensors, gyroscopes, and a simple ML model. I built the ML, managed WebSocket connections, and integrated hardware with the dashboard, showcasing practical IoT development and problem-solving.",
+        techStack: ["C++", "Python", "ESP32", "IoT"],
+        githubLink: "#",
         liveLink: "#",
         // Case Study Details
-        problem: "Students and faculty struggled to manually identify overlapping classes, leading to double-booking and administrative chaos.",
-        solution: "Built a visual grid system in C# that parses time arrays to automatically flag conflicts. The UI updates in real-time as slots are dragged and dropped.",
-        journey: "Logic intensity was high. I had to write efficient algorithms to compare start/end times across multiple multidimensional arrays without causing UI lag.",
-        reflections: "This project sharpened my logic building skills and taught me how to handle complex event-driven programming in a stateful desktop environment."
-    }
+        problem: "Drowsy driving is a major cause of road accidents, resulting in fatalities and property damage. Our project aimed to develop an AI-enhanced Anti-Sleep Glasses system capable of detecting driver fatigue in real time. The glasses needed to monitor eye blinks and head movements using infrared sensors and inertial data, and trigger alerts through a connected dashboard. The challenge was to design a system that was accurate, reliable, and functional, while integrating hardware, software, and real-time data processing within a short development timeline.",
+        solution: "We built a complete hardware-software system: "+
+                  "<ul><li><b>Hardware:</b> ESP32-C3 development board, IR LEDs and photodiodes, accelerometer and gyroscope (MPU6050), buzzer/vibration motor, battery packs, wiring supplies, and 3D-printed casing.</li>"+
+                  "<li><b>Software:</b> C++ for the hardware, Python for the dashboard and service, and WebSockets for real-time data communication.</li>"+
+                  "<li><b>Team responsibilities:</b> I focused on the ML model, using a Hidden Markov Model (HMM) to detect drowsiness with simple calculations based on baseline comparison of inertial and sensor data. I also handled the connection between the dashboard and the service, ensuring real-time data flow.</li></ul>"+
+                  "This solution delivered a functional prototype capable of monitoring the driver’s state and providing immediate alerts, demonstrating our ability to integrate hardware and software in a cohesive system.",
+        journey: "The project spanned two months. Weeks 1–3 focused on role assignment and familiarization with C++ for microcontrollers and PlatformIO. "+
+                 "During hardware integration, I realized our initial LSTM/CNN model plan was overly complex for the ESP32. I pivoted to a lightweight Hidden Markov Model (HMM) and redefined the BLE setup for reliability. "+
+                 "After these adjustments, the glasses successfully transmitted real-time data to the dashboard. The main challenge was coordinating the hardware-software handshake and managing real-time data flow.",
+        reflections: "<ul><li><b>Clear problem understanding</b> enables effective planning and efficient implementation.</li>"+
+                     "<li><b>Simplicity over complexity:</b> Overcomplicated solutions waste time and lower team morale; lightweight, practical approaches are often more effective.</li>"+
+                     "<li><b>Team dynamics matter:</b> Clear role assignments and addressing gaps in capability are critical to project success.</li>"+
+                     "<li><b>Technical growth:</b> Strengthened skills in ML modeling, real-time WebSocket communication, hardware-software integration, and sensor data processing.</li>"+
+                     "<li><b>Professional insight:</b> Delivering a fully functional prototype within constraints emphasizes the importance of balancing ambition with practicality in technical projects.</li></ul>"}
 ];
 
 // --- DATA: Experiments (Lighter) ---
@@ -247,12 +275,14 @@ export default function Projects() {
 
                             <section className="ov-section">
                                 <h4>The Problem</h4>
+                                {/* Problem is text-only in data, but using div allows flexibility */}
                                 <p>{selectedProject.problem}</p>
                             </section>
 
                             <section className="ov-section">
                                 <h4>The Solution</h4>
-                                <p>{selectedProject.solution}</p>
+                                {/* Renders HTML list correctly */}
+                                <div dangerouslySetInnerHTML={{ __html: selectedProject.solution }} />
                             </section>
 
                             <section className="ov-section">
@@ -262,7 +292,11 @@ export default function Projects() {
 
                             <section className="ov-section highlight-box">
                                 <h4>Reflections & Lessons</h4>
-                                <p><em>{selectedProject.reflections}</em></p>
+                                {/* Renders HTML list correctly + applies italic style */}
+                                <div 
+                                    style={{ fontStyle: 'italic' }}
+                                    dangerouslySetInnerHTML={{ __html: selectedProject.reflections }} 
+                                />
                             </section>
                         </div>
                     </div>
