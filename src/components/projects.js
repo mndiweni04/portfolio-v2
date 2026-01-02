@@ -35,6 +35,7 @@ const flagshipProjects = [
         techStack: ["Next.js 14", "React", "CSS Modules", "Netlify"],
         githubLink: "https://github.com/mndiweni04/My-Portfolio",
         liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
+        // Case Study Details
         problem: "Standard portfolio templates lacked the unique 'glassmorphism' aesthetic I wanted and suffered from poor SEO performance.",
         solution: "Developed a custom design system using CSS variables for consistent glass effects. Migrated to Next.js to leverage server-side rendering and improved core web vitals.",
         journey: "I spent significant time refining the CSS backdrop-filters to ensure compatibility across Safari and Chrome. The animation logic required complex state management for the overlay systems.",
@@ -48,6 +49,7 @@ const flagshipProjects = [
         techStack: ["C#", ".NET", "WinForms", "MSSQL"],
         githubLink: "https://github.com/mndiweni04/Array-Manipulation",
         liveLink: "#",
+        // Case Study Details
         problem: "Students and faculty struggled to manually identify overlapping classes, leading to double-booking and administrative chaos.",
         solution: "Built a visual grid system in C# that parses time arrays to automatically flag conflicts. The UI updates in real-time as slots are dragged and dropped.",
         journey: "Logic intensity was high. I had to write efficient algorithms to compare start/end times across multiple multidimensional arrays without causing UI lag.",
