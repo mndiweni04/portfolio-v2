@@ -6,12 +6,14 @@ import { faPhone, faEnvelope, faMapLocationDot } from '@fortawesome/free-solid-s
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 function ReachMe() {
+    // 1. Initialize State (Matches input names exactly)
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         email: '',
         message: ''
     });
+    
     const [status, setStatus] = useState({ type: '', message: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -26,7 +28,7 @@ function ReachMe() {
         setStatus({ type: 'info', message: 'Sending...' });
 
         try {
-            // Call OUR internal API route, not EmailJS directly
+            // 2. Send Data to API
             const response = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -35,9 +37,10 @@ function ReachMe() {
 
             if (response.ok) {
                 setStatus({ type: 'success', message: 'Message Sent! ✅' });
-                setFormData({ firstName: '', lastName: '', email: '', message: '' });
+                setFormData({ firstName: '', lastName: '', email: '', message: '' }); // Clear form
             } else {
-                setStatus({ type: 'error', message: 'Failed to send. Please try again.' });
+                const result = await response.json();
+                setStatus({ type: 'error', message: result.error || 'Failed to send.' });
             }
         } catch (error) {
             console.error(error);
@@ -50,7 +53,7 @@ function ReachMe() {
 
     return (
         <div className="reachme-container">
-            {/* Left Side Info - Unchanged */}
+            {/* Left Side Info */}
             <div className="contact-info">
                 <div className="info-group">
                     <h1 className="section-title">Follow</h1>
@@ -88,7 +91,8 @@ function ReachMe() {
                         type="text" 
                         placeholder="First Name" 
                         name="firstName" 
-                        value={formData.firstName}
+                        // FIX: Add || '' to prevent "uncontrolled" error
+                        value={formData.firstName || ''} 
                         onChange={handleChange}
                         required 
                     />
@@ -96,7 +100,7 @@ function ReachMe() {
                         type="text" 
                         placeholder="Last Name" 
                         name="lastName" 
-                        value={formData.lastName}
+                        value={formData.lastName || ''}
                         onChange={handleChange}
                         required 
                     />
@@ -106,7 +110,7 @@ function ReachMe() {
                     type="email" 
                     placeholder="Email" 
                     name="email" 
-                    value={formData.email}
+                    value={formData.email || ''}
                     onChange={handleChange}
                     required 
                 />
@@ -115,7 +119,7 @@ function ReachMe() {
                     placeholder="Your Message" 
                     name="message" 
                     rows="5" 
-                    value={formData.message}
+                    value={formData.message || ''}
                     onChange={handleChange}
                     required
                 ></textarea>
