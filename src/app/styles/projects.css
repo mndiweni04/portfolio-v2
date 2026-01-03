@@ -429,29 +429,74 @@
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 
-@media (max-width: 1024px) {
-    .custom-nav-btn { display: none; } 
-    .flagship-card, .experiment-card { aspect-ratio: auto; min-height: 400px; padding: 2rem; }
-    
-    .flagship-card { height: auto; }
-    .card-body { padding: 2rem 0; }
-    
-    .experiment-card { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-    .exp-left { flex: none; width: 100%; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; }
-    .exp-center { padding: 0; border: none; }
-    .exp-right { width: 100%; display: flex; justify-content: flex-end; }
+/* ---------------------------------------------------- */
+/* MOBILE / TABLET REFINEMENTS                          */
+/* ---------------------------------------------------- */
 
-    .a4-glass { width: 100%; height: 100%; max-height: none; border-radius: 0; aspect-ratio: auto; padding: 5rem 1.5rem 2rem; }
-    .close-floating { top: 1.5rem; right: 1.5rem; position: absolute; }
+@media (max-width: 1024px) {
+    /* Full-width container */
+    .projects-page-container {
+        width: 100%;
+        padding: 6rem 1.5rem;
+    }
+
+    /* Full-width Cards */
+    .flagship-card, .experiment-card { 
+        width: 100%;
+        min-height: 400px; 
+        aspect-ratio: auto; 
+        padding: 2rem;
+    }
+
+    .experiment-card { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 1.5rem; 
+    }
+    .exp-left { 
+        flex: none; 
+        width: 100%; 
+        border-bottom: 1px solid var(--glass-border); 
+        padding-bottom: 1rem; 
+    }
+    .exp-center { padding: 0; border: none; }
+
+    /* Swipe Cue */
+    .carousel-wrapper::after {
+        content: 'Swipe to explore';
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        opacity: 0.6;
+        font-style: italic;
+    }
+
+    /* Mobile Nav Buttons */
+    .custom-nav-btn { 
+        display: flex;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 20;
+    }
+    .prev-flag, .prev-exp { left: 0; }
+    .next-flag, .next-exp { right: 0; }
 }
 
+/* Smaller phones */
 @media (max-width: 768px) {
-    .projects-header h1 { font-size: 2.5rem; }
+    .projects-page-container { padding: 4rem 1.5rem; }
     .card-header h3 { font-size: 1.8rem; }
     .card-desc { font-size: 1rem; max-width: 100%; }
-    
-    .flagship-card, .experiment-card { aspect-ratio: auto; }
-    
     .card-footer { flex-direction: column; gap: 1.5rem; align-items: stretch; }
     .links-group { justify-content: center; }
     .btn-action { justify-content: center; }

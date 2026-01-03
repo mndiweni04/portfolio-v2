@@ -201,16 +201,51 @@
     
     .tech-container {
         padding: 4rem 1.5rem;
-        width: 95%;
+        width: 100%; /* Ensure full width usage */
     }
 
     .category-section {
         flex: 0 1 100%; 
         min-width: auto;
+        padding: 2rem;
     }
     
     .core-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
         gap: 1.5rem;
+    }
+    
+    /* FIX 3: Mobile Alignment & Centering */
+    .tech-list {
+        justify-content: center;
+    }
+
+    .core-card, .tech-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Core cards adjustment if needed */
+    .core-card {
+        padding: 1rem;
+    }
+    
+    /* Ensure Tech Badges stack correctly */
+    .tech-badge {
+        width: 110px; 
+        height: 100px; 
+        padding: 1rem;
+    }
+    
+    .tech-badge span {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .tech-badge svg {
+        font-size: 1.5rem;
     }
 }

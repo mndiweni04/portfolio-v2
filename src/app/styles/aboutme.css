@@ -281,7 +281,7 @@
     }
     
     .glass-card-bottom {
-        min-height: auto;
+        min-height: 100%;
     }
     
     .ImgContain {
@@ -294,6 +294,20 @@
 @media (max-width: 768px) {
     .about-container {
         padding: 4rem 1.5rem; 
+        /* Ensure container fits mobile width */
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* FIX 1: Container Widths for Mobile */
+    .glass-card-bottom, 
+    .carousel-card, 
+    .interest-card,
+    .ImgContain {
+        width: 100%;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .about-header h1 {

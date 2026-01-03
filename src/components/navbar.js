@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; 
-import '../app/styles/navbar.css'; // Make sure you have this CSS file
+import '../app/styles/navbar.css'; 
 
 const Navbar = () => {
     const [showNavbar, setShowNavbar] = useState(true);
@@ -12,12 +12,17 @@ const Navbar = () => {
     useEffect(() => {
         const controlNavbar = () => {
             if (typeof window !== 'undefined') {
-                if (window.scrollY > lastScrollY) {
-                    setShowNavbar(false); 
+                const currentScrollY = window.scrollY;
+
+                // Always show navbar if at the very top (or scrolling up)
+                if (currentScrollY < 10) { 
+                     setShowNavbar(true);
+                } else if (currentScrollY > lastScrollY) {
+                    setShowNavbar(false); // Hide on scroll down
                 } else {
-                    setShowNavbar(true); 
+                    setShowNavbar(true); // Show on scroll up
                 }
-                setLastScrollY(window.scrollY);
+                setLastScrollY(currentScrollY);
             }
         };
 
