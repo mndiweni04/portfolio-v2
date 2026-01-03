@@ -14,13 +14,13 @@ import '../app/styles/projects.css';
 // --- DATA: Flagship Work (Text-Only, Detailed) ---
 const flagshipProjects = [
     {
-        id: 'f2',
+        id: 'f1',
         title: "Portfolio V1",
         date: "Mar 2025",
         shortDesc: "A concise and engaging personal portfolio created for a college project. This portfolio is designed to give the "+
                    "viewer a quick overview of who I am by showcasing my skills, interests, and background. It is a single-page application"+
                    " built with React.js and features interactive animations, including subtle zoom effects and colour changes on hover.",
-        techStack: ["Next.js 14", "React", "CSS Modules", "Netlify"],
+        techStack: ["React", "CSS Modules", "Netlify"],
         githubLink: "https://github.com/mndiweni04/My-Portfolio",
         liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
         // Case Study Details
@@ -47,21 +47,31 @@ const flagshipProjects = [
                       "user-friendly interfaces."
     },
     {
-        id: 'f3',
-        title: "Employee Management System",
-        date: "Oct 2024",
-        shortDesc: "A secure, desktop-based workforce management solution featuring Role-Based Access Control and encrypted data persistence.",
-        techStack: ["Java", "Swing", "PostgreSQL", "Bcrypt"],
-        githubLink: "https://github.com/mndiweni04/PRG361-EmployeeApp",
-        liveLink: "#",
+        id: 'f2', // Portfolio V2
+        title: "Portfolio V2",
+        date: "Jan 2026",
+        shortDesc: "A professionally structured, multi-page portfolio built with Next.js to replace a casual SPA. Designed for recruiters and ATS systems, it features a glass-inspired UI, clear project case studies, a refined tech stack presentation, and full accessibility through server-rendered pages and a modern theme toggle.",
+        techStack: ["Next.js", "React", "Netlify", "CSS Modules"],
+        githubLink: "https://github.com/mndiweni04/My-Portfolio",
+        liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
         // Case Study Details
-        problem: "Manual spreadsheet tracking resulted in data duplication, lack of audit trails, and security vulnerabilities regarding sensitive employee information.",
-        solution: "Engineered a centralized desktop CRUD application implementing strict OOP principles. Integrated PostgreSQL for relational data integrity and Java Swing for a native, responsive UI.",
-        journey: "The primary challenge was decoupling the UI from the database logic. I implemented a repository pattern to ensure the frontend code remained agnostic of the SQL queries.",
-        reflections: "This project solidified my understanding of database normalization (3NF) and the importance of sanitizing inputs to prevent SQL injection."
+        problem: "My original portfolio (Version 1) was built as a React single-page application. While it was visually engaging, it was too informal, limited in content, and not easily rendered by bots and ATS platforms that do not execute JavaScript. This meant that important information about my skills, projects, and experience could be missed by recruiter systems. The site also lacked structure, a theme toggle, and a professional tone, making it feel more like a student exercise than a serious entry-level developer portfolio.",
+        solution: "I rebuilt the portfolio using Next.js, leveraging its pre-rendering and multi-page architecture to ensure the site could be reliably rendered by bots, ATS platforms, and search engines. I introduced a glass-inspired UI using transparent containers, background blur, and subtle shimmer effects to create a modern but professional visual identity.<br><br>"+
+                  "A floating light/dark theme toggle was added to improve readability and accessibility, allowing users to choose a viewing mode that best suits their environment and visual comfort.<br><br>"+
+                  "The site was redesigned into clearly structured pages:<ul>"+
+                  "<li><b>Home</b> — Introduces my career goal (securing an internship), core tech stack, and tertiary education in a clear, focused layout.</li>"+
+                  "<li><b>About Me</b> — Provides a concise professional profile, alongside blocks for education, industry experience, and personal interests.</li>"+
+                  "<li><b>Projects</b> — Split into Flagship Work and Experiments & Practice, separating major case-study projects from smaller learning projects for clarity and better storytelling.</li>"+
+                  "<li><b>Tech Stack</b> — Replaces misleading skill percentages with structured technology groups: Core Technologies and Full Technical Ecosystem, giving a more honest and professional overview.</li>"+
+                  "<li><b>Contact Me</b> — Retains EmailJS functionality while adopting the same glass UI for consistency.</li></ul>"+
+                  "The portfolio was deployed on Netlify, making it publicly accessible, fast, and production-ready.",
+        journey: "This upgrade ran from December 23, 2025 to January 3, 2026. I converted my React SPA into a Next.js multi-page application, which took only a few hours to learn due to its familiarity with React. I spent two days designing the layouts in Figma, then implemented roughly one page per day. The main challenges were understanding Next.js directory structure and maintaining a consistent theme toggle across pages, but the overall transition was smooth and efficient.",
+        reflections: "<ul><li>With more upfront planning, the project could have been completed even faster.</li>"+
+                     "<li>More importantly, I learned that multi-page, pre-rendered applications are far more suitable for professional portfolios than SPAs, especially when targeting recruiters and ATS platforms.</li>"+
+                     "<li>Next.js proved to be a significant upgrade over React for content-driven, discoverable websites, offering better structure, scalability, and visibility.</li></ul>"
     },
     {
-        id: 'f1',
+        id: 'f3',
         title: "Anti-Sleep IoT Glasses",
         date: "September 2024",
         shortDesc: "A real-time driver drowsiness detection system using IR sensors, gyroscopes, and a simple ML model. I built the ML, managed WebSocket connections, and integrated hardware with the dashboard, showcasing practical IoT development and problem-solving.",
@@ -82,7 +92,22 @@ const flagshipProjects = [
                      "<li><b>Simplicity over complexity:</b> Overcomplicated solutions waste time and lower team morale; lightweight, practical approaches are often more effective.</li>"+
                      "<li><b>Team dynamics matter:</b> Clear role assignments and addressing gaps in capability are critical to project success.</li>"+
                      "<li><b>Technical growth:</b> Strengthened skills in ML modeling, real-time WebSocket communication, hardware-software integration, and sensor data processing.</li>"+
-                     "<li><b>Professional insight:</b> Delivering a fully functional prototype within constraints emphasizes the importance of balancing ambition with practicality in technical projects.</li></ul>"}
+                     "<li><b>Professional insight:</b> Delivering a fully functional prototype within constraints emphasizes the importance of balancing ambition with practicality in technical projects.</li></ul>"
+    },
+    {
+        id: 'f4',
+        title: "Employee Management System",
+        date: "Oct 2024",
+        shortDesc: "A secure, desktop-based workforce management solution featuring Role-Based Access Control and encrypted data persistence.",
+        techStack: ["Java", "Swing", "PostgreSQL", "Bcrypt"],
+        githubLink: "https://github.com/mndiweni04/PRG361-EmployeeApp",
+        liveLink: "#",
+        // Case Study Details
+        problem: "Manual spreadsheet tracking resulted in data duplication, lack of audit trails, and security vulnerabilities regarding sensitive employee information.",
+        solution: "Engineered a centralized desktop CRUD application implementing strict OOP principles. Integrated PostgreSQL for relational data integrity and Java Swing for a native, responsive UI.",
+        journey: "The primary challenge was decoupling the UI from the database logic. I implemented a repository pattern to ensure the frontend code remained agnostic of the SQL queries.",
+        reflections: "This project solidified my understanding of database normalization (3NF) and the importance of sanitizing inputs to prevent SQL injection."
+    },
 ];
 
 // --- DATA: Experiments (Lighter) ---
