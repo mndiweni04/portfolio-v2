@@ -1,34 +1,14 @@
 ﻿/* src/app/styles/aboutme.css */
 
 /* 1. Page-Wide Side Margins & Container */
-/* Matches Tech Stack exactly: Centered, 1400px max, consistent padding */
 .about-container {
     max-width: 1400px;
     width: 90%;
     margin: 0 auto;
-    padding: 6rem 2rem 8rem; /* Top | Side | Bottom */
+    padding: 6rem 1rem 8rem; /* Top | Side | Bottom */
     position: relative;
     z-index: 1;
     font-family: var(--font-nunito), sans-serif;
-    color: var(--text-color);
-    box-sizing: border-box;
-}
-
-/* --- Header Section --- */
-.about-header {
-    text-align: center;
-    margin-bottom: 5rem;
-    padding: 0 1rem; /* Inner padding to prevent text touching edges on small screens */
-}
-
-.about-header h1 {
-    font-size: 3.5rem;
-    font-weight: 1000;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(120deg, var(--text-color), var(--profile-theme));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .professional-summary {

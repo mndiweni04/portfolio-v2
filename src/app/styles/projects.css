@@ -2,54 +2,13 @@
 
 /* --- Page Structure --- */
 .projects-page-container {
-    max-width: 1000px; 
+    max-width: 1400px; 
     width: 90%;
     margin: 0 auto;
     padding: 6rem 1rem 8rem;
     position: relative;
     z-index: 1;
     font-family: var(--font-nunito), sans-serif;
-    color: var(--text-color);
-}
-
-.projects-header {
-    text-align: center;
-    margin-bottom: 5rem;
-}
-
-.projects-header h1 {
-    font-size: 3.5rem; 
-    font-weight: 1000;
-    font-family: var(--font-nunito), sans-serif;
-    margin-bottom: 1rem;
-    
-    background: linear-gradient(120deg, var(--text-color), var(--profile-theme));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: var(--text-color);
-}
-
-.projects-header p {
-    font-size: 1.3rem; 
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin: 0 auto;
-    font-weight: 600;
-}
-
-/* --- Typography & Theme --- */
-.tier-title {
-    display: block;
-    text-align: center;
-    font-family: var(--font-nunito), sans-serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--profile-theme);
-    margin-bottom: 2.5rem;
-    font-weight: 1000;
-    opacity: 0.9;
 }
 
 /* --- Carousel Wrapper (Positioning Context) --- */

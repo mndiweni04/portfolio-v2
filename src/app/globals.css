@@ -186,3 +186,44 @@ body {
   cursor: pointer;
   font-weight: 600;
 }
+
+/*AboutMe Project TechStack hero and decri stying*/
+.projects-header, .tech-header, .about-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.projects-header h1, .tech-header h1, .about-header h1 {
+    font-size: 3.5rem; 
+    font-weight: 1000;
+    font-family: var(--font-nunito), sans-serif;
+    margin-bottom: 1rem;
+    
+    background: linear-gradient(120deg, var(--text-color), var(--profile-theme));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: var(--text-color);
+}
+
+.projects-header p, .tech-header p {
+    font-size: 1.3rem; 
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 600;
+}
+
+/* --- Typography & Theme --- */
+.tier-title, .section-label {
+    display: block;
+    text-align: center;
+    font-family: var(--font-nunito), sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--profile-theme);
+    margin-bottom: 2.5rem;
+    font-weight: 1000;
+    opacity: 0.9;
+}
