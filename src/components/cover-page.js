@@ -38,13 +38,11 @@ function CoverPg(){
             </div>
             
             <div className="icon-pyramid">
-                {/* Row 1: 2 Icons */}
                 <div className="icon-row">
                     <FontAwesomeIcon icon={faReact} className="tech-icon" title="React.js" />
                     <FontAwesomeIcon icon={faCode} className="tech-icon" title="C# / Backend Logic" />
                 </div>
 
-                {/* Row 2: 3 Icons */}
                 <div className="icon-row">
                     <FontAwesomeIcon icon={faDatabase} className="tech-icon" title="SQL / Database" />
                     <FontAwesomeIcon icon={faLaptopCode} className="tech-icon" title="Software Development" />

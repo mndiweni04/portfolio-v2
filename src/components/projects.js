@@ -11,7 +11,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import '../app/styles/projects.css';
 
-// --- DATA: Flagship Work (Text-Only, Detailed) ---
 const flagshipProjects = [
     {
         id: 'f1',
@@ -23,7 +22,6 @@ const flagshipProjects = [
         techStack: ["React", "CSS Modules", "Netlify"],
         githubLink: "https://github.com/mndiweni04/My-Portfolio",
         liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
-        // Case Study Details
         problem: "For my college project, I was tasked with creating a digital portfolio to showcase my skills, interests, and background."+
                  " The portfolio had to be interactive, mobile-friendly, render quickly, include a working contact service, and consist "+
                  "of Home, About, Projects, Tech Stack, and Contact pages. The challenge was delivering all these features while maintaining"+
@@ -47,14 +45,13 @@ const flagshipProjects = [
                       "user-friendly interfaces."
     },
     {
-        id: 'f2', // Portfolio V2
+        id: 'f2', 
         title: "Portfolio V2",
         date: "Jan 2026",
         shortDesc: "A professionally structured, multi-page portfolio built with Next.js to replace a casual SPA. Designed for recruiters and ATS systems, it features a glass-inspired UI, clear project case studies, a refined tech stack presentation, and full accessibility through server-rendered pages and a modern theme toggle.",
         techStack: ["Next.js", "React", "Netlify", "CSS Modules"],
         githubLink: "https://github.com/mndiweni04/My-Portfolio",
         liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
-        // Case Study Details
         problem: "My original portfolio (Version 1) was built as a React single-page application. While it was visually engaging, it was too informal, limited in content, and not easily rendered by bots and ATS platforms that do not execute JavaScript. This meant that important information about my skills, projects, and experience could be missed by recruiter systems. The site also lacked structure, a theme toggle, and a professional tone, making it feel more like a student exercise than a serious entry-level developer portfolio.",
         solution: "I rebuilt the portfolio using Next.js, leveraging its pre-rendering and multi-page architecture to ensure the site could be reliably rendered by bots, ATS platforms, and search engines. I introduced a glass-inspired UI using transparent containers, background blur, and subtle shimmer effects to create a modern but professional visual identity.<br><br>"+
                   "A floating light/dark theme toggle was added to improve readability and accessibility, allowing users to choose a viewing mode that best suits their environment and visual comfort.<br><br>"+
@@ -78,7 +75,6 @@ const flagshipProjects = [
         techStack: ["C++", "Python", "ESP32", "IoT"],
         githubLink: "#",
         liveLink: "#",
-        // Case Study Details
         problem: "Drowsy driving is a major cause of road accidents, resulting in fatalities and property damage. Our project aimed to develop an AI-enhanced Anti-Sleep Glasses system capable of detecting driver fatigue in real time. The glasses needed to monitor eye blinks and head movements using infrared sensors and inertial data, and trigger alerts through a connected dashboard. The challenge was to design a system that was accurate, reliable, and functional, while integrating hardware, software, and real-time data processing within a short development timeline.",
         solution: "We built a complete hardware-software system: "+
                   "<ul><li><b>Hardware:</b> ESP32-C3 development board, IR LEDs and photodiodes, accelerometer and gyroscope (MPU6050), buzzer/vibration motor, battery packs, wiring supplies, and 3D-printed casing.</li>"+
@@ -96,7 +92,6 @@ const flagshipProjects = [
     },
 ];
 
-// --- DATA: Experiments (Lighter) ---
 const experimentProjects = [
     {
         id: 'e1',
@@ -144,7 +139,6 @@ const experimentProjects = [
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
 
-    // Lock body scroll when overlay is open
     useEffect(() => {
         if (selectedProject) {
             document.body.style.overflow = 'hidden';
@@ -162,12 +156,10 @@ export default function Projects() {
                 <p>Engineering robust systems & exploring new technologies.</p>
             </div>
 
-            {/* --- TIER 1: FLAGSHIP WORK --- */}
             <div className="tier-section animate-fade delay-1">
                 <h2 className="tier-title">Flagship Work</h2>
                 
                 <div className="carousel-wrapper">
-                    {/* Custom Nav Buttons - Flagship */}
                     <button className="custom-nav-btn prev-flag">
                         <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
@@ -226,12 +218,10 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* --- TIER 2: EXPERIMENTS & PRACTICE --- */}
             <div className="tier-section animate-fade delay-2">
                 <h2 className="tier-title">Experiments & Practice</h2>
                 
                 <div className="carousel-wrapper">
-                    {/* Custom Nav Buttons - Experiments */}
                     <button className="custom-nav-btn prev-exp">
                         <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
@@ -283,7 +273,6 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* --- OVERLAY: Letter width CASE STUDY --- */}
             {selectedProject && (
                 <div className="overlay-backdrop" onClick={() => setSelectedProject(null)}>
                     <div className="overlay-panel a4-glass" onClick={(e) => e.stopPropagation()}>
@@ -308,13 +297,11 @@ export default function Projects() {
 
                             <section className="ov-section">
                                 <h4>The Problem</h4>
-                                {/* Problem is text-only in data, but using div allows flexibility */}
                                 <p>{selectedProject.problem}</p>
                             </section>
 
                             <section className="ov-section">
                                 <h4>The Solution</h4>
-                                {/* Renders HTML list correctly */}
                                 <div dangerouslySetInnerHTML={{ __html: selectedProject.solution }} />
                             </section>
 
@@ -325,7 +312,6 @@ export default function Projects() {
 
                             <section className="ov-section highlight-box">
                                 <h4>Reflections & Lessons</h4>
-                                {/* Renders HTML list correctly + applies italic style */}
                                 <div 
                                     style={{ fontStyle: 'italic' }}
                                     dangerouslySetInnerHTML={{ __html: selectedProject.reflections }} 

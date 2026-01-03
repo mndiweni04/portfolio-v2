@@ -1,4 +1,4 @@
-/*src/app/globals.css*/
+/* src/app/globals.css */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,19 +6,20 @@
 }
 
 :root {
-  /* --- MATH VARIABLES --- */
   --MATH-PI: 3.14159;
 
-  /* --- THEME VARIABLES --- */
+  /* Dark Mode Defaults */
   --bg-color: #0f172a;          
   --text-color: #f8fafc;        
   --text-secondary: #94a3b8;    
+  --text-body: #94a3b8;         
+  
   --glow-color: rgba(56, 189, 248, 0.15);
   
-  --glass-bg: rgba(20, 20, 20, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --apple-blur: saturate(180%) blur(20px);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --apple-blur: blur(12px);
 
   --profile-theme: #38bdf8; 
   --color-blue-dark-1: #0ea5e9; 
@@ -30,48 +31,28 @@
   --color-gray-light-3: #334155; 
   --pgbar-length: 100%;
 
-  --color-white-100: #ffffff;
-  --color-white-80: rgba(255, 255, 255, 0.8);
-  --color-white-10: rgba(255, 255, 255, 0.1);
-  --color-white-08: rgba(255, 255, 255, 0.08);
-  --color-white-05: rgba(255, 255, 255, 0.05);
-  --color-white-03: rgba(255, 255, 255, 0.03);
-
-  --color-black-10: rgba(0, 0, 0, 0.1);
-  --color-black-20: rgba(0, 0, 0, 0.2);
-
-  --color-gray-333-100: rgb(51, 52, 57);
-  --color-gray-333-0: rgba(51, 52, 57, 0);
-  --color-gray-300: #cdcdcd;
-
-  --color-primary-40: rgba(70, 130, 191, 0.4);
-  --color-tiffany: #0abab5; 
-  --color-gray-dark-2: #666; 
-  --color-gray-dark-3: #444; 
-
-  --color-white: var(--color-white-100);
+  --color-white: #ffffff;
 }
 
 [data-theme="light"] {
   --bg-color: #f5f5f7;       
+  
   --text-color: #1d1d1f;        
-  --text-secondary: #86868b;
+  --text-secondary: #3a3a3c;    
+  --text-body: #86868b;         
+  
   --glow-color: rgba(0, 122, 255, 0.15);
   
-  --glass-bg: rgba(255, 255, 255, 0.7);   
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-  --glass-border: rgba(0, 0, 0, 0.1); 
-  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg: rgba(255, 255, 255, 0.08);   
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 
   --timeline-circle-theme: #1d1d1f; 
   --color-gray-dark-1: #1d1d1f;
+  
   --profile-theme: #007aff;    
   --color-blue-dark-1: #0056b3; 
   --color-gray-light-3: #dedede;
-  
-  --color-gray-dark-2: #888;
-  --color-gray-dark-3: #ccc;
 }
 
 html {
@@ -114,10 +95,8 @@ body {
   flex: 1; 
   display: block;
   padding-top: 100px;
-  /* Global page gutters */
   padding-left: clamp(1.5rem, 4vw, 4rem);
   padding-right: clamp(1.5rem, 4vw, 4rem);
-
   width: 100%;
   box-sizing: border-box;
 }
@@ -187,7 +166,6 @@ body {
   font-weight: 600;
 }
 
-/*AboutMe Project TechStack hero and decri stying*/
 .projects-header, .tech-header, .about-header {
     text-align: center;
     margin-bottom: 5rem;
@@ -198,23 +176,17 @@ body {
     font-weight: 1000;
     font-family: var(--font-nunito), sans-serif;
     margin-bottom: 1rem;
-    
-    background: linear-gradient(120deg, var(--text-color), var(--profile-theme));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     color: var(--text-color);
 }
 
 .projects-header p, .tech-header p {
     font-size: 1.3rem; 
-    color: var(--text-secondary);
+    color: var(--text-body);
     max-width: 700px;
     margin: 0 auto;
     font-weight: 600;
 }
 
-/* --- Typography & Theme --- */
 .tier-title, .section-label {
     display: block;
     text-align: center;

@@ -1,11 +1,10 @@
 ﻿/* src/app/styles/aboutme.css */
 
-/* 1. Page-Wide Side Margins & Container */
 .about-container {
     max-width: 1400px;
     width: 90%;
     margin: 0 auto;
-    padding: 6rem 1rem 8rem; /* Top | Side | Bottom */
+    padding: 6rem 1rem 8rem; 
     position: relative;
     z-index: 1;
     font-family: var(--font-nunito), sans-serif;
@@ -14,13 +13,12 @@
 .professional-summary {
     font-size: 1.25rem;
     line-height: 1.8;
-    color: var(--text-secondary);
+    color: var(--text-body); 
     max-width: 800px;
     margin: 0 auto;
     font-weight: 500;
 }
 
-/* --- Liquid Glass Sections --- */
 .glass-section {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -29,15 +27,14 @@
     backdrop-filter: var(--apple-blur);
     border-radius: 24px;
     
-    /* Consistent Padding for all blocks */
     padding: 3rem; 
     margin-bottom: 3rem;
     
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     position: relative;
-    width: 100%; /* Ensures it fills the container up to margins */
-    box-sizing: border-box; /* Fix: Ensures padding doesn't push width beyond 100% */
+    width: 100%; 
+    box-sizing: border-box; 
 }
 
 .glass-section:hover {
@@ -46,10 +43,9 @@
     border-color: rgba(56, 189, 248, 0.3);
 }
 
-/* --- Icon & Text Alignment Fix --- */
 .section-label-row {
     display: flex;
-    align-items: center; /* Vertically centers icon with text block */
+    align-items: center; 
     gap: 1.5rem;
     margin-bottom: 2.5rem;
     border-bottom: 1px solid var(--glass-border);
@@ -59,8 +55,6 @@
 .section-icon {
     font-size: 1.8rem;
     color: var(--profile-theme);
-    /* Flexbox center often leaves icons feeling 'high'. 
-       This pushes it 2px down to optically align with the Cap Height of the text. */
     transform: translateY(2px); 
     display: flex;
     align-items: center;
@@ -72,17 +66,16 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--text-color);
-    line-height: 1; /* Tightens line height to make vertical alignment precise */
+    color: var(--profile-theme); 
+    line-height: 1; 
     display: flex;
     align-items: center;
 }
 
-/* --- Education Grid --- */
 .education-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem; /* Spacious gap between columns */
+    gap: 4rem; 
     align-items: start;
 }
 
@@ -135,7 +128,6 @@
     color: var(--profile-theme);
 }
 
-/* --- Work Experience --- */
 .experience-content {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -179,15 +171,13 @@
     top: 0;
 }
 
-/* --- 2. Bottom Row (Interests + Image) --- */
 .split-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    width: 100%; /* Ensures alignment with top blocks */
+    width: 100%; 
 }
 
-/* Identical margin/padding rules for bottom row blocks */
 .glass-card-bottom {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -195,16 +185,16 @@
     -webkit-backdrop-filter: var(--apple-blur);
     backdrop-filter: var(--apple-blur);
     border-radius: 24px;
-    padding: 3rem; /* Matches the top sections */
+    padding: 3rem; 
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     transition: transform 0.3s ease;
     width: 60%;
-    height: 100%; /* Ensures equal height for both cards */
+    height: 100%; 
     margin: 0 auto;
-    box-sizing: border-box; /* Fix: Ensures padding doesn't affect width calculation */
+    box-sizing: border-box; 
 }
 
 .glass-card-bottom:hover {
@@ -245,7 +235,6 @@
     transform: translateX(5px);
 }
 
-/* --- Image Container Fix (Portrait) --- */
 .carousel-card {
     padding: 1.5rem;
     display: flex;
@@ -253,7 +242,7 @@
     justify-content: center;
     width: 60%;
     margin: 0 auto;
-    box-sizing: border-box; /* Fix: Ensures padding is included in width */
+    box-sizing: border-box; 
 }
 
 .ImgContain {
@@ -272,7 +261,6 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-/* --- Animations --- */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -286,7 +274,6 @@
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 
-/* --- Responsive --- */
 @media (max-width: 1024px) {
     .education-grid, .experience-content, .split-section {
         grid-template-columns: 1fr;
@@ -297,17 +284,16 @@
         min-height: auto;
     }
     
-    /* On mobile/tablet, allow image to be a bit shorter if needed, or keep portrait */
     .ImgContain {
         aspect-ratio: 3/4;
-        max-width: 400px; /* Prevents it from being huge on tablets */
+        max-width: 400px; 
         margin: 0 auto;
     }
 }
 
 @media (max-width: 768px) {
     .about-container {
-        padding: 4rem 1.5rem; /* Consistent mobile padding */
+        padding: 4rem 1.5rem; 
     }
 
     .about-header h1 {

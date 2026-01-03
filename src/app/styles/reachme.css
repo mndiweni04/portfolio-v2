@@ -1,3 +1,4 @@
+/* src/app/styles/reachme.css */
 /* 1. Base Container */
 .reachme-container {
     width: 90%;
@@ -5,7 +6,7 @@
     margin: 1rem auto;
     padding: 3rem;
     
-    /* Font Sizing & Family */
+    /* Font Sizing & Family - Default Text */
     font-family: 'PT Sans', sans-serif; 
     font-size: 100%; 
 
@@ -22,8 +23,6 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    
-    /* Ensure text color inherits correctly */
     color: var(--text-color);
 }
 
@@ -31,7 +30,6 @@
 @media (min-width: 900px) {
     .reachme-container {
         display: grid;
-        /* Exact split: 35% Info, 60% Form, 5% gap */
         grid-template-columns: 35% 60%;
         justify-content: space-between;
         align-items: start;
@@ -55,6 +53,7 @@
     border-bottom: 2px solid var(--profile-theme, #38bdf8);
     margin-bottom: 1rem;
     display: inline-block;
+    font-family: var(--font-nunito), sans-serif;
 }
 
 .info-item {
@@ -115,7 +114,9 @@ input, textarea {
     border-radius: 5px; 
     
     color: var(--text-color);
-    font-family: inherit;
+    
+    font-family: var(--font-nunito), sans-serif;
+    
     outline: none;
     transition: all 0.3s;
     box-sizing: border-box;
@@ -133,7 +134,7 @@ input:focus, textarea:focus {
     border-radius: 5px; 
     border: none;
     cursor: pointer;
-    font-family: inherit;
+    font-family: var(--font-nunito), sans-serif; /* Consistency */
 }
 
 .btn-submit {
