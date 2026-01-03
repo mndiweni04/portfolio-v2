@@ -73,7 +73,7 @@ const flagshipProjects = [
     {
         id: 'f3',
         title: "Anti-Sleep IoT Glasses",
-        date: "September 2024",
+        date: "September 2025",
         shortDesc: "A real-time driver drowsiness detection system using IR sensors, gyroscopes, and a simple ML model. I built the ML, managed WebSocket connections, and integrated hardware with the dashboard, showcasing practical IoT development and problem-solving.",
         techStack: ["C++", "Python", "ESP32", "IoT"],
         githubLink: "#",
@@ -94,47 +94,50 @@ const flagshipProjects = [
                      "<li><b>Technical growth:</b> Strengthened skills in ML modeling, real-time WebSocket communication, hardware-software integration, and sensor data processing.</li>"+
                      "<li><b>Professional insight:</b> Delivering a fully functional prototype within constraints emphasizes the importance of balancing ambition with practicality in technical projects.</li></ul>"
     },
-    {
-        id: 'f4',
-        title: "Employee Management System",
-        date: "Oct 2024",
-        shortDesc: "A secure, desktop-based workforce management solution featuring Role-Based Access Control and encrypted data persistence.",
-        techStack: ["Java", "Swing", "PostgreSQL", "Bcrypt"],
-        githubLink: "https://github.com/mndiweni04/PRG361-EmployeeApp",
-        liveLink: "#",
-        // Case Study Details
-        problem: "Manual spreadsheet tracking resulted in data duplication, lack of audit trails, and security vulnerabilities regarding sensitive employee information.",
-        solution: "Engineered a centralized desktop CRUD application implementing strict OOP principles. Integrated PostgreSQL for relational data integrity and Java Swing for a native, responsive UI.",
-        journey: "The primary challenge was decoupling the UI from the database logic. I implemented a repository pattern to ensure the frontend code remained agnostic of the SQL queries.",
-        reflections: "This project solidified my understanding of database normalization (3NF) and the importance of sanitizing inputs to prevent SQL injection."
-    },
 ];
 
 // --- DATA: Experiments (Lighter) ---
 const experimentProjects = [
     {
         id: 'e1',
+        title: "Interactive CV Website",
+        date: "April 2025",
+        shortDesc: "My very first Personal Portfolio, a responsive, single-page personal portfolio featuring a split-layout design, CSS animations for skill visualization, and mobile compatibility.",
+        techStack: ["HTML5", "CSS3", "FontAwesome"],
+        githubLink: "https://github.com/mndiweni04/MNdiweniCV",
+        liveLink: "https://mndiweni04.github.io/MNdiweniCV/"
+    },
+    {
+        id: 'e2',
         title: "Java Calculator",
-        date: "June 2023",
+        date: "May 2025",
         shortDesc: "A GUI-based calculator handling standard arithmetic with a focus on clean event handling.",
         techStack: ["Java", "AWT/Swing"],
         githubLink: "https://github.com/mndiweni04/My-Calculator"
     },
     {
-        id: 'e2',
-        title: "Weather Hook",
-        date: "Sep 2023",
-        shortDesc: "A React experiment to practice fetching asynchronous data from public APIs.",
-        techStack: ["React", "Rest API"],
-        githubLink: "#"
+        id: 'e3',
+        title: "Calendar App (WinForms)",
+        date: "May 2025",
+        shortDesc: "A Windows Forms application that dynamically generates and renders a monthly calendar grid based on user input using 2D array logic.",
+        techStack: ["C#", "Windows Forms", ".NET Framework"],
+        githubLink: "https://github.com/mndiweni04/Array-Manipulation/tree/main/Calendar%20App"
     },
     {
-        id: 'e3',
-        title: "CLI Task Manager",
-        date: "May 2023",
-        shortDesc: "A Node.js terminal utility to practice file system operations and JSON parsing.",
-        techStack: ["Node.js", "FS Module"],
-        githubLink: "#"
+        id: 'e4',
+        title: "3D Array TimeTable App",
+        date: "May 2025",
+        shortDesc: "A schedule management tool utilizing a 3D array structure to organize school timetables across multiple grades, days, and periods with search functionality.",
+        techStack: ["C#", "Windows Forms", "Data Structures"],
+        githubLink: "https://github.com/mndiweni04/Array-Manipulation/tree/main/3D%20Array%20TimeTable%20App"
+    },
+    {
+        id: 'e5',
+        title: "CLI 2D Calendar",
+        date: "May 2025",
+        shortDesc: "A command-line interface utility that calculates day placement and renders a formatted text-based calendar for any given month and year.",
+        techStack: ["C#", ".NET Console", "StringBuilder"],
+        githubLink: "https://github.com/mndiweni04/Array-Manipulation/tree/main/2D%20Calendar"
     }
 ];
 
@@ -247,7 +250,7 @@ export default function Projects() {
                         className="swiper-container"
                     >
                         {experimentProjects.map((project) => (
-                            <SwiperSlide key={project.id}>
+                        <SwiperSlide key={project.id}>
                                 <div className="glass-card experiment-card">
                                     <div className="exp-left">
                                         <h3>{project.title}</h3>
@@ -267,6 +270,11 @@ export default function Projects() {
                                         <a href={project.githubLink} target="_blank" rel="noreferrer" className="btn-icon-only" title="View Code">
                                             <FontAwesomeIcon icon={faGithub} />
                                         </a>
+                                        {project.liveLink && (
+                                            <a href={project.liveLink} target="_blank" rel="noreferrer" className="btn-icon-only" title="Live Demo">
+                                                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -275,7 +283,7 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* --- OVERLAY: A4 CASE STUDY --- */}
+            {/* --- OVERLAY: Letter width CASE STUDY --- */}
             {selectedProject && (
                 <div className="overlay-backdrop" onClick={() => setSelectedProject(null)}>
                     <div className="overlay-panel a4-glass" onClick={(e) => e.stopPropagation()}>

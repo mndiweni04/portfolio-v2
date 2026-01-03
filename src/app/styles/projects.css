@@ -18,31 +18,38 @@
 }
 
 .projects-header h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
+    font-size: 3.5rem; 
+    font-weight: 1000;
+    font-family: var(--font-nunito), sans-serif;
+    margin-bottom: 1rem;
+    
     background: linear-gradient(120deg, var(--text-color), var(--profile-theme));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--text-color);
 }
 
 .projects-header p {
-    font-size: 1.2rem;
+    font-size: 1.3rem; 
     color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
     font-weight: 600;
 }
 
 /* --- Typography & Theme --- */
 .tier-title {
-    font-size: 1.6rem;
-    color: var(--profile-theme);
-    margin-bottom: 2rem;
+    display: block;
+    text-align: center;
+    font-family: var(--font-nunito), sans-serif;
+    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 800;
-    padding-left: 1rem;
-    border-left: 4px solid var(--profile-theme);
+    letter-spacing: 3px;
+    color: var(--profile-theme);
+    margin-bottom: 2.5rem;
+    font-weight: 1000;
+    opacity: 0.9;
 }
 
 /* --- Carousel Wrapper (Positioning Context) --- */
