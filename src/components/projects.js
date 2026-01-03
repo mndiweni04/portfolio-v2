@@ -21,7 +21,7 @@ const flagshipProjects = [
                    " built with React.js and features interactive animations, including subtle zoom effects and colour changes on hover.",
         techStack: ["React", "CSS Modules", "Netlify"],
         githubLink: "https://github.com/mndiweni04/My-Portfolio",
-        liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
+        liveLink: "https://nimble-muffin-e80dc.netlify.app/",
         problem: "For my college project, I was tasked with creating a digital portfolio to showcase my skills, interests, and background."+
                  " The portfolio had to be interactive, mobile-friendly, render quickly, include a working contact service, and consist "+
                  "of Home, About, Projects, Tech Stack, and Contact pages. The challenge was delivering all these features while maintaining"+
