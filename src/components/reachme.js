@@ -63,7 +63,7 @@ function ReachMe() {
                     </div>
                     <div className="info-item">
                         <FontAwesomeIcon icon={faLinkedin}/>
-                        <a href="#" target="_blank" rel="noreferrer">Mandla Ndiweni LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/mandla-ndiweni-74a35a2a1/" target="_blank" rel="noreferrer">Mandla Ndiweni LinkedIn</a>
                     </div>
                 </div>
 
