@@ -48,7 +48,7 @@ const flagshipProjects = [
         id: 'f2', 
         title: "Portfolio V2",
         date: "Jan 2026",
-        shortDesc: "A professionally structured, multi-page portfolio built with Next.js to replace a casual SPA. Designed for recruiters and ATS systems, it features a glass-inspired UI, clear project case studies, a refined tech stack presentation, and full accessibility through server-rendered pages and a modern theme toggle.",
+        shortDesc: "A professionally structured, multi-page portfolio built with Next.js to replace a casual SPA. Designed for recruiters and ATS systems, it features a glass-inspired UI, clear project case studies, a refined tech stack presentation, and full accessibility through server-rendered pages and a modern theme toggle. This portfolio you are currently viewing is Portfolio-V2.",
         techStack: ["Next.js", "React", "Netlify", "CSS Modules"],
         githubLink: "https://github.com/mndiweni04/portfolio-v2",
         liveLink: "#",
