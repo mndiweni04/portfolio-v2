@@ -50,8 +50,8 @@ const flagshipProjects = [
         date: "Jan 2026",
         shortDesc: "A professionally structured, multi-page portfolio built with Next.js to replace a casual SPA. Designed for recruiters and ATS systems, it features a glass-inspired UI, clear project case studies, a refined tech stack presentation, and full accessibility through server-rendered pages and a modern theme toggle.",
         techStack: ["Next.js", "React", "Netlify", "CSS Modules"],
-        githubLink: "https://github.com/mndiweni04/My-Portfolio",
-        liveLink: "https://mandla-ndiweni-portfolio.netlify.app/",
+        githubLink: "https://github.com/mndiweni04/portfolio-v2",
+        liveLink: "#",
         problem: "My original portfolio (Version 1) was built as a React single-page application. While it was visually engaging, it was too informal, limited in content, and not easily rendered by bots and ATS platforms that do not execute JavaScript. This meant that important information about my skills, projects, and experience could be missed by recruiter systems. The site also lacked structure, a theme toggle, and a professional tone, making it feel more like a student exercise than a serious entry-level developer portfolio.",
         solution: "I rebuilt the portfolio using Next.js, leveraging its pre-rendering and multi-page architecture to ensure the site could be reliably rendered by bots, ATS platforms, and search engines. I introduced a glass-inspired UI using transparent containers, background blur, and subtle shimmer effects to create a modern but professional visual identity.<br><br>"+
                   "A floating light/dark theme toggle was added to improve readability and accessibility, allowing users to choose a viewing mode that best suits their environment and visual comfort.<br><br>"+
