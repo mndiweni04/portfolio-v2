@@ -95,6 +95,7 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1.5rem;
+    gap: 1rem;
 }
 
 .card-header h3 {
@@ -105,6 +106,7 @@
     line-height: 1.1;
 }
 
+/* FIX: Added white-space: nowrap and flex-shrink: 0 to prevent date wrapping */
 .project-date {
     font-size: 1rem;
     color: var(--text-secondary);
@@ -113,6 +115,8 @@
     padding: 0.4rem 1rem;
     border-radius: 50px;
     border: 1px solid var(--glass-border);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .tech-row {
@@ -239,6 +243,7 @@
     font-size: 0.9rem;
     color: var(--text-secondary);
     font-style: italic;
+    white-space: nowrap; /* Prevent wrap in experiments as well */
 }
 
 .exp-center {

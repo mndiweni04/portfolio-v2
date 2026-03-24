@@ -8,24 +8,24 @@ import {
     faDatabase, faCode, faLaptopCode, faServer, faTerminal, faMobileAlt 
 } from "@fortawesome/free-solid-svg-icons";
 
-// Defining the stack data structure
 const coreStack = [
     { name: "React", icon: faReact },
     { name: "Node.js", icon: faNodeJs },
-    { name: "C#", icon: faCode }, // Using generic code icon for C#
+    { name: "React Native", icon: faMobileAlt },
+    { name: "C#", icon: faCode }, 
     { name: "SQL", icon: faDatabase }
 ];
 
 const categories = [
     {
-        title: "Frontend Development",
+        title: "Frontend & Mobile",
         icon: faLaptopCode,
-        description: "Building responsive, interactive user interfaces with modern frameworks.",
+        description: "Building responsive web interfaces and cross-platform native applications.",
         techs: [
             { name: "React", icon: faReact },
+            { name: "React Native", icon: faMobileAlt },
             { name: "JavaScript", icon: faJs },
-            { name: "HTML5", icon: faHtml5 },
-            { name: "CSS3", icon: faCss3Alt }
+            { name: "HTML5 & CSS3", icon: faHtml5 }
         ]
     },
     {
@@ -75,13 +75,11 @@ const categories = [
 function TechStack() {
   return (
     <section className="tech-container" id="tech-stack">
-        {/* Page Header */}
         <div className="tech-header animate-fade">
             <h1>Tech Stack</h1>
             <p>The technologies I use to build modern full-stack applications.</p>
         </div>
 
-        {/* Hero Section: Core Stack */}
         <div className="core-stack-section animate-fade delay-1">
             <span className="section-label">Core Technologies</span>
             <div className="core-grid">
@@ -96,7 +94,6 @@ function TechStack() {
             </div>
         </div>
 
-        {/* Detailed Categories */}
         <div className="categories-wrapper animate-fade delay-2">
             <span className="section-label">Full Technical Ecosystem</span>
             <div className="category-grid">

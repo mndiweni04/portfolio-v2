@@ -14,13 +14,12 @@ const Navbar = () => {
             if (typeof window !== 'undefined') {
                 const currentScrollY = window.scrollY;
 
-                // Always show navbar if at the very top (or scrolling up)
                 if (currentScrollY < 10) { 
                      setShowNavbar(true);
                 } else if (currentScrollY > lastScrollY) {
-                    setShowNavbar(false); // Hide on scroll down
+                    setShowNavbar(false); 
                 } else {
-                    setShowNavbar(true); // Show on scroll up
+                    setShowNavbar(true); 
                 }
                 setLastScrollY(currentScrollY);
             }
@@ -41,6 +40,7 @@ const Navbar = () => {
             <Link href="/" className={isActive('/')}>Home</Link>
             <Link href="/about" className={isActive('/about')}>About Me</Link>
             <Link href="/projects" className={isActive('/projects')}>Projects</Link>
+            <Link href="/services" className={isActive('/services')}>Services</Link>
             <Link href="/tools" className={isActive('/tools')}>Tech Stack</Link>
             <Link href="/contact" className={isActive('/contact')}>Contact</Link>
         </nav>

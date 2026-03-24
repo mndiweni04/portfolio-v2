@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { firstName, lastName, email, message } = body; // Read Frontend Names
+        const { firstName, lastName, email, serviceType, projectScope, timeline } = body; 
 
         if (!process.env.EMAILJS_PRIVATE_KEY) {
             return NextResponse.json({ error: "Server missing Private Key" }, { status: 500 });
@@ -15,13 +15,13 @@ export async function POST(request) {
             user_id: process.env.EMAILJS_PUBLIC_KEY,
             accessToken: process.env.EMAILJS_PRIVATE_KEY,
             template_params: {
-                // Map Frontend Names -> EmailJS Template Names
                 from_firstname: firstName, 
                 from_lastname: lastName,
                 from_email: email,
-                from_message: message,
+                service_type: serviceType,
+                project_scope: projectScope,
+                timeline: timeline,
                 
-                // Extra helper for templates using {{from_name}}
                 from_name: `${firstName} ${lastName}`,
                 reply_to: email
             },

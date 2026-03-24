@@ -32,7 +32,7 @@ html {
 
 .bio {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 0.8fr 1.2fr; 
     align-items: center;            
     gap: 3rem;
     width: 100%;
@@ -58,13 +58,12 @@ html {
 }
 
 .bcard-para {
-    color: var(--text-secondary); /* Updated to secondary text color */
+    color: var(--text-secondary);
     font-size: 1.3rem;
     line-height: 1.5;
     margin-bottom: 2rem;
 }
 
-/* Link Styling - Blue Allowed Here */
 .text-link {
     color: var(--profile-theme); 
     text-decoration: underline;
@@ -76,17 +75,17 @@ html {
     opacity: 0.8;
 }
 
-/* SUBHEADING FIX: No Blue Text */
+/* FIX: Reduced font-size to 2.5rem to prevent line-breaking */
 .prof {
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-family: var(--font-nunito), sans-serif;
-    color: var(--text-color); /* Was var(--profile-theme) */
+    color: var(--text-color);
     margin: 0 0 1rem 0;
     font-weight: 800;
-    width: 730px; 
+    width: fit-content;
+    white-space: nowrap; 
 }
 
-/* Icon Pyramid Styles */
 .icon-pyramid {
     display: flex;
     flex-direction: column;
@@ -103,7 +102,6 @@ html {
     gap: 4rem; 
 }
 
-/* Icons can remain blue/themed */
 .tech-icon {
     font-size: 8rem; 
     color: var(--text-color);
@@ -113,8 +111,6 @@ html {
     transition: color 0.3s ease;
 }
 
-/* Optional: Make icons pop with blue only on hover/active if desired, 
-   or keep them neutral until hovered */
 .tech-icon:hover {
     color: var(--profile-theme);
 }
@@ -137,10 +133,10 @@ html {
     margin-bottom: 2rem;
 }
 
-.download-cv-btn {
+.action-btn {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: var(--profile-theme); /* Buttons can be blue */
+    background-color: var(--profile-theme); 
     color: #fff; 
     text-decoration: none;
     border-radius: 50px; 
@@ -148,6 +144,13 @@ html {
     border: none;
     font-family: var(--font-nunito), sans-serif;
     font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
 }
 
 @media (max-width: 1024px) {
@@ -170,6 +173,8 @@ html {
     
     .prof {
         width: 100%; 
+        white-space: normal; 
+        font-size: 2rem;
     }
 
     .profile .name {
@@ -181,6 +186,7 @@ html {
     html { font-size: 80%; }
     
     .profile .name { font-size: 3.5rem; }
+    .prof { font-size: 1.8rem; }
     
     .tech-icon { font-size: 2.5rem; width: 2.5rem; height: 2.5rem; margin: 0; }
     .icon-row { gap: 2rem; }

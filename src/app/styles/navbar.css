@@ -7,7 +7,7 @@
     transform: translateX(-50%); 
     
     width: fit-content;
-    min-width: 320px;
+    max-width: 95vw; /* Fixed mobile overflow */
     padding: 0.8rem 2rem;
     
     background: rgba(255, 255, 255, 0.05);
@@ -20,30 +20,34 @@
 
     display: flex;
     justify-content: center;
-    align-items: center; /* Ensure vertical centering */
+    align-items: center;
     gap: 1.5rem; 
     z-index: 1000;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-    /* FIX 4: Navbar Sizing & No-Wrap */
     height: 60px;
     min-height: 60px;
-    max-height: 60px;
     white-space: nowrap;
-    overflow: hidden;
+    overflow-x: auto; /* Allow internal scroll on very small devices */
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+}
+
+.navbar::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .navbar a {
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-color); 
     text-decoration: none;
     position: relative;
     padding: 0.5rem 0.8rem;
     border-radius: 20px;
     transition: color 0.3s ease, background-color 0.3s ease;
-    
-    /* Prevent text wrapping */
     white-space: nowrap;
 }
 

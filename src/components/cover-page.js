@@ -1,9 +1,10 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import CvImage from '../../public/images/CvImg2.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact } from '@fortawesome/free-brands-svg-icons';
-import { faDatabase, faHandshake, faCode, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase, faMobileAlt, faCode, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 
 import '../app/styles/cover-page.css';
 
@@ -15,61 +16,47 @@ function CoverPg(){
 
             <div className='bio'>
                 <div className='CVimg'>
-                    <Image src={CvImage} alt='Mandla Ndiweni CV Image' className='grid-image'/>
+                    <Image src={CvImage} alt='Mandla Ndiweni Profile Image' className='grid-image' priority />
                 </div>
 
                 <div className='bcard'>
-                    <h2 className='prof'>A Full Stack Developer</h2>
+                    <h2 className='prof'>Junior Full Stack Developer</h2>
                     <p className='bcard-para'>
-                        As a recent Software & Web Development graduate from{' '}
-                        <a 
-                            href="https://www.belgiumcampus.ac.za/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="text-link"
-                        >
-                            Belgium Campus ITversity
-                        </a>, 
-                        I offer a strong foundation in Full Stack development, specifically React.js, Node.js, C#, and SQL. 
-                        Beyond code, I bridge the gap between technical logic and business needs, 
-                        leveraging experience in IoT hardware integration and a background in direct sales to communicate complex concepts effectively.
+                        I am a developer currently pursuing an IT Diploma at Belgium Campus ITversity to formalize my engineering foundation. 
+                        I bring over a year of practical experience as a freelance web developer, alongside recent hands-on experience in 
+                        mobile development building proprietary IP. My background in sales has uniquely equipped me to translate technical 
+                        complexity into clear, actionable insights for non-technical stakeholders.
                     </p>
                 </div>
             </div>
             
             <div className="icon-pyramid">
                 <div className="icon-row">
-                    <FontAwesomeIcon icon={faReact} className="tech-icon" title="React.js" />
-                    <FontAwesomeIcon icon={faCode} className="tech-icon" title="C# / Backend Logic" />
+                    <FontAwesomeIcon icon={faReact} className="tech-icon" title="React.js / Web" />
+                    <FontAwesomeIcon icon={faMobileAlt} className="tech-icon" title="React Native / Mobile" />
                 </div>
 
                 <div className="icon-row">
                     <FontAwesomeIcon icon={faDatabase} className="tech-icon" title="SQL / Database" />
                     <FontAwesomeIcon icon={faLaptopCode} className="tech-icon" title="Software Development" />
-                    <FontAwesomeIcon icon={faHandshake} className="tech-icon" title="Sales & Communication" />
+                    <FontAwesomeIcon icon={faCode} className="tech-icon" title="C# / Backend Logic" />
                 </div>
             </div>
 
             <div className='intro-para'>
                 <p className="paragraph">
-                   I am now actively seeking a Full Stack internship where I can not only learn 
-                   from experienced mentors but also make an immediate impact. I am eager to apply 
-                   my academic knowledge to production-level environments, tackling real-world 
-                   challenges with clean, efficient code. My goal is to join a forward-thinking 
-                   team that values adaptability and problem-solving, allowing me to refine my 
-                   skillset while contributing to meaningful software solutions.
+                   While completing my formal studies, I am actively available for freelance contracts and engineering roles. 
+                   With a proven ability to bridge the gap between technical jargon and simple language, I provide transparent, 
+                   high-quality development services tailored to your needs.
                 </p>
-                <button onClick={() => {
-                        const link = document.createElement('a');
-                        link.href = '/Mandla Ndiweni.pdf';
-                        link.download = 'Mandla Ndiweni.pdf';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }}
-                    className="download-cv-btn" >
-                    Download CV
-                </button>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <Link href="/services" className="action-btn">
+                        Explore My Services
+                    </Link>
+                    <Link href="/projects" className="action-btn" style={{ background: 'transparent', border: '2px solid var(--profile-theme)', color: 'var(--text-color)' }}>
+                        View My Work
+                    </Link>
+                </div>
             </div>
         </div>
     );
