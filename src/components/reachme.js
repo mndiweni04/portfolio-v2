@@ -41,7 +41,6 @@ function FormComponent() {
         setIsSubmitting(true);
         setStatus({ type: 'info', message: 'Sending...' });
 
-        // STRUCTURAL FIX: Payload now directly matches the required parameters of src/app/api/send-email/route.js
         const payload = {
             firstName: formData.firstName,
             lastName: formData.lastName,

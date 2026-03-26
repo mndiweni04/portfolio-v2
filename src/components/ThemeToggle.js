@@ -6,10 +6,8 @@ import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") || "dark";
-    }
-    return "dark";
+    if (typeof window === "undefined") return "dark";
+    return localStorage.getItem("theme") || "dark";
   });
 
   useEffect(() => {
@@ -21,17 +19,20 @@ export default function ThemeToggle() {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
+  if (!theme) {
+    return null;
+  }
+
   return (
     <button 
       onClick={toggleTheme} 
       className="glass-button"
-      suppressHydrationWarning 
       style={{ 
         position: "fixed", 
         bottom: "20px", 
         right: "20px", 
         zIndex: 100,
-        width: "50px",   /* Fixed dimensions */
+        width: "50px",
         height: "50px",
         padding: "0",
         display: "flex",
@@ -43,7 +44,6 @@ export default function ThemeToggle() {
       }}
       aria-label="Toggle Dark/Light Mode"
     >
-      {/* Logic: Show the icon of the theme we will SWITCH TO */}
       {theme === "dark" ? (
          <FontAwesomeIcon icon={faSun} style={{ color: "#FDB813", fontSize: "1.4rem" }} />
       ) : (
