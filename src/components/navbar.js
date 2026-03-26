@@ -12,13 +12,16 @@ const Navbar = () => {
     const controlNavbar = useCallback(() => {
         if (typeof window !== 'undefined') {
             const currentScrollY = window.scrollY;
+            const scrollDelta = Math.abs(currentScrollY - lastScrollY);
 
             if (currentScrollY < 10) { 
                  setShowNavbar(true);
-            } else if (currentScrollY > lastScrollY) {
-                setShowNavbar(false); 
-            } else {
-                setShowNavbar(true); 
+            } else if (scrollDelta > 10) { 
+                if (currentScrollY > lastScrollY) {
+                    setShowNavbar(false); 
+                } else {
+                    setShowNavbar(true); 
+                }
             }
             setLastScrollY(currentScrollY);
         }

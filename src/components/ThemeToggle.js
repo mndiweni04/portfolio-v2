@@ -5,22 +5,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === "undefined") return "dark";
-    return localStorage.getItem("theme") || "dark";
-  });
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    // Expected behavior for SSR hydration synchronization.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    
+    const storedTheme = localStorage.getItem("theme") || "dark";
+    
+    setTheme(storedTheme);
+    document.documentElement.setAttribute("data-theme", storedTheme);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
-  if (!theme) {
-    return null;
+  if (!mounted) {
+    return null; 
   }
 
   return (
