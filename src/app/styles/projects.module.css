@@ -1,6 +1,5 @@
 ﻿/* src/app/styles/projects.module.css */
 
-/* Encapsulated Header & Section Styles */
 .projects-header {
     text-align: center;
     margin-bottom: 5rem;
@@ -39,23 +38,12 @@
     margin-bottom: 6rem;
 }
 
-.projects-page-container {
-    max-width: 1400px; 
-    width: 90%;
-    margin: 0 auto;
-    padding: 6rem 1rem 8rem;
-    position: relative;
-    z-index: 1;
-    font-family: var(--font-nunito), sans-serif;
-}
-
 .carousel-wrapper {
     position: relative;
     width: 100%;
     margin-bottom: 6rem;
 }
 
-/* GLOBAL RULES FOR SWIPER DYNAMIC CLASSES */
 :global(.swiper), :global(.swiper-wrapper), :global(.swiper-slide) {
   overflow: visible !important;
 }
@@ -397,6 +385,7 @@
     margin: 2rem 0;
     display: flex;
     gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .tech-pill-dark {
@@ -464,10 +453,6 @@
 
 /* MOBILE / TABLET REFINEMENTS */
 @media (max-width: 1024px) {
-    .projects-page-container {
-        width: 100%;
-        padding: 6rem 1.5rem;
-    }
     .flagship-card, .experiment-card { 
         width: 100%;
         min-height: 400px; 
@@ -512,10 +497,13 @@
     }
     .prev-flag, .prev-exp { left: 0; }
     .next-flag, .next-exp { right: 0; }
+    
+    .a4-glass {
+        padding: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .projects-page-container { padding: 4rem 1.5rem; }
     .card-header h3 { font-size: 1.8rem; }
     .card-desc { font-size: 1rem; max-width: 100%; }
     .card-footer { flex-direction: column; gap: 1.5rem; align-items: stretch; }

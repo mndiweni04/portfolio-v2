@@ -1,4 +1,4 @@
-﻿/* src/app/styles/cover-page.css */
+﻿/* src/app/styles/cover-page.module.css */
 
 .profile, .profile * {
     box-sizing: border-box;
@@ -6,7 +6,6 @@
 
 html {
     font-size: 100%;
-    /* Primary font fallback */
     font-family: 'PT Sans', sans-serif;
 }
 
@@ -14,9 +13,10 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 2rem 2rem 2rem;
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 2rem 1.5rem; /* Realigned with safe-zone logic */
     gap: 1.5rem;
 }
 
@@ -75,7 +75,6 @@ html {
     opacity: 0.8;
 }
 
-/* FIX: Reduced font-size to 2.5rem to prevent line-breaking */
 .prof {
     font-size: 2.5rem;
     font-family: var(--font-nunito), sans-serif;

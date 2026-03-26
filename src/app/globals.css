@@ -35,18 +35,34 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden; /* Prevents global horizontal scrolling */
 }
 
 /* --- Universal Structural Classes --- */
 
 /* Standardized Page Container */
 .section-container {
+    width: 100%;
     max-width: 1400px;
-    width: 90%;
     margin: 0 auto;
-    padding: 1rem 1rem 8rem; 
+    padding: 4rem 2rem 8rem; /* Desktop safe zone */
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
+}
+
+/* Tablet Safe Zone */
+@media (max-width: 1024px) {
+    .section-container {
+        padding: 3rem 1.5rem 6rem;
+    }
+}
+
+/* Mobile Safe Zone */
+@media (max-width: 768px) {
+    .section-container {
+        padding: 2rem 1.25rem 5rem;
+    }
 }
 
 /* Standardized Header Wrapper */
@@ -84,6 +100,7 @@ body {
     var(--glow-color), 
     transparent 40%
   );
+  overflow-x: hidden; 
 }
 
 .scroll-container {

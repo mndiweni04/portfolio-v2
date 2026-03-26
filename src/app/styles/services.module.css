@@ -1,15 +1,4 @@
-/* src/app/styles/services.css */
-
-.services-container {
-    max-width: 1400px;
-    width: 90%;
-    margin: 0 auto;
-    /* FIX: Reduced top padding to 4rem to pull content closer to navbar */
-    padding: 1rem 1rem 8rem; 
-    position: relative;
-    z-index: 1;
-    font-family: var(--font-nunito), sans-serif;
-}
+/* src/app/styles/services.module.css */
 
 .services-header {
     text-align: center;
@@ -131,10 +120,6 @@
 }
 
 @media (max-width: 768px) {
-    .services-container {
-        padding: 4rem 1.5rem;
-        width: 100%;
-    }
     .services-header h1 {
         font-size: 2.2rem;
     }

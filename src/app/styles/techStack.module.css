@@ -1,6 +1,5 @@
 ﻿/* src/app/styles/techStack.module.css */
 
-/* Standardized Header Styles */
 .tech-header {
     text-align: center;
     margin-bottom: 5rem;
@@ -20,18 +19,7 @@
     max-width: 700px;
     margin: 0 auto;
     font-weight: 600;
-    text-align: center; /* Explicit centering */
-}
-
-/* Main Container */
-.tech-container {
-    max-width: 1800px; 
-    width: 100%; 
-    margin: 0 auto;
-    padding: 6rem 2rem 8rem;
-    position: relative;
-    z-index: 1;
-    font-family: var(--font-nunito), sans-serif;
+    text-align: center; 
 }
 
 .section-label {
@@ -54,8 +42,8 @@
 }
 
 .core-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 3rem; 
     width: 100%;
@@ -76,6 +64,8 @@
 
 /* Core Card Specifics */
 .core-card {
+    flex: 1 1 200px;
+    max-width: 250px;
     aspect-ratio: 1 / 1; 
     display: flex;
     flex-direction: column;
@@ -123,6 +113,8 @@
     flex: 0 0 calc(50% - 1rem);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 2.5rem;
     min-width: 280px; 
 }
@@ -133,8 +125,10 @@
     color: var(--text-color);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     font-weight: 700;
+    width: 100%;
 }
 
 .category-desc {
@@ -149,7 +143,9 @@
 .tech-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.8rem;
+    width: 100%;
 }
 
 .tech-badge {
@@ -208,12 +204,6 @@
     .tech-header h1 {
         font-size: 2.5rem;
     }
-    
-    .tech-container {
-        padding: 4rem 1.5rem;
-        width: 100%; 
-        max-width: 100%;
-    }
 
     .category-section {
         flex: 1 1 100%; 
@@ -222,14 +212,9 @@
     }
     
     .core-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
         gap: 1.5rem;
     }
     
-    .tech-list {
-        justify-content: center;
-    }
-
     .core-card, .tech-badge {
         display: flex;
         flex-direction: column;
@@ -239,6 +224,8 @@
     }
 
     .core-card {
+        flex: 1 1 140px;
+        max-width: 180px;
         padding: 1rem;
     }
     
