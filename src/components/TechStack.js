@@ -1,5 +1,5 @@
 'use client';
-import '../app/styles/techStack.css';
+import styles from '../app/styles/techStack.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
     faReact, faNodeJs, faHtml5, faCss3Alt, faJava, faJs, faGitAlt, faNpm 
@@ -74,41 +74,41 @@ const categories = [
 
 function TechStack() {
   return (
-    <section className="tech-container" id="tech-stack">
-        <div className="tech-header animate-fade">
-            <h1>Tech Stack</h1>
-            <p>The technologies I use to build modern full-stack applications.</p>
+    <section className="section-container" id="tech-stack">
+        <div className="section-header animate-fade">
+            <h1 className="section-title">Tech Stack</h1>
+            <p className="section-subtitle">The technologies I use to build modern full-stack applications.</p>
         </div>
 
-        <div className="core-stack-section animate-fade delay-1">
-            <span className="section-label">Core Technologies</span>
-            <div className="core-grid">
+        <div className={`animate-fade ${styles['core-stack-section']} ${styles['delay-1'] || ''}`}>
+            <span className={styles['section-label']}>Core Technologies</span>
+            <div className={styles['core-grid']}>
                 {coreStack.map((tech, index) => (
-                    <div key={index} className="tech-card core-card">
-                        <div className="tech-icon">
+                    <div key={index} className={`${styles['tech-card']} ${styles['core-card']}`}>
+                        <div className={styles['tech-icon']}>
                             <FontAwesomeIcon icon={tech.icon} />
                         </div>
-                        <span className="tech-name">{tech.name}</span>
+                        <span className={styles['tech-name']}>{tech.name}</span>
                     </div>
                 ))}
             </div>
         </div>
 
-        <div className="categories-wrapper animate-fade delay-2">
-            <span className="section-label">Full Technical Ecosystem</span>
-            <div className="category-grid">
+        <div className={`animate-fade ${styles['categories-wrapper']} ${styles['delay-2'] || ''}`}>
+            <span className={styles['section-label']}>Full Technical Ecosystem</span>
+            <div className={styles['category-grid']}>
                 {categories.map((category, index) => (
-                    <div key={index} className="category-section tech-card">
+                    <div key={index} className={`${styles['category-section']} ${styles['tech-card']}`}>
                         <div style={{ width: '100%', textAlign: 'left' }}>
                             <h3>
                                 <FontAwesomeIcon icon={category.icon} style={{ fontSize: '1.2rem', color: 'var(--profile-theme)' }} />
                                 {category.title}
                             </h3>
-                            <p className="category-desc">{category.description}</p>
+                            <p className={styles['category-desc']}>{category.description}</p>
                             
-                            <div className="tech-list">
+                            <div className={styles['tech-list']}>
                                 {category.techs.map((tech, idx) => (
-                                    <div key={idx} className="tech-badge">
+                                    <div key={idx} className={styles['tech-badge']}>
                                         <FontAwesomeIcon icon={tech.icon} style={{ color: 'var(--text-secondary)' }} />
                                         <span>{tech.name}</span>
                                     </div>

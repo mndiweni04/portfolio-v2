@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import '../app/styles/reachme.css';
+import styles from '../app/styles/reachme.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -9,7 +9,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 function FormComponent() {
     const searchParams = useSearchParams();
     
-    const [formMode, setFormMode] = useState('general'); // 'general' or 'service'
+    const [formMode, setFormMode] = useState('general'); 
     
     const [formData, setFormData] = useState({
         firstName: '',
@@ -41,12 +41,14 @@ function FormComponent() {
         setIsSubmitting(true);
         setStatus({ type: 'info', message: 'Sending...' });
 
-        // Map data appropriately based on mode
+        // STRUCTURAL FIX: Payload now directly matches the required parameters of src/app/api/send-email/route.js
         const payload = {
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,
-            message: formMode === 'general' ? formData.message : `SERVICE: ${formData.serviceType} | TIMELINE: ${formData.timeline} | SCOPE: ${formData.message}`
+            projectScope: formData.message,
+            serviceType: formMode === 'service' ? formData.serviceType : 'General Inquiry',
+            timeline: formMode === 'service' ? formData.timeline : 'N/A'
         };
 
         try {
@@ -73,9 +75,8 @@ function FormComponent() {
     };
 
     return (
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className={styles['contact-form']} onSubmit={handleSubmit}>
             
-            {/* Mode Toggle */}
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '8px' }}>
                 <button 
                     type="button"
@@ -93,32 +94,34 @@ function FormComponent() {
                 </button>
             </div>
 
-            <div className="row-group">
+            <div className={styles['row-group']}>
                 <input 
+                    className={styles['form-input']}
                     type="text" placeholder="First Name" name="firstName" 
                     value={formData.firstName} onChange={handleChange} required 
                 />
                 <input 
+                    className={styles['form-input']}
                     type="text" placeholder="Last Name" name="lastName" 
                     value={formData.lastName} onChange={handleChange} required 
                 />
             </div>
             
             <input 
+                className={styles['form-input']}
                 type="email" placeholder="Email Address" name="email" 
                 value={formData.email} onChange={handleChange} required 
             />
 
-            {/* Conditionally Render Service Fields */}
             {formMode === 'service' && (
-                <div className="row-group" style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
-                    <select name="serviceType" value={formData.serviceType} onChange={handleChange} required className="glass-select">
+                <div className={styles['row-group']} style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+                    <select name="serviceType" value={formData.serviceType} onChange={handleChange} required className={styles['glass-select']}>
                         <option value="frontend-mvp">Frontend Web App</option>
                         <option value="fullstack-system">Full-Stack System</option>
                         <option value="mobile-app">Mobile App (React Native)</option>
                         <option value="tech-consult">General Consultation</option>
                     </select>
-                    <select name="timeline" value={formData.timeline} onChange={handleChange} required className="glass-select">
+                    <select name="timeline" value={formData.timeline} onChange={handleChange} required className={styles['glass-select']}>
                         <option value="" disabled>Select Timeline...</option>
                         <option value="immediate">1-2 Weeks</option>
                         <option value="standard">3-4 Weeks</option>
@@ -128,13 +131,14 @@ function FormComponent() {
             )}
             
             <textarea 
+                className={styles['form-textarea']}
                 placeholder={formMode === 'general' ? "Your Message..." : "Briefly describe your project scope and requirements..."}
                 name="message" rows="5" 
                 value={formData.message} onChange={handleChange} required
             ></textarea>
             
             <div style={{ display: 'flex', gap: '1rem' }}>
-                <button type="submit" className="btn-submit" disabled={isSubmitting} style={{ flex: 1, opacity: isSubmitting ? 0.7 : 1 }}>
+                <button type="submit" className={styles['btn-submit']} disabled={isSubmitting} style={{ flex: 1, opacity: isSubmitting ? 0.7 : 1 }}>
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
             </div>
@@ -150,31 +154,31 @@ function FormComponent() {
 
 function ReachMe() {
     return (
-        <div className="reachme-container">
-            <div className="contact-info">
-                <div className="info-group">
-                    <h1 className="section-title">Follow</h1>
-                    <div className="info-item">
+        <div className={styles['reachme-container']}>
+            <div className={styles['contact-info']}>
+                <div className={styles['info-group']}>
+                    <h1 className={styles['section-title']}>Follow</h1>
+                    <div className={styles['info-item']}>
                         <FontAwesomeIcon icon={faGithub}/>
-                        <a href="https://github.com/mndiweni04" target="_blank" rel="noreferrer">mndiweni04</a>
+                        <a href="https://github.com/mndiweni04" target="_blank" rel="noreferrer" className={styles['info-link']}>mndiweni04</a>
                     </div>
-                    <div className="info-item">
+                    <div className={styles['info-item']}>
                         <FontAwesomeIcon icon={faLinkedin}/>
-                        <a href="https://www.linkedin.com/in/mandla-ndiweni-74a35a2a1/" target="_blank" rel="noreferrer">Mandla Ndiweni</a>
+                        <a href="https://www.linkedin.com/in/mandla-ndiweni-74a35a2a1/" target="_blank" rel="noreferrer" className={styles['info-link']}>Mandla Ndiweni</a>
                     </div>
                 </div>
 
-                <div className="info-group">
-                    <h1 className="section-title">Contact</h1>
-                    <div className="info-item">
+                <div className={styles['info-group']}>
+                    <h1 className={styles['section-title']}>Contact</h1>
+                    <div className={styles['info-item']}>
                         <FontAwesomeIcon icon={faPhone}/>
                         <span>(+27) 81-796-6625</span>
                     </div>
-                    <div className="info-item">
+                    <div className={styles['info-item']}>
                         <FontAwesomeIcon icon={faEnvelope}/>
                         <span>mndiweni04@gmail.com</span>
                     </div>
-                    <div className="info-item">
+                    <div className={styles['info-item']}>
                         <FontAwesomeIcon icon={faMapLocationDot}/>
                         <span>Johannesburg, South Africa</span>
                     </div>

@@ -1,4 +1,27 @@
-﻿/* src/app/styles/techStack.css */
+﻿/* src/app/styles/techStack.module.css */
+
+/* Standardized Header Styles */
+.tech-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.tech-header h1 {
+    font-size: 3.5rem; 
+    font-weight: 1000;
+    font-family: var(--font-nunito), sans-serif;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.tech-header p {
+    font-size: 1.3rem; 
+    color: var(--text-body);
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 600;
+    text-align: center; /* Explicit centering */
+}
 
 /* Main Container */
 .tech-container {
@@ -44,10 +67,8 @@
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
-    
     -webkit-backdrop-filter: var(--apple-blur);
     backdrop-filter: var(--apple-blur);
-    
     border-radius: 24px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -56,7 +77,6 @@
 /* Core Card Specifics */
 .core-card {
     aspect-ratio: 1 / 1; 
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,14 +203,7 @@
 .delay-1 { animation-delay: 0.15s; }
 .delay-2 { animation-delay: 0.3s; }
 
-/* --- Responsive Breakpoints --- */
-
-/* Tablet */
-@media (max-width: 1200px) {
-   /* No specific override needed */
-}
-
-/* Mobile (1 Column) */
+/* Responsive Breakpoints */
 @media (max-width: 768px) {
     .tech-header h1 {
         font-size: 2.5rem;

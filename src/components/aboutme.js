@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import '../app/styles/aboutme.css';
+import styles from '../app/styles/aboutme.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-    faUserGraduate, faBriefcase, faGlobe, faRunning, faBookReader, faServer 
+    faUserGraduate, faBriefcase, faGlobe, faRunning, faBookReader 
 } from "@fortawesome/free-solid-svg-icons";
 
 const Images = [
@@ -27,11 +27,11 @@ function AboutMe() {
     }, []);
 
     return (
-        <section className="about-container">
+        <section className="section-container">
             
-            <div className="about-header animate-fade">
-                <h1>Professional Overview</h1>
-                <p className="professional-summary">
+            <div className="section-header animate-fade">
+                <h1 className="section-title">Professional Overview</h1>
+                <p className="section-subtitle">
                     I am a Full Stack Developer dedicated to building resilient and scalable software architectures. 
                     With a core engineering stack spanning React.js, Node.js, C#, and SQL, I deliver end-to-end 
                     solutions—from optimized database schemas to highly responsive frontend interfaces. My objective 
@@ -39,88 +39,87 @@ function AboutMe() {
                 </p>
             </div>
 
-            <div className="glass-section animate-fade delay-1">
-                <div className="section-label-row">
-                    <div className="section-icon">
+            <div className={`${styles['glass-section']} animate-fade ${styles['delay-1'] || ''}`}>
+                <div className={styles['section-label-row']}>
+                    <div className={styles['section-icon']}>
                         <FontAwesomeIcon icon={faUserGraduate} />
                     </div>
-                    <span className="section-label">Academic Background</span>
+                    <span className={styles['section-label']}>Academic Background</span>
                 </div>
                 
-                <div className="education-grid">
-                    <div className="edu-block highlight">
-                        <h3>Belgium Campus ITversity</h3>
-                        <span className="time-badge">Expected Graduation: Oct 2025</span>
-                        <p className="edu-desc">Diploma in Information Technology (Software & Web Dev)</p>
-                        <ul className="edu-list">
-                            <li><strong>Focus:</strong> Formalizing engineering fundamentals, algorithms, and networking.</li>
-                            <li><strong>Key Projects:</strong> Employee Management System (Java/SQL), Full Stack Portfolios.</li>
+                <div className={styles['education-grid']}>
+                    <div className={`${styles['edu-block']} ${styles['highlight'] || ''}`}>
+                        <h3 className={styles['edu-title']}>Belgium Campus ITversity</h3>
+                        <span className={styles['time-badge']}>Expected Graduation: Oct 2025</span>
+                        <p className={styles['edu-desc']}>Diploma in Information Technology (Software & Web Dev)</p>
+                        <ul className={styles['edu-list']}>
+                            <li className={styles['edu-list-item']}><strong>Focus:</strong> Formalizing engineering fundamentals, algorithms, and networking.</li>
+                            <li className={styles['edu-list-item']}><strong>Key Projects:</strong> Employee Management System (Java/SQL), Full Stack Portfolios.</li>
                         </ul>
                     </div>
 
-                    <div className="edu-block">
-                        <h3>Edenvale High School</h3>
-                        <span className="time-badge">Jan 2018 - Dec 2022</span>
-                        <p className="edu-desc">Information Technology (Delphi)</p>
+                    <div className={styles['edu-block']}>
+                        <h3 className={styles['edu-title']}>Edenvale High School</h3>
+                        <span className={styles['time-badge']}>Jan 2018 - Dec 2022</span>
+                        <p className={styles['edu-desc']}>Information Technology (Delphi)</p>
                     </div>
                 </div>
             </div>
 
-            <div className="glass-section animate-fade delay-2">
-                <div className="section-label-row">
-                     <div className="section-icon">
+            <div className={`${styles['glass-section']} animate-fade ${styles['delay-2'] || ''}`}>
+                <div className={styles['section-label-row']}>
+                     <div className={styles['section-icon']}>
                         <FontAwesomeIcon icon={faBriefcase} />
                     </div>
-                    <span className="section-label">Experience & Competencies</span>
+                    <span className={styles['section-label']}>Experience & Competencies</span>
                 </div>
 
-                <div className="experience-content">
-                    <div className="exp-text">
-                        <p>
+                <div className={styles['experience-content']}>
+                    <div className={styles['exp-text']}>
+                        <p className={styles['exp-text-para']}>
                             I have spent over a year working as a freelance web developer, interfacing directly with clients 
                             to deliver responsive, data-driven platforms. Recently, I have expanded into mobile development, 
                             dedicating the last several months to engineering proprietary IP using React Native.
                         </p>
-                        <p style={{ marginTop: '1rem' }}>
-                            My experience engaging 
-                            directly with diverse customers allows me to translate technical complexity into clear, actionable 
+                        <p className={styles['exp-text-para']} style={{ marginTop: '1rem' }}>
+                            My experience engaging directly with diverse customers allows me to translate technical complexity into clear, actionable 
                             insights for non-technical stakeholders, ensuring project alignment at every level.
                         </p>
                     </div>
-                    <div className="exp-skills">
-                        <h4>Applied Experience</h4>
-                        <ul>
-                            <li>Freelance Web Development (1+ Years)</li>
-                            <li>Mobile App Dev / Proprietary IP (Current Focus)</li>
-                            <li>Stakeholder Communication & Technical Translation</li>
-                            <li>Sales & Brand Communication (Samsung, Pep)</li>
+                    <div className={styles['exp-skills']}>
+                        <h4 className={styles['exp-skills-title']}>Applied Experience</h4>
+                        <ul className={styles['exp-skills-list']}>
+                            <li className={styles['exp-skill-item']}>Freelance Web Development (1+ Years)</li>
+                            <li className={styles['exp-skill-item']}>Mobile App Dev / Proprietary IP (Current Focus)</li>
+                            <li className={styles['exp-skill-item']}>Stakeholder Communication & Technical Translation</li>
+                            <li className={styles['exp-skill-item']}>Sales & Brand Communication (Samsung, Pep)</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div className="split-section animate-fade delay-3">
-                <div className="glass-card-bottom interest-card">
-                    <h3>Interests & Pursuits</h3>
-                    <ul className="interest-list">
-                        <li>
+            <div className={`${styles['split-section']} animate-fade ${styles['delay-3'] || ''}`}>
+                <div className={`${styles['glass-card-bottom']} ${styles['interest-card']}`}>
+                    <h3 className={styles['interest-title']}>Interests & Pursuits</h3>
+                    <ul className={styles['interest-list']}>
+                        <li className={styles['interest-item']}>
                             <FontAwesomeIcon icon={faGlobe} /> <span>System Architecture Studies</span>
                         </li>
-                        <li>
+                        <li className={styles['interest-item']}>
                             <FontAwesomeIcon icon={faBookReader} /> <span>Continuous Technical Learning</span>
                         </li>
-                        <li>
+                        <li className={styles['interest-item']}>
                             <FontAwesomeIcon icon={faRunning} /> <span>Athletics & Physical Training</span>
                         </li>
                     </ul>
                 </div>
 
-                <div className="glass-card-bottom carousel-card">
-                    <div className="ImgContain">
+                <div className={`${styles['glass-card-bottom']} ${styles['carousel-card']}`}>
+                    <div className={styles['img-contain']}>
                         <Image 
                             src={Images[index]} 
                             alt={`Portfolio slide ${index + 1}`} 
-                            className="abt-img-large"
+                            className={styles['abt-img-large']}
                             width={500}
                             height={667} 
                             priority={index === 0}

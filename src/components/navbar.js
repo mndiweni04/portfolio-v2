@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; 
-import '../app/styles/navbar.css'; 
+import styles from '../app/styles/navbar.module.css'; 
 
 const Navbar = () => {
     const [showNavbar, setShowNavbar] = useState(true);
@@ -33,10 +33,10 @@ const Navbar = () => {
         }
     }, [lastScrollY]);
 
-    const isActive = (path) => pathname === path ? "active-link" : "";
+    const isActive = (path) => pathname === path ? styles['active-link'] : "";
 
     return (
-        <nav className={`navbar ${showNavbar ? 'visible' : 'hidden'}`}>
+        <nav className={`${styles.navbar} ${showNavbar ? styles.visible : styles.hidden}`}>
             <Link href="/" className={isActive('/')}>Home</Link>
             <Link href="/about" className={isActive('/about')}>About Me</Link>
             <Link href="/projects" className={isActive('/projects')}>Projects</Link>

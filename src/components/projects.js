@@ -8,7 +8,7 @@ import { faExternalLinkAlt, faInfoCircle, faTimes, faChevronLeft, faChevronRight
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import '../app/styles/projects.css';
+import styles from '../app/styles/projects.module.css';
 
 const flagshipProjects = [
     {
@@ -30,17 +30,12 @@ const flagshipProjects = [
         date: "Mar 2026",
         shortDesc: "A large-scale expansion (Portfolio-V3) of my digital infrastructure. This version transitions from a student-centric portfolio to a professional consultancy platform featuring productized services and advanced project intake specifications.",
         techStack: ["Next.js", "React", "Netlify", "CSS Modules"],
-        githubLink: "https://github.com/mndiweni04/portfolio-v2", // Branch: v3-professional-transition
+        githubLink: "https://github.com/mndiweni04/portfolio-v2", 
         liveLink: "#",
         problem: "The previous iteration (V2) served as a solid academic portfolio but lacked the structural logic to operate as a technical consultancy. It did not distinguish between general networking and client service requests, and its narrative focused on 'internships' rather than 'solutions delivery'.",
-        solution: "I engineered a major system expansion on a dedicated branch (v3-professional-transition). Key enhancements include:<ul>"+
-                  "<li><b>Productized Services</b> — Introduced a multi-tier service model (Frontend, Full-Stack, Consultation) to clarify technical value.</li>"+
-                  "<li><b>Dynamic Intake Architecture</b> — Upgraded the Contact module with conditional logic for project specifications.</li>"+
-                  "<li><b>Professional Narrative</b> — Realigned the copy to reflect 1+ years of freelance web experience and proprietary mobile development (React Native).</li>"+
-                  "<li><b>UI/UX Standardization</b> — Corrected architectural spacing and fixed cross-browser styling regressions.</li></ul>",
+        solution: "I engineered a major system expansion on a dedicated branch (v3-professional-transition). Key enhancements include:<ul><li><b>Productized Services</b> — Introduced a multi-tier service model (Frontend, Full-Stack, Consultation) to clarify technical value.</li><li><b>Dynamic Intake Architecture</b> — Upgraded the Contact module with conditional logic for project specifications.</li><li><b>Professional Narrative</b> — Realigned the copy to reflect 1+ years of freelance web experience and proprietary mobile development (React Native).</li><li><b>UI/UX Standardization</b> — Corrected architectural spacing and fixed cross-browser styling regressions.</li></ul>",
         journey: "This transition involved refactoring the brand identity and the information architecture simultaneously. The main challenge was balancing an honest academic status with a professional service offering while ensuring a non-forced 'opt-in' user experience.",
-        reflections: "<ul><li>Portfolio-V3 proves that a personal site can scale into a lead-generation tool without losing its personal identity.</li>"+
-                     "<li>Architecture should always prioritize the user's choice to either 'network' or 'inquire'.</li></ul>"
+        reflections: "<ul><li>Portfolio-V3 proves that a personal site can scale into a lead-generation tool without losing its personal identity.</li><li>Architecture should always prioritize the user's choice to either 'network' or 'inquire'.</li></ul>"
     },
     {
         id: 'f3',
@@ -114,65 +109,65 @@ export default function Projects() {
     }, [selectedProject]);
 
     return (
-        <section className="projects-page-container" id="projects">
+        <section className="section-container" id="projects">
             
-            <div className="projects-header animate-fade">
-                <h1>Selected Works</h1>
-                <p>Engineering robust systems & exploring new technologies.</p>
+            <div className="section-header animate-fade">
+                <h1 className="section-title">Selected Works</h1>
+                <p className="section-subtitle">Engineering robust systems & exploring new technologies.</p>
             </div>
 
-            <div className="tier-section animate-fade delay-1">
-                <h2 className="tier-title">Flagship Work</h2>
+            <div className={`animate-fade ${styles['tier-section']} ${styles['delay-1'] || ''}`}>
+                <h2 className={styles['tier-title']}>Flagship Work</h2>
                 
-                <div className="carousel-wrapper">
-                    <button className="custom-nav-btn prev-flag">
+                <div className={styles['carousel-wrapper']}>
+                    <button className={`${styles['custom-nav-btn']} ${styles['prev-flag']}`}>
                         <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
-                    <button className="custom-nav-btn next-flag">
+                    <button className={`${styles['custom-nav-btn']} ${styles['next-flag']}`}>
                         <FontAwesomeIcon icon={faChevronRight} />
                     </button>
 
                     <Swiper
                         modules={[Navigation]}
                         navigation={{
-                            prevEl: '.prev-flag',
-                            nextEl: '.next-flag',
+                            prevEl: `.${styles['prev-flag']}`,
+                            nextEl: `.${styles['next-flag']}`,
                         }}
                         spaceBetween={40}
                         slidesPerView={1}
-                        className="swiper-container"
+                        className={styles['swiper-container']}
                     >
                         {flagshipProjects.map((project) => (
                             <SwiperSlide key={project.id}>
-                                <div className="glass-card flagship-card">
-                                    <div className="card-header">
-                                        <div className="header-top">
+                                <div className={`${styles['glass-card']} ${styles['flagship-card']}`}>
+                                    <div className={styles['card-header']}>
+                                        <div className={styles['header-top']}>
                                             <h3>{project.title}</h3>
-                                            <span className="project-date">{project.date}</span>
+                                            <span className={styles['project-date']}>{project.date}</span>
                                         </div>
-                                        <div className="tech-row">
+                                        <div className={styles['tech-row']}>
                                             {project.techStack.map((tech, i) => (
-                                                <span key={i} className="tech-pill">{tech}</span>
+                                                <span key={i} className={styles['tech-pill']}>{tech}</span>
                                             ))}
                                         </div>
                                     </div>
 
-                                    <div className="card-body">
-                                        <p className="card-desc">{project.shortDesc}</p>
+                                    <div className={styles['card-body']}>
+                                        <p className={styles['card-desc']}>{project.shortDesc}</p>
                                     </div>
 
-                                    <div className="card-footer">
-                                        <div className="links-group">
-                                            <a href={project.githubLink} target="_blank" rel="noreferrer" className="btn-glass">
+                                    <div className={styles['card-footer']}>
+                                        <div className={styles['links-group']}>
+                                            <a href={project.githubLink} target="_blank" rel="noreferrer" className={styles['btn-glass']}>
                                                 <FontAwesomeIcon icon={faGithub} /> Code
                                             </a>
                                             {project.liveLink !== "#" && (
-                                                <a href={project.liveLink} target="_blank" rel="noreferrer" className="btn-glass">
+                                                <a href={project.liveLink} target="_blank" rel="noreferrer" className={styles['btn-glass']}>
                                                     <FontAwesomeIcon icon={faExternalLinkAlt} /> Demo
                                                 </a>
                                             )}
                                         </div>
-                                        <button onClick={() => setSelectedProject(project)} className="btn-action">
+                                        <button onClick={() => setSelectedProject(project)} className={styles['btn-action']}>
                                             View Case Study <FontAwesomeIcon icon={faInfoCircle} />
                                         </button>
                                     </div>
@@ -183,50 +178,50 @@ export default function Projects() {
                 </div>
             </div>
 
-            <div className="tier-section animate-fade delay-2">
-                <h2 className="tier-title">Experiments & Academic Implementations</h2>
+            <div className={`animate-fade ${styles['tier-section']} ${styles['delay-2'] || ''}`}>
+                <h2 className={styles['tier-title']}>Experiments & Academic Implementations</h2>
                 
-                <div className="carousel-wrapper">
-                    <button className="custom-nav-btn prev-exp">
+                <div className={styles['carousel-wrapper']}>
+                    <button className={`${styles['custom-nav-btn']} ${styles['prev-exp']}`}>
                         <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
-                    <button className="custom-nav-btn next-exp">
+                    <button className={`${styles['custom-nav-btn']} ${styles['next-exp']}`}>
                         <FontAwesomeIcon icon={faChevronRight} />
                     </button>
 
                     <Swiper
                         modules={[Navigation]}
                         navigation={{
-                            prevEl: '.prev-exp',
-                            nextEl: '.next-exp',
+                            prevEl: `.${styles['prev-exp']}`,
+                            nextEl: `.${styles['next-exp']}`,
                         }}
                         spaceBetween={30}
                         slidesPerView={1}
-                        className="swiper-container"
+                        className={styles['swiper-container']}
                     >
                         {experimentProjects.map((project) => (
                         <SwiperSlide key={project.id}>
-                                <div className="glass-card experiment-card">
-                                    <div className="exp-left">
+                                <div className={`${styles['glass-card']} ${styles['experiment-card']}`}>
+                                    <div className={styles['exp-left']}>
                                         <h3>{project.title}</h3>
-                                        <span className="exp-date">{project.date}</span>
+                                        <span className={styles['exp-date']}>{project.date}</span>
                                     </div>
                                     
-                                    <div className="exp-center">
+                                    <div className={styles['exp-center']}>
                                         <p>{project.shortDesc}</p>
-                                        <div className="tech-row mini">
+                                        <div className={`${styles['tech-row']} ${styles['mini']}`}>
                                             {project.techStack.map((tech, i) => (
-                                                <span key={i} className="tech-pill-sm">{tech}</span>
+                                                <span key={i} className={styles['tech-pill-sm']}>{tech}</span>
                                             ))}
                                         </div>
                                     </div>
 
-                                    <div className="exp-right">
-                                        <a href={project.githubLink} target="_blank" rel="noreferrer" className="btn-icon-only" title="View Code">
+                                    <div className={styles['exp-right']}>
+                                        <a href={project.githubLink} target="_blank" rel="noreferrer" className={styles['btn-icon-only']} title="View Code">
                                             <FontAwesomeIcon icon={faGithub} />
                                         </a>
                                         {project.liveLink && (
-                                            <a href={project.liveLink} target="_blank" rel="noreferrer" className="btn-icon-only" title="Live Demo">
+                                            <a href={project.liveLink} target="_blank" rel="noreferrer" className={styles['btn-icon-only']} title="Live Demo">
                                                 <FontAwesomeIcon icon={faExternalLinkAlt} />
                                             </a>
                                         )}
@@ -239,43 +234,43 @@ export default function Projects() {
             </div>
 
             {selectedProject && (
-                <div className="overlay-backdrop" onClick={() => setSelectedProject(null)}>
-                    <div className="overlay-panel a4-glass" onClick={(e) => e.stopPropagation()}>
+                <div className={styles['overlay-backdrop']} onClick={() => setSelectedProject(null)}>
+                    <div className={`${styles['overlay-panel']} ${styles['a4-glass']}`} onClick={(e) => e.stopPropagation()}>
                         
-                        <button className="close-floating" onClick={() => setSelectedProject(null)}>
+                        <button className={styles['close-floating']} onClick={() => setSelectedProject(null)}>
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
 
-                        <div className="overlay-content">
-                            <div className="ov-header">
+                        <div className={styles['overlay-content']}>
+                            <div className={styles['ov-header']}>
                                 <h2>{selectedProject.title}</h2>
-                                <span className="ov-date">{selectedProject.date}</span>
+                                <span className={styles['ov-date']}>{selectedProject.date}</span>
                             </div>
 
-                            <div className="ov-tech">
+                            <div className={styles['ov-tech']}>
                                 {selectedProject.techStack.map((tech, i) => (
-                                    <span key={i} className="tech-pill-dark">{tech}</span>
+                                    <span key={i} className={styles['tech-pill-dark']}>{tech}</span>
                                 ))}
                             </div>
 
-                            <hr className="glass-divider" />
+                            <hr className={styles['glass-divider']} />
 
-                            <section className="ov-section">
+                            <section className={styles['ov-section']}>
                                 <h4>System Objective</h4>
                                 <p>{selectedProject.problem}</p>
                             </section>
 
-                            <section className="ov-section">
+                            <section className={styles['ov-section']}>
                                 <h4>Architectural Solution</h4>
                                 <div dangerouslySetInnerHTML={{ __html: selectedProject.solution }} />
                             </section>
 
-                            <section className="ov-section">
+                            <section className={styles['ov-section']}>
                                 <h4>Implementation Journey</h4>
                                 <p>{selectedProject.journey}</p>
                             </section>
 
-                            <section className="ov-section highlight-box">
+                            <section className={`${styles['ov-section']} ${styles['highlight-box']}`}>
                                 <h4>Technical Reflections</h4>
                                 <div 
                                     style={{ fontStyle: 'italic' }}

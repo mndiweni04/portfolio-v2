@@ -1,4 +1,43 @@
-﻿/* src/app/styles/projects.css */
+﻿/* src/app/styles/projects.module.css */
+
+/* Encapsulated Header & Section Styles */
+.projects-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.projects-header h1 {
+    font-size: 3.5rem; 
+    font-weight: 1000;
+    font-family: var(--font-nunito), sans-serif;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.projects-header p {
+    font-size: 1.3rem; 
+    color: var(--text-body);
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 600;
+}
+
+.tier-title {
+    display: block;
+    text-align: center;
+    font-family: var(--font-nunito), sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--profile-theme);
+    margin-bottom: 2.5rem;
+    font-weight: 1000;
+    opacity: 0.9;
+}
+
+.tier-section {
+    margin-bottom: 6rem;
+}
 
 .projects-page-container {
     max-width: 1400px; 
@@ -16,11 +55,12 @@
     margin-bottom: 6rem;
 }
 
-.swiper, .swiper-wrapper, .swiper-slide {
+/* GLOBAL RULES FOR SWIPER DYNAMIC CLASSES */
+:global(.swiper), :global(.swiper-wrapper), :global(.swiper-slide) {
   overflow: visible !important;
 }
 
-.swiper-slide {
+:global(.swiper-slide) {
   box-shadow: none;
   z-index: 1;
   height: auto; 
@@ -61,7 +101,6 @@
 .flagship-card {
     width: 75%;
     aspect-ratio: 16 / 9;
-    
     background: linear-gradient(
         180deg, 
         rgba(255, 255, 255, 0.12) 0%, 
@@ -73,10 +112,8 @@
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     border-radius: 24px;
-    
     position: relative;
     z-index: 2;
-    
     padding: 3.5rem;
     margin: auto;
     display: flex;
@@ -106,7 +143,6 @@
     line-height: 1.1;
 }
 
-/* FIX: Added white-space: nowrap and flex-shrink: 0 to prevent date wrapping */
 .project-date {
     font-size: 1rem;
     color: var(--text-secondary);
@@ -204,7 +240,6 @@
 .experiment-card {
     width: 75%;
     aspect-ratio: 21 / 9;
-
     background: linear-gradient(
         180deg, 
         rgba(255, 255, 255, 0.12) 0%, 
@@ -216,10 +251,8 @@
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border-radius: 20px;
-    
     position: relative;
     z-index: 2;
-
     padding: 2rem 3rem;
     margin: auto;
     display: flex;
@@ -243,7 +276,7 @@
     font-size: 0.9rem;
     color: var(--text-secondary);
     font-style: italic;
-    white-space: nowrap; /* Prevent wrap in experiments as well */
+    white-space: nowrap; 
 }
 
 .exp-center {
@@ -302,14 +335,11 @@
     max-width: 1100px;      
     height: 90vh;
     aspect-ratio: 4 / 5; 
-
     background: var(--bg-color); 
     background: linear-gradient(135deg, var(--bg-color), var(--glass-bg));
-    
     border: 1px solid var(--glass-border);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    
     position: relative;
     overflow-y: auto;
     padding: 4rem;
@@ -328,10 +358,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    
     color: var(--text-color);
     cursor: pointer;
     z-index: 20;
@@ -434,25 +462,18 @@
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 
-/* ---------------------------------------------------- */
-/* MOBILE / TABLET REFINEMENTS                          */
-/* ---------------------------------------------------- */
-
+/* MOBILE / TABLET REFINEMENTS */
 @media (max-width: 1024px) {
-    /* Full-width container */
     .projects-page-container {
         width: 100%;
         padding: 6rem 1.5rem;
     }
-
-    /* Full-width Cards */
     .flagship-card, .experiment-card { 
         width: 100%;
         min-height: 400px; 
         aspect-ratio: auto; 
         padding: 2rem;
     }
-
     .experiment-card { 
         flex-direction: column; 
         align-items: flex-start; 
@@ -465,8 +486,6 @@
         padding-bottom: 1rem; 
     }
     .exp-center { padding: 0; border: none; }
-
-    /* Swipe Cue */
     .carousel-wrapper::after {
         content: 'Swipe to explore';
         display: block;
@@ -478,8 +497,6 @@
         opacity: 0.6;
         font-style: italic;
     }
-
-    /* Mobile Nav Buttons */
     .custom-nav-btn { 
         display: flex;
         width: 40px;
@@ -497,7 +514,6 @@
     .next-flag, .next-exp { right: 0; }
 }
 
-/* Smaller phones */
 @media (max-width: 768px) {
     .projects-page-container { padding: 4rem 1.5rem; }
     .card-header h3 { font-size: 1.8rem; }

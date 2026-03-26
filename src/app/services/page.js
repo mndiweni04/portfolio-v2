@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import '../styles/services.css';
+import styles from '../styles/services.module.css';
 
 export const metadata = { title: 'Technical Services | Mandla Ndiweni' };
 
@@ -49,23 +49,23 @@ const servicesData = [
 
 export default function ServicesPage() {
     return (
-        <section className="services-container">
-            <div className="services-header animate-fade">
-                <h1>Technical Implementations</h1>
-                <p>Delivering product-grade development, deterministic logic, and scalable architecture tailored to your operational requirements.</p>
+        <section className="section-container">
+            <div className="section-header animate-fade">
+                <h1 className="section-title">Technical Implementations</h1>
+                <p className="section-subtitle">Delivering product-grade development, deterministic logic, and scalable architecture tailored to your operational requirements.</p>
             </div>
 
-            <div className="pricing-grid animate-fade delay-1">
+            <div className={`${styles['pricing-grid']} animate-fade ${styles['delay-1'] || ''}`}>
                 {servicesData.map((service) => (
-                    <div key={service.id} className="pricing-card">
-                        <h2 className="tier-name">{service.name}</h2>
-                        <p className="tier-desc">{service.description}</p>
-                        <div className="tier-price">{service.price}</div>
+                    <div key={service.id} className={styles['pricing-card']}>
+                        <h2 className={styles['tier-name']}>{service.name}</h2>
+                        <p className={styles['tier-desc']}>{service.description}</p>
+                        <div className={styles['tier-price']}>{service.price}</div>
                         
-                        <ul className="tier-features">
+                        <ul className={styles['tier-features']}>
                             {service.features.map((feature, idx) => (
                                 <li key={idx}>
-                                    <FontAwesomeIcon icon={faCheckCircle} className="feature-icon" />
+                                    <FontAwesomeIcon icon={faCheckCircle} className={styles['feature-icon']} />
                                     <span>{feature}</span>
                                 </li>
                             ))}
@@ -73,7 +73,7 @@ export default function ServicesPage() {
 
                         <Link 
                             href={`/contact?service=${service.id}`} 
-                            className={`service-btn ${service.isPrimary ? 'primary' : ''}`}
+                            className={`${styles['service-btn']} ${service.isPrimary ? styles['primary'] : ''}`}
                         >
                             Request Architecture
                         </Link>
