@@ -6,7 +6,6 @@ export async function POST(request) {
         const { inquiryType, firstName, lastName, email, message, serviceType, timeline } = body;
 
         // 1. Strict Validation Layer
-        // Throws error if critical fields are missing to prevent empty email delivery
         if (!firstName || !email || !message) {
             return NextResponse.json({ error: "Missing required fields: Name, Email, or Message" }, { status: 400 });
         }
@@ -40,9 +39,6 @@ export async function POST(request) {
             reply_to: email
         };
 
-        // 4. Execution Logging (Debug Mode)
-        console.log(">>> DISPATCHING TO EMAILJS:", JSON.stringify(templateParams, null, 2));
-
         const payload = {
             service_id: process.env.EMAILJS_SERVICE_ID,
             template_id: process.env.EMAILJS_TEMPLATE_ID, 
@@ -59,14 +55,12 @@ export async function POST(request) {
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error(">>> EMAILJS API ERROR:", errorText);
             return NextResponse.json({ error: errorText }, { status: 500 });
         }
 
         return NextResponse.json({ success: true }, { status: 200 });
 
     } catch (error) {
-        console.error(">>> SERVER CRASH:", error.message);
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
