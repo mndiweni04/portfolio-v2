@@ -5,55 +5,50 @@ export async function POST(request) {
         const body = await request.json();
         const { inquiryType, firstName, lastName, email, message, serviceType, timeline } = body;
 
-        if (!process.env.EMAILJS_PRIVATE_KEY) {
-            return NextResponse.json({ error: "Server missing Private Key" }, { status: 500 });
+        // 1. Strict Validation Layer
+        // Throws error if critical fields are missing to prevent empty email delivery
+        if (!firstName || !email || !message) {
+            return NextResponse.json({ error: "Missing required fields: Name, Email, or Message" }, { status: 400 });
         }
 
-        // 1. Define fixed string arrays for subject lines
-        const generalSubjects = [
-            "New General Inquiry",
-            "Contact Form Submission",
-            "General Information Request"
-        ];
-        
-        const projectSubjects = [
-            "New Project Request",
-            "Service Inquiry Submission",
-            "Project Scope Details"
-        ];
+        if (!process.env.EMAILJS_PRIVATE_KEY) {
+            return NextResponse.json({ error: "Server configuration error: Missing Private Key" }, { status: 500 });
+        }
 
-        // 2. Select subject line based on inquiry type
+        // 2. Data Preparation
+        const generalSubjects = ["New General Inquiry", "Contact Form Submission", "General Information Request"];
+        const projectSubjects = ["New Project Request", "Service Inquiry Submission", "Project Scope Details"];
+        
         const subjectOptions = inquiryType === 'project' ? projectSubjects : generalSubjects;
         const selectedSubject = subjectOptions[Math.floor(Math.random() * subjectOptions.length)];
-
-        // 3. Define combined format for inquiry label
         const inquiryLabel = inquiryType === 'project' ? `Project: ${serviceType}` : 'General Inquiry';
         
-        // 4. Construct the message body, stripping redundant type indicators
         let finalMessage = '';
-        
         if (inquiryType === 'project') {
-            finalMessage += `TIMELINE: ${timeline}\n`;
-            finalMessage += `--------------------------\n\n`;
+            finalMessage += `TIMELINE: ${timeline}\n--------------------------\n\n`;
         }
-        
         finalMessage += `MESSAGE:\n${message}`;
 
-        // 5. Map variables to match the EmailJS Template keys
+        // 3. Payload Mapping
+        const templateParams = {
+            subject_line: selectedSubject,
+            inquiry_label: inquiryLabel,
+            from_firstname: firstName,
+            from_lastname: lastName,
+            from_email: email,
+            from_message: finalMessage,
+            reply_to: email
+        };
+
+        // 4. Execution Logging (Debug Mode)
+        console.log(">>> DISPATCHING TO EMAILJS:", JSON.stringify(templateParams, null, 2));
+
         const payload = {
             service_id: process.env.EMAILJS_SERVICE_ID,
             template_id: process.env.EMAILJS_TEMPLATE_ID, 
             user_id: process.env.EMAILJS_PUBLIC_KEY,
             accessToken: process.env.EMAILJS_PRIVATE_KEY,
-            template_params: {
-                subject_line: selectedSubject,
-                inquiry_label: inquiryLabel,
-                from_firstname: firstName,
-                from_lastname: lastName,
-                from_email: email,
-                from_message: finalMessage,
-                reply_to: email
-            },
+            template_params: templateParams,
         };
 
         const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -64,12 +59,14 @@ export async function POST(request) {
 
         if (!response.ok) {
             const errorText = await response.text();
+            console.error(">>> EMAILJS API ERROR:", errorText);
             return NextResponse.json({ error: errorText }, { status: 500 });
         }
 
         return NextResponse.json({ success: true }, { status: 200 });
 
     } catch (error) {
+        console.error(">>> SERVER CRASH:", error.message);
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
