@@ -89,7 +89,6 @@ function ReachMe() {
             </div>
 
             <form className="contact-form" onSubmit={handleSubmit}>
-                {/* Tab Switcher - Logic from screenshot */}
                 <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '8px' }}>
                     <button 
                         type="button"

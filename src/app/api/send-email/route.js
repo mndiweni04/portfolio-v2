@@ -9,30 +9,49 @@ export async function POST(request) {
             return NextResponse.json({ error: "Server missing Private Key" }, { status: 500 });
         }
 
-        // 1. Build the Indicator and Project details into the message block
-        const typeIndicator = inquiryType === 'project' ? '[PROJECT REQUEST]' : '[GENERAL INQUIRY]';
+        // 1. Define fixed string arrays for subject lines
+        const generalSubjects = [
+            "New General Inquiry",
+            "Contact Form Submission",
+            "General Information Request"
+        ];
         
-        let finalMessage = `TYPE: ${typeIndicator}\n\n`;
+        const projectSubjects = [
+            "New Project Request",
+            "Service Inquiry Submission",
+            "Project Scope Details"
+        ];
+
+        // 2. Select subject line based on inquiry type
+        const subjectOptions = inquiryType === 'project' ? projectSubjects : generalSubjects;
+        const selectedSubject = subjectOptions[Math.floor(Math.random() * subjectOptions.length)];
+
+        // 3. Define combined format for inquiry label
+        const inquiryLabel = inquiryType === 'project' ? `Project: ${serviceType}` : 'General Inquiry';
+        
+        // 4. Construct the message body, stripping redundant type indicators
+        let finalMessage = '';
         
         if (inquiryType === 'project') {
-            finalMessage += `SERVICE: ${serviceType}\n`;
             finalMessage += `TIMELINE: ${timeline}\n`;
             finalMessage += `--------------------------\n\n`;
         }
         
         finalMessage += `MESSAGE:\n${message}`;
 
-        // 2. Map variables to match your existing Template screenshot
+        // 5. Map variables to match the EmailJS Template keys
         const payload = {
             service_id: process.env.EMAILJS_SERVICE_ID,
             template_id: process.env.EMAILJS_TEMPLATE_ID, 
             user_id: process.env.EMAILJS_PUBLIC_KEY,
             accessToken: process.env.EMAILJS_PRIVATE_KEY,
             template_params: {
+                subject_line: selectedSubject,
+                inquiry_label: inquiryLabel,
                 from_firstname: firstName,
                 from_lastname: lastName,
                 from_email: email,
-                from_message: finalMessage, // This now contains the indicator and project info
+                from_message: finalMessage,
                 reply_to: email
             },
         };
