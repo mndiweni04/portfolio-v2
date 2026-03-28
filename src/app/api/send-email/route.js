@@ -3,26 +3,36 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { firstName, lastName, email, serviceType, projectScope, timeline } = body; 
+        const { inquiryType, firstName, lastName, email, message, serviceType, timeline } = body;
 
         if (!process.env.EMAILJS_PRIVATE_KEY) {
             return NextResponse.json({ error: "Server missing Private Key" }, { status: 500 });
         }
 
+        // 1. Build the Indicator and Project details into the message block
+        const typeIndicator = inquiryType === 'project' ? '[PROJECT REQUEST]' : '[GENERAL INQUIRY]';
+        
+        let finalMessage = `TYPE: ${typeIndicator}\n\n`;
+        
+        if (inquiryType === 'project') {
+            finalMessage += `SERVICE: ${serviceType}\n`;
+            finalMessage += `TIMELINE: ${timeline}\n`;
+            finalMessage += `--------------------------\n\n`;
+        }
+        
+        finalMessage += `MESSAGE:\n${message}`;
+
+        // 2. Map variables to match your existing Template screenshot
         const payload = {
             service_id: process.env.EMAILJS_SERVICE_ID,
-            template_id: process.env.EMAILJS_TEMPLATE_ID,
+            template_id: process.env.EMAILJS_TEMPLATE_ID, 
             user_id: process.env.EMAILJS_PUBLIC_KEY,
             accessToken: process.env.EMAILJS_PRIVATE_KEY,
             template_params: {
-                from_firstname: firstName, 
+                from_firstname: firstName,
                 from_lastname: lastName,
                 from_email: email,
-                service_type: serviceType,
-                project_scope: projectScope,
-                timeline: timeline,
-                
-                from_name: `${firstName} ${lastName}`,
+                from_message: finalMessage, // This now contains the indicator and project info
                 reply_to: email
             },
         };
