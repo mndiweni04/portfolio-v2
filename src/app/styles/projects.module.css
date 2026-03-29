@@ -83,8 +83,9 @@
     transform: translateY(-50%) scale(1.1);
 }
 
-.prev-flag, .prev-exp { left: -80px; }
-.next-flag, .next-exp { right: -80px; }
+/* Anchors to the edge of the 75% width cards */
+.prev-flag, .prev-exp { left: calc(12.5% - 30px); }
+.next-flag, .next-exp { right: calc(12.5% - 30px); }
 
 .flagship-card {
     width: 75%;
@@ -495,8 +496,8 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         z-index: 20;
     }
-    .prev-flag, .prev-exp { left: 0; }
-    .next-flag, .next-exp { right: 0; }
+    .prev-flag, .prev-exp { left: 10px; }
+    .next-flag, .next-exp { right: 10px; }
     
     .a4-glass {
         padding: 2rem;

@@ -33,13 +33,13 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    color: var(--text-color, #fff);
+    color: var(--text-color);
 }
 
 .section-title {
     font-size: 2rem; 
     font-weight: 800;
-    color: var(--timeline-circle-theme, #fff);
+    color: var(--text-color);
     text-transform: uppercase;
     border-bottom: 2px solid var(--profile-theme, #38bdf8);
     margin-bottom: 1rem;
@@ -52,7 +52,7 @@
     align-items: center;
     gap: 15px;
     font-size: 1.2rem;
-    color: var(--text-color, #ccc);
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
