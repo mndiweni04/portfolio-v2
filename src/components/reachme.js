@@ -25,10 +25,35 @@ function ReachMe() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    const validateForm = () => {
+        if (!formData.firstName.trim() || !formData.lastName.trim()) {
+            return "Name fields cannot be empty.";
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            return "Invalid email format.";
+        }
+        if (!formData.message.trim()) {
+            return "Message payload cannot be empty.";
+        }
+        if (activeTab === 'project') {
+            if (!formData.serviceType) return "Please select a required service architecture.";
+            if (!formData.timeline) return "Please select a target timeline.";
+        }
+        return null;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        const validationError = validateForm();
+        if (validationError) {
+            setStatus({ type: 'error', message: validationError });
+            return;
+        }
+
         setIsSubmitting(true);
-        setStatus({ type: 'info', message: 'Sending...' });
+        setStatus({ type: 'info', message: 'Executing transmission...' });
 
         try {
             const response = await fetch('/api/send-email', {
@@ -41,15 +66,15 @@ function ReachMe() {
             });
 
             if (response.ok) {
-                setStatus({ type: 'success', message: 'Message Sent! ✅' });
+                setStatus({ type: 'success', message: 'Transmission Verified. ✅' });
                 setFormData({ firstName: '', lastName: '', email: '', message: '', serviceType: '', timeline: '' });
             } else {
                 const result = await response.json();
-                setStatus({ type: 'error', message: result.error || 'Failed to send.' });
+                setStatus({ type: 'error', message: result.error || 'Server rejected the payload.' });
             }
         } catch (error) {
             console.error(error);
-            setStatus({ type: 'error', message: 'Network Error.' });
+            setStatus({ type: 'error', message: 'Network handshake failed.' });
         } finally {
             setIsSubmitting(false);
             setTimeout(() => setStatus({ type: '', message: '' }), 5000);
@@ -186,7 +211,7 @@ function ReachMe() {
                 </div>
                 
                 <button type="submit" className={styles['btn-submit']} disabled={isSubmitting}>
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? 'Transmitting...' : 'Send Message'}
                 </button>
                 
                 {status.message && (
