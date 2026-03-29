@@ -14,6 +14,9 @@ const nunito = Nunito({
 export const metadata = {
   title: "Mandla Ndiweni - Portfolio",
   description: "Portfolio of Mandla Ndiweni",
+  icons: {
+    icon: '/logo-mn.png',
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -31,7 +34,7 @@ export default function RootLayout({ children }) {
             </main>
 
             <div className="pgFooter">
-              <p className="CopyRight">© 2025 Mandla Ndiweni. All Rights Reserved</p>
+              <p className="CopyRight">© 2026 Mandla Ndiweni. All Rights Reserved</p>
             </div>
           </div>
         </HeroBackground>
