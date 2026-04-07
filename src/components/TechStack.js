@@ -10,32 +10,41 @@ import {
 
 const coreStack = [
     { name: "React", icon: faReact },
-    { name: "Node.js", icon: faNodeJs },
-    { name: "React Native", icon: faMobileAlt },
+    { name: "Flutter", icon: faMobileAlt },
     { name: "C#", icon: faCode }, 
     { name: "SQL", icon: faDatabase }
 ];
 
 const categories = [
     {
-        title: "Frontend & Mobile",
-        icon: faLaptopCode,
-        description: "Building responsive web interfaces and cross-platform native applications.",
+        title: "Mobile (Cross-Platform)",
+        icon: faMobileAlt,
+        description: "Building native-performance applications for iOS and Android.",
         techs: [
-            { name: "React", icon: faReact },
-            { name: "React Native", icon: faMobileAlt },
-            { name: "JavaScript", icon: faJs },
+            { name: "React Native", icon: faReact },
+            { name: "Dart", icon: faCode }
+        ]
+    },
+    {
+        title: "Web (Cross-Platform)",
+        icon: faLaptopCode,
+        description: "Developing highly responsive interfaces for browsers and desktop viewports.",
+        techs: [
+            { name: "React / Next.js", icon: faReact },
+            { name: "Flutter for Web", icon: faMobileAlt },
+            { name: "JavaScript / ES6+", icon: faJs },
             { name: "HTML5 & CSS3", icon: faHtml5 }
         ]
     },
     {
-        title: "Backend Development",
+        title: "Backend & Logic",
         icon: faServer,
         description: "Creating robust server-side logic and scalable APIs.",
         techs: [
             { name: "Node.js", icon: faNodeJs },
-            { name: "C#", icon: faCode },
-            { name: "Java", icon: faJava }
+            { name: "C# / .NET", icon: faCode },
+            { name: "Java", icon: faJava },
+            { name: "Express.js", icon: faServer }
         ]
     },
     {
@@ -43,31 +52,20 @@ const categories = [
         icon: faDatabase,
         description: "Designing efficient schemas and managing data persistence.",
         techs: [
+            { name: "SQL Server", icon: faDatabase },
             { name: "PostgreSQL", icon: faDatabase },
-            { name: "SQL", icon: faDatabase }
+            { name: "NoSQL / Firebase", icon: faDatabase }
         ]
     },
     {
-        title: "Tools & Workflow",
+        title: "Engineering Workflow",
         icon: faTerminal,
-        description: "Streamlining development with industry-standard version control and environments.",
+        description: "Adhering to strict coding standards and automated verification loops.",
         techs: [
-            { name: "Git", icon: faGitAlt },
-            { name: "NPM", icon: faNpm },
-            { name: "IntelliJ", icon: faCode },
-            { name: "NetBeans", icon: faCode },
-            { name: "VS Code", icon: faCode }
-        ]
-    },
-    {
-        title: "Development Practices",
-        icon: faMobileAlt,
-        description: "Adhering to clean code principles and modern architecture standards.",
-        techs: [
-            { name: "OOP", icon: faCode },
-            { name: "CRUD Operations", icon: faDatabase },
-            { name: "REST APIs", icon: faServer },
-            { name: "Responsive Design", icon: faMobileAlt }
+            { name: "Git / Version Control", icon: faGitAlt },
+            { name: "Clean Architecture", icon: faTerminal },
+            { name: "Agile / Scrum", icon: faLaptopCode },
+            { name: "API Integration", icon: faServer }
         ]
     }
 ];
@@ -76,8 +74,8 @@ function TechStack() {
   return (
     <section className="section-container" id="tech-stack">
         <div className="section-header animate-fade">
-            <h1 className="section-title">Tech Stack</h1>
-            <p className="section-subtitle">The technologies I use to build modern full-stack applications.</p>
+            <h1 className="section-title">Technical Ecosystem</h1>
+            <p className="section-subtitle">The technologies I use to build modern, deterministic full-stack systems across Web and Mobile.</p>
         </div>
 
         <div className={`animate-fade ${styles['core-stack-section']} ${styles['delay-1'] || ''}`}>
@@ -95,7 +93,7 @@ function TechStack() {
         </div>
 
         <div className={`animate-fade ${styles['categories-wrapper']} ${styles['delay-2'] || ''}`}>
-            <span className={styles['section-label']}>Full Technical Ecosystem</span>
+            <span className={styles['section-label']}>Full Technical Stack</span>
             <div className={styles['category-grid']}>
                 {categories.map((category, index) => (
                     <div key={index} className={`${styles['category-section']} ${styles['tech-card']}`}>

@@ -32,10 +32,9 @@ function AboutMe() {
             <div className="section-header animate-fade">
                 <h1 className="section-title">Professional Overview</h1>
                 <p className="section-subtitle">
-                    I am a Full Stack Developer dedicated to building resilient and scalable software architectures. 
-                    With a core engineering stack spanning React.js, Node.js, C#, and SQL, I deliver end-to-end 
-                    solutions—from optimized database schemas to highly responsive frontend interfaces. My objective 
-                    is to build deterministic systems that provide immediate operational value to clients and businesses.
+                    I am an Adaptive Software Developer specializing in dual-platform development using React and Flutter 
+                    for both web and mobile environments. By leveraging these frameworks across all screens, I deliver 
+                    consistent, high-performance systems designed for cross-platform scalability and operational value.
                 </p>
             </div>
 
@@ -44,24 +43,23 @@ function AboutMe() {
                     <div className={styles['section-icon']}>
                         <FontAwesomeIcon icon={faUserGraduate} />
                     </div>
-                    <span className={styles['section-label']}>Academic Background</span>
+                    <span className={styles['section-label']}>Academic & Certifications</span>
                 </div>
                 
                 <div className={styles['education-grid']}>
                     <div className={`${styles['edu-block']} ${styles['highlight'] || ''}`}>
-                        <h3 className={styles['edu-title']}>Belgium Campus ITversity</h3>
-                        <span className={styles['time-badge']}>Expected Graduation: Oct 2025</span>
-                        <p className={styles['edu-desc']}>Diploma in Information Technology (Software & Web Dev)</p>
+                        <h3 className={styles['edu-title']}>IBM & SkillUp (Coursera)</h3>
+                        <span className={styles['time-badge']}>Completed: Apr 2026</span>
+                        <p className={styles['edu-desc']}>Specialization: Developing Mobile Apps with Flutter</p>
                         <ul className={styles['edu-list']}>
-                            <li className={styles['edu-list-item']}><strong>Focus:</strong> Formalizing engineering fundamentals, algorithms, and networking.</li>
-                            <li className={styles['edu-list-item']}><strong>Key Projects:</strong> Employee Management System (Java/SQL), Full Stack Portfolios.</li>
+                            <li className={styles['edu-list-item']}><strong>Focus:</strong> Cross-platform development, state management, and API integration.</li>
                         </ul>
                     </div>
 
                     <div className={styles['edu-block']}>
-                        <h3 className={styles['edu-title']}>Edenvale High School</h3>
-                        <span className={styles['time-badge']}>Jan 2018 - Dec 2022</span>
-                        <p className={styles['edu-desc']}>Information Technology (Delphi)</p>
+                        <h3 className={styles['edu-title']}>Belgium Campus ITversity</h3>
+                        <span className={styles['time-badge']}>Expected Graduation: Oct 2025</span>
+                        <p className={styles['edu-desc']}>Diploma in Information Technology (Software & Web Dev)</p>
                     </div>
                 </div>
             </div>
@@ -77,22 +75,24 @@ function AboutMe() {
                 <div className={styles['experience-content']}>
                     <div className={styles['exp-text']}>
                         <p className={styles['exp-text-para']}>
-                            I have spent over a year working as a freelance web developer, interfacing directly with clients 
-                            to deliver responsive, data-driven platforms. Recently, I have expanded into mobile development, 
-                            dedicating the last several months to engineering proprietary IP using React Native.
+                            I have spent over a year as a freelance developer interfacing directly with clients to deliver 
+                            data-driven platforms. My focus is on the seamless integration of React and Flutter to 
+                            ensure that whether a user is on a browser or a mobile device, the logic and performance 
+                            remain deterministic and robust.
                         </p>
                         <p className={styles['exp-text-para']} style={{ marginTop: '1rem' }}>
-                            My experience engaging directly with diverse customers allows me to translate technical complexity into clear, actionable 
-                            insights for non-technical stakeholders, ensuring project alignment at every level.
+                            My background in sales allows me to translate complex cross-platform requirements into 
+                            clear, actionable insights for non-technical stakeholders, ensuring technical products 
+                            perfectly align with business objectives.
                         </p>
                     </div>
                     <div className={styles['exp-skills']}>
                         <h4 className={styles['exp-skills-title']}>Applied Experience</h4>
                         <ul className={styles['exp-skills-list']}>
-                            <li className={styles['exp-skill-item']}>Freelance Web Development (1+ Years)</li>
-                            <li className={styles['exp-skill-item']}>Mobile App Dev / Proprietary IP (Current Focus)</li>
+                            <li className={styles['exp-skill-item']}>React & Next.js (Web & Mobile)</li>
+                            <li className={styles['exp-skill-item']}>Flutter & Dart (Web & Mobile)</li>
+                            <li className={styles['exp-skill-item']}>Cross-Platform UI/UX Standardization</li>
                             <li className={styles['exp-skill-item']}>Stakeholder Communication & Technical Translation</li>
-                            <li className={styles['exp-skill-item']}>Sales & Brand Communication (Samsung, Pep)</li>
                         </ul>
                     </div>
                 </div>

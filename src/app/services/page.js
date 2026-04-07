@@ -7,38 +7,38 @@ export const metadata = { title: 'Technical Services | Mandla Ndiweni' };
 
 const servicesData = [
     {
-        id: "frontend-mvp",
-        name: "Frontend Prototype",
+        id: "cross-platform-mobile",
+        name: "Mobile Prototype",
         price: "Custom Quote",
-        description: "High-performance, responsive single-page applications optimized for user conversion.",
+        description: "Native-performance cross-platform applications for iOS and Android using React Native or Flutter.",
         features: [
-            "React.js or Next.js Architecture",
-            "Mobile-First Responsive Design",
-            "Third-party API Integration",
-            "Basic SEO & Metadata Setup"
+            "React Native / Flutter Architecture",
+            "API & Local Storage Integration",
+            "Responsive Mobile UI/UX Design",
+            "Notification Systems"
         ],
         isPrimary: false
     },
     {
-        id: "fullstack-system",
-        name: "Full-Stack System",
+        id: "fullstack-web",
+        name: "Full-Stack Web System",
         price: "Custom Quote",
-        description: "End-to-end development with robust backend logic, database modeling, and secure APIs.",
+        description: "Deterministic backend logic and responsive frontend ecosystems using React or Flutter for Web.",
         features: [
-            "Node.js or C# Backend Logic",
+            "React or Flutter Web Frontend",
+            "C# or Node.js Backend Logic",
             "Relational Database (SQL/PostgreSQL)",
-            "Authentication & Security implementation",
-            "Admin Dashboard & Data Visualizations"
+            "Authentication & Role-Based Access"
         ],
         isPrimary: true
     },
     {
-        id: "tech-consult",
+        id: "system-audit",
         name: "System Integration",
         price: "Hourly Rate",
-        description: "Debugging, hardware (IoT) integrations, and refactoring existing legacy codebases.",
+        description: "Codebase audits and refactoring legacy systems for cross-platform scalability.",
         features: [
-            "Codebase Audit & Refactoring",
+            "Structural Evaluation & Refactoring",
             "IoT / Hardware Data Pipelines",
             "Performance Optimization",
             "Technical Documentation"
@@ -52,7 +52,7 @@ export default function ServicesPage() {
         <section className="section-container">
             <div className="section-header animate-fade">
                 <h1 className="section-title">Technical Implementations</h1>
-                <p className="section-subtitle">Delivering product-grade development, deterministic logic, and scalable architecture tailored to your operational requirements.</p>
+                <p className="section-subtitle">Delivering product-grade development and scalable architecture tailored to your business requirements across all platforms.</p>
             </div>
 
             <div className={`${styles['pricing-grid']} animate-fade ${styles['delay-1'] || ''}`}>

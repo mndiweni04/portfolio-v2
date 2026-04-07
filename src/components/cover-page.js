@@ -20,20 +20,19 @@ function CoverPg(){
                 </div>
 
                 <div className={styles.bcard}>
-                    <h2 className={styles.prof}>Junior Full Stack Developer</h2>
+                    <h2 className={styles.prof}>Adaptive Software Developer</h2>
                     <p className={styles['bcard-para']}>
-                        I am a developer currently pursuing an IT Diploma at Belgium Campus ITversity to formalize my engineering foundation. 
-                        I bring over a year of practical experience as a freelance web developer, alongside recent hands-on experience in 
-                        mobile development building proprietary IP. My background in sales has uniquely equipped me to translate technical 
-                        complexity into clear, actionable insights for non-technical stakeholders.
+                        I specialize in cross-platform development using React and Flutter for both web and mobile 
+                        environments. Recently certified in Flutter by IBM/SkillUp, I focus on building unified 
+                        software ecosystems that deliver high-performance user experiences across all devices.
                     </p>
                 </div>
             </div>
             
             <div className={styles['icon-pyramid']}>
                 <div className={styles['icon-row']}>
-                    <FontAwesomeIcon icon={faReact} className={styles['tech-icon']} title="React.js / Web" />
-                    <FontAwesomeIcon icon={faMobileAlt} className={styles['tech-icon']} title="React Native / Mobile" />
+                    <FontAwesomeIcon icon={faMobileAlt} className={styles['tech-icon']} title="Flutter (Web & Mobile)" />
+                    <FontAwesomeIcon icon={faReact} className={styles['tech-icon']} title="React (Web & Mobile)" />
                 </div>
 
                 <div className={styles['icon-row']}>
@@ -45,13 +44,12 @@ function CoverPg(){
 
             <div className={styles['intro-para']}>
                 <p className={styles.paragraph}>
-                   While completing my formal studies, I am actively available for freelance contracts and engineering roles. 
-                   With a proven ability to bridge the gap between technical jargon and simple language, I provide transparent, 
-                   high-quality development services tailored to your needs.
+                   I provide transparent, high-quality development services tailored to bridge the gap between 
+                   complex technical requirements and cross-platform business success.
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <Link href="/services" className={styles['action-btn']}>
-                        Explore My Services
+                        Request Architecture
                     </Link>
                     <Link href="/projects" className={styles['action-btn']} style={{ background: 'transparent', border: '2px solid var(--profile-theme)', color: 'var(--text-color)' }}>
                         View My Work
