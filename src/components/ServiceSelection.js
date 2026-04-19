@@ -64,7 +64,7 @@ export default function ServiceSelection({ services, addons }) {
                             onClick={() => handleSelectArchitecture(service)}
                             className={`${styles['service-btn']} ${service.isPrimary ? styles['primary'] : ''}`}
                         >
-                            Select Architecture
+                            Request Architecture
                         </button>
                     </div>
                 ))}

@@ -7,6 +7,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 function ReachMe() {
     const [activeTab, setActiveTab] = useState('general'); 
+    const [isPrefilled, setIsPrefilled] = useState(false);
     
     const [formData, setFormData] = useState({
         firstName: '',
@@ -15,7 +16,8 @@ function ReachMe() {
         message: '',
         serviceType: '',
         timeline: '',
-        addons: '' // Added independent state for Add-ons
+        addons: '',
+        rawAddonIds: ''
     });
     
     const [status, setStatus] = useState({ type: '', message: '' });
@@ -38,7 +40,15 @@ function ReachMe() {
 
             if (packageId) {
                 setActiveTab('project');
-                setFormData(prev => ({ ...prev, serviceType: packageId }));
+                setIsPrefilled(true);
+                // Formatting for display
+                const displayNames = {
+                    basic: "Basic Webpage",
+                    starter: "Starter (MVP)",
+                    growth: "Growth (Custom)",
+                    enterprise: "Enterprise"
+                };
+                setFormData(prev => ({ ...prev, serviceType: packageId, displayServiceType: displayNames[packageId] || packageId }));
             }
 
             if (timelineParam) {
@@ -49,7 +59,7 @@ function ReachMe() {
                 const readableAddons = addonsParam.split(',').map(a => 
                     a.replace(/([A-Z])/g, ' $1').trim().replace(/^\w/, c => c.toUpperCase())
                 ).join(', ');
-                setFormData(prev => ({ ...prev, addons: readableAddons }));
+                setFormData(prev => ({ ...prev, addons: readableAddons, rawAddonIds: addonsParam }));
             }
 
             if (prefillMessage) {
@@ -71,7 +81,7 @@ function ReachMe() {
         if (!emailRegex.test(formData.email)) {
             return "Invalid email format.";
         }
-        if (!formData.message.trim()) {
+        if (!formData.message.trim() && !isPrefilled) {
             return "Message payload cannot be empty.";
         }
         if (activeTab === 'project') {
@@ -91,7 +101,7 @@ function ReachMe() {
         }
 
         setIsSubmitting(true);
-        setStatus({ type: 'info', message: 'Executing transmission...' });
+        setStatus({ type: 'info', message: 'Generating legal artifacts and executing transmission...' });
 
         try {
             const response = await fetch('/api/send-email', {
@@ -104,8 +114,9 @@ function ReachMe() {
             });
 
             if (response.ok) {
-                setStatus({ type: 'success', message: 'Transmission Verified. ✅' });
-                setFormData({ firstName: '', lastName: '', email: '', message: '', serviceType: '', timeline: '', addons: '' });
+                setStatus({ type: 'success', message: 'Transmission Verified. ✅ Check your email for Staging Documents.' });
+                setFormData({ firstName: '', lastName: '', email: '', message: '', serviceType: '', timeline: '', addons: '', rawAddonIds: '', displayServiceType: '' });
+                setIsPrefilled(false);
             } else {
                 const result = await response.json();
                 setStatus({ type: 'error', message: result.error || 'Server rejected the payload.' });
@@ -115,7 +126,7 @@ function ReachMe() {
             setStatus({ type: 'error', message: 'Network handshake failed.' });
         } finally {
             setIsSubmitting(false);
-            setTimeout(() => setStatus({ type: '', message: '' }), 5000);
+            setTimeout(() => setStatus({ type: '', message: '' }), 7000);
         }
     };
 
@@ -160,7 +171,8 @@ function ReachMe() {
                         style={{
                             flex: 1, margin: 0,
                             background: activeTab === 'general' ? 'var(--profile-theme)' : 'transparent',
-                            color: activeTab === 'general' ? '#fff' : '#ccc'
+                            color: activeTab === 'general' ? '#fff' : '#ccc',
+                            cursor: 'pointer'
                         }}
                     >
                         General Inquiry
@@ -172,7 +184,8 @@ function ReachMe() {
                         style={{
                             flex: 1, margin: 0,
                             background: activeTab === 'project' ? 'var(--profile-theme)' : 'transparent',
-                            color: activeTab === 'project' ? '#fff' : '#ccc'
+                            color: activeTab === 'project' ? '#fff' : '#ccc',
+                            cursor: 'pointer'
                         }}
                     >
                         Project Request
@@ -211,29 +224,41 @@ function ReachMe() {
                     <div className={styles['row-group']}>
                         <div className={styles['form-group']}>
                             <label className={styles['form-label']}>Architecture Required</label>
-                            <select 
-                                name="serviceType" value={formData.serviceType || ''} onChange={handleChange} required
-                                className={styles['glass-select']}
-                            >
-                                <option value="" disabled style={{color: '#000'}}>Select Architecture...</option>
-                                <option value="basic" style={{color: '#000'}}>Basic Webpage</option>
-                                <option value="starter" style={{color: '#000'}}>Starter (MVP)</option>
-                                <option value="growth" style={{color: '#000'}}>Growth (Custom)</option>
-                                <option value="enterprise" style={{color: '#000'}}>Enterprise</option>
-                            </select>
+                            {isPrefilled ? (
+                                <div className={styles['readonly-badge']}>
+                                    {formData.displayServiceType}
+                                </div>
+                            ) : (
+                                <select 
+                                    name="serviceType" value={formData.serviceType || ''} onChange={handleChange} required
+                                    className={styles['glass-select']}
+                                >
+                                    <option value="" disabled style={{color: '#000'}}>Select Architecture...</option>
+                                    <option value="basic" style={{color: '#000'}}>Basic Webpage</option>
+                                    <option value="starter" style={{color: '#000'}}>Starter (MVP)</option>
+                                    <option value="growth" style={{color: '#000'}}>Growth (Custom)</option>
+                                    <option value="enterprise" style={{color: '#000'}}>Enterprise</option>
+                                </select>
+                            )}
                         </div>
 
                         <div className={styles['form-group']}>
                             <label className={styles['form-label']}>Target Timeline</label>
-                            <select 
-                                name="timeline" value={formData.timeline || ''} onChange={handleChange} required
-                                className={styles['glass-select']}
-                            >
-                                <option value="" disabled style={{color: '#000'}}>Select Timeline...</option>
-                                <option value="Less than 1 month" style={{color: '#000'}}>Less than 1 month</option>
-                                <option value="1-3 months" style={{color: '#000'}}>1-3 months</option>
-                                <option value="Flexible" style={{color: '#000'}}>Flexible</option>
-                            </select>
+                            {isPrefilled ? (
+                                <div className={styles['readonly-badge']}>
+                                    {formData.timeline}
+                                </div>
+                            ) : (
+                                <select 
+                                    name="timeline" value={formData.timeline || ''} onChange={handleChange} required
+                                    className={styles['glass-select']}
+                                >
+                                    <option value="" disabled style={{color: '#000'}}>Select Timeline...</option>
+                                    <option value="Less than 1 month" style={{color: '#000'}}>Less than 1 month</option>
+                                    <option value="1-3 months" style={{color: '#000'}}>1-3 months</option>
+                                    <option value="Flexible" style={{color: '#000'}}>Flexible</option>
+                                </select>
+                            )}
                         </div>
                     </div>
                 )}
@@ -241,7 +266,7 @@ function ReachMe() {
                 {activeTab === 'project' && formData.addons && (
                     <div className={styles['form-group']}>
                         <label className={styles['form-label']}>Selected Add-ons</label>
-                        <div style={{ color: '#fff', fontSize: '0.95rem', padding: '0.8rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--profile-theme)', borderRadius: '8px' }}>
+                        <div className={styles['readonly-badge']}>
                             {formData.addons}
                         </div>
                     </div>
@@ -253,8 +278,8 @@ function ReachMe() {
                     </label>
                     <textarea 
                         placeholder={activeTab === 'project' ? "Provide any additional project details..." : "Your Message..."}
-                        name="message" rows="8" className={styles['form-textarea']}
-                        value={formData.message || ''} onChange={handleChange} required
+                        name="message" rows="5" className={styles['form-textarea']}
+                        value={formData.message || ''} onChange={handleChange} required={!isPrefilled}
                     ></textarea>
                 </div>
                 

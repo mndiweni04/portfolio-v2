@@ -1,10 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from 'next/navigation';
 
 export default function FloatingRequestBtn() {
+  const pathname = usePathname();
+
+  // Prevent redundant routing by unmounting the CTA on the target destination
+  if (pathname === '/services') {
+    return null;
+  }
+
   return (
     <Link 
       href="/services"
@@ -14,24 +20,26 @@ export default function FloatingRequestBtn() {
         bottom: "20px", 
         right: "20px", 
         zIndex: 100,
-        width: "50px",
         height: "50px",
-        padding: "0",
+        padding: "0 1.5rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: "50%",
+        borderRadius: "30px",
         cursor: "pointer",
         transition: "transform 0.2s ease, box-shadow 0.3s ease",
         backgroundColor: "var(--profile-theme)",
         color: "#fff",
         boxShadow: "0 4px 15px rgba(56, 189, 248, 0.4)",
-        textDecoration: "none"
+        textDecoration: "none",
+        fontWeight: "700",
+        fontSize: "0.95rem",
+        whiteSpace: "nowrap"
       }}
       title="Request Architecture"
       aria-label="Request Architecture"
     >
-      <FontAwesomeIcon icon={faRocket} style={{ fontSize: "1.2rem" }} />
+      Request Architecture
     </Link>
   );
 }

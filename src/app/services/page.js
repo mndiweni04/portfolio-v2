@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faShieldAlt, faFileContract } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/services.module.css';
 import ServiceSelection from '../../components/ServiceSelection';
 
@@ -84,7 +84,7 @@ const addonsData = [
 
 export default function ServicesPage() {
     return (
-        <section className="section-container" style={{ paddingTop: '80px' }}>
+        <section className="section-container" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
             <div className={styles['back-link-container']}>
                 <Link href="/" className={styles['back-link']}>
                     <FontAwesomeIcon icon={faArrowLeft} /> Return to Portfolio
@@ -96,8 +96,38 @@ export default function ServicesPage() {
                 <p className="section-subtitle">Choose a tier that aligns with your operational scale. All packages are built with high-performance, deterministic logic tailored for the South African market.</p>
             </div>
 
-            {/* Client Component handles the interactivity and modal routing */}
             <ServiceSelection services={servicesData} addons={addonsData} />
+
+            <div className="section-header animate-fade" style={{ marginTop: '6rem' }}>
+                <h1 className="section-title">Operational Policies</h1>
+                <p className="section-subtitle">Transparent terms governing our engineering partnerships and data privacy.</p>
+            </div>
+
+            <div className={`${styles['legal-summary-section']} animate-fade`}>
+                <div className={styles['legal-card']}>
+                    <div className={styles['legal-icon-wrapper']}>
+                        <FontAwesomeIcon icon={faFileContract} className={styles['legal-icon']} />
+                    </div>
+                    <div className={styles['legal-content']}>
+                        <h3 className={styles['legal-title']}>The Commitment Model</h3>
+                        <p className={styles['legal-text']}>
+                            Development begins with a non-refundable <span className={styles['highlight']}>10% Commitment Fee</span>. 
+                            The remaining 90% is strictly commitment-free until you approve the final Staging environment after a maximum of 3 formal revisions.
+                        </p>
+                    </div>
+                </div>
+                <div className={styles['legal-card']}>
+                    <div className={styles['legal-icon-wrapper']}>
+                        <FontAwesomeIcon icon={faShieldAlt} className={styles['legal-icon']} />
+                    </div>
+                    <div className={styles['legal-content']}>
+                        <h3 className={styles['legal-title']}>POPIA Privacy Compliant</h3>
+                        <p className={styles['legal-text']}>
+                            Your technical scopes and communications are protected. We utilize <span className={styles['highlight']}>encrypted transmission protocols</span> and localized South African infrastructure for data processing.
+                        </p>
+                    </div>
+                </div>
+            </div>
             
         </section>
     );
