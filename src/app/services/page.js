@@ -1,85 +1,104 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/services.module.css';
+import ServiceSelection from '../../components/ServiceSelection';
 
-export const metadata = { title: 'Technical Services | Mandla Ndiweni' };
+export const metadata = { title: 'Available Architectures | Mandla Ndiweni' };
 
 const servicesData = [
     {
-        id: "cross-platform-mobile",
-        name: "Mobile Prototype",
-        price: "Custom Quote",
-        description: "Native-performance cross-platform applications for iOS and Android using React Native or Flutter.",
+        id: "basic",
+        name: "Basic Webpage",
+        price: "R 2,500",
+        description: "A single-page high-conversion landing page for businesses needing an immediate online presence.",
         features: [
-            "React Native / Flutter Architecture",
-            "API & Local Storage Integration",
-            "Responsive Mobile UI/UX Design",
-            "Notification Systems"
+            "Single responsive page",
+            "Contact form integration",
+            "Mobile-first design",
+            "Basic SEO metadata"
         ],
         isPrimary: false
     },
     {
-        id: "fullstack-web",
-        name: "Full-Stack Web System",
-        price: "Custom Quote",
-        description: "Deterministic backend logic and responsive frontend ecosystems using React or Flutter for Web.",
+        id: "starter",
+        name: "Starter (MVP)",
+        price: "R 12,500",
+        description: "Basic 3-5 page responsive site, contact forms, and SEO setup optimized for early user acquisition.",
         features: [
-            "React or Flutter Web Frontend",
-            "C# or Node.js Backend Logic",
-            "Relational Database (SQL/PostgreSQL)",
-            "Authentication & Role-Based Access"
+            "Up to 5 responsive pages",
+            "CMS for basic content edits",
+            "Standard analytics setup",
+            "Domain & Email configuration"
         ],
         isPrimary: true
     },
     {
-        id: "system-audit",
-        name: "System Integration",
-        price: "Hourly Rate",
-        description: "Codebase audits and refactoring legacy systems for cross-platform scalability.",
+        id: "growth",
+        name: "Growth (Custom)",
+        price: "R 35,000",
+        description: "Full feature roadmap implementation, API integrations, and performance optimization for growing teams.",
         features: [
-            "Structural Evaluation & Refactoring",
-            "IoT / Hardware Data Pipelines",
-            "Performance Optimization",
-            "Technical Documentation"
+            "Full custom feature set",
+            "Third-party API integrations",
+            "Performance & Speed optimization",
+            "Advanced SEO & Monitoring"
+        ],
+        isPrimary: false
+    },
+    {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "R 75,000",
+        description: "Custom infrastructure, security reviews, and mission-critical scalability for large-scale platforms.",
+        features: [
+            "Custom cloud architecture",
+            "Penetration testing & Security audit",
+            "High-availability setup",
+            "Multi-platform synchronization"
         ],
         isPrimary: false
     }
 ];
 
+const addonsData = [
+    {
+      id: "shareCode",
+      name: "Full Source Ownership",
+      price: "+ R 5,000",
+      description: "Complete handover of the git repository and intellectual property rights."
+    },
+    {
+      id: "hostingBasic",
+      name: "Managed Hosting",
+      price: "+ R 250 /mo",
+      description: "Reliable monthly hosting, backups, and security patches (Subscription)."
+    },
+    {
+      id: "seoOptimization",
+      name: "Advanced SEO",
+      price: "+ R 3,500",
+      description: "Comprehensive keyword strategy and technical SEO tuning."
+    }
+];
+
 export default function ServicesPage() {
     return (
-        <section className="section-container">
+        <section className="section-container" style={{ paddingTop: '80px' }}>
+            <div className={styles['back-link-container']}>
+                <Link href="/" className={styles['back-link']}>
+                    <FontAwesomeIcon icon={faArrowLeft} /> Return to Portfolio
+                </Link>
+            </div>
+            
             <div className="section-header animate-fade">
-                <h1 className="section-title">Technical Implementations</h1>
-                <p className="section-subtitle">Delivering product-grade development and scalable architecture tailored to your business requirements across all platforms.</p>
+                <h1 className="section-title">Select Your Architecture</h1>
+                <p className="section-subtitle">Choose a tier that aligns with your operational scale. All packages are built with high-performance, deterministic logic tailored for the South African market.</p>
             </div>
 
-            <div className={`${styles['pricing-grid']} animate-fade ${styles['delay-1'] || ''}`}>
-                {servicesData.map((service) => (
-                    <div key={service.id} className={styles['pricing-card']}>
-                        <h2 className={styles['tier-name']}>{service.name}</h2>
-                        <p className={styles['tier-desc']}>{service.description}</p>
-                        <div className={styles['tier-price']}>{service.price}</div>
-                        
-                        <ul className={styles['tier-features']}>
-                            {service.features.map((feature, idx) => (
-                                <li key={idx}>
-                                    <FontAwesomeIcon icon={faCheckCircle} className={styles['feature-icon']} />
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <Link 
-                            href={`/contact?service=${service.id}`} 
-                            className={`${styles['service-btn']} ${service.isPrimary ? styles['primary'] : ''}`}
-                        >
-                            Request Architecture
-                        </Link>
-                    </div>
-                ))}
-            </div>
+            {/* Client Component handles the interactivity and modal routing */}
+            <ServiceSelection services={servicesData} addons={addonsData} />
+            
         </section>
     );
 }

@@ -53,7 +53,7 @@
 }
 
 .navbar.hidden {
-    top: -120px; /* Increased to hide the 2-row mobile version fully */
+    top: -120px; 
     opacity: 0;
 }
 
@@ -62,23 +62,30 @@
     opacity: 1;
 }
 
-/* --- 3x2 Grid for Mobile --- */
+/* --- Strict 1-Row Layout for Mobile --- */
 @media (max-width: 768px) {
     .navbar {
-        width: 92%; 
-        padding: 1rem;
-        gap: 0.5rem;
+        width: 95%; 
+        padding: 0.6rem 0.5rem;
+        gap: 0.2rem;
         top: 15px;
-        border-radius: 20px;
-        flex-wrap: wrap; /* Enables multi-row flow */
+        border-radius: 50px;
+        flex-wrap: nowrap; /* Forces strict single-row */
         justify-content: center;
+        overflow-x: auto; /* Allows smooth horizontal scrolling if absolutely necessary on tiny screens */
+        -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+    }
+
+    .navbar::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Webkit */
     }
 
     .navbar a {
-        font-size: 0.8rem; 
-        padding: 0.6rem 0;
-        flex: 0 0 calc(33.33% - 0.5rem); /* Forces 3 columns */
+        font-size: 0.75rem; 
+        padding: 0.5rem 0.4rem;
+        flex: 0 0 auto; 
         text-align: center;
-        border-radius: 12px;
+        border-radius: 15px;
     }
 }

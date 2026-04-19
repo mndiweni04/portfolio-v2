@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/navbar"; 
 import HeroBackground from "../components/HeroBackground"; 
 import ThemeToggle from "../components/ThemeToggle";
+import FloatingRequestBtn from "../components/FloatingRequestBtn";
 
 // Initialize Nunito
 const nunito = Nunito({
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
             <Navbar /> 
             
             <ThemeToggle />
+            <FloatingRequestBtn />
             
             <main className="scroll-container">
                 {children}

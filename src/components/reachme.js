@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../app/styles/reachme.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -14,11 +14,49 @@ function ReachMe() {
         email: '',
         message: '',
         serviceType: '',
-        timeline: ''
+        timeline: '',
+        addons: '' // Added independent state for Add-ons
     });
     
     const [status, setStatus] = useState({ type: '', message: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const packageId = params.get('package');
+            const addonsParam = params.get('addons');
+            const projectId = params.get('project');
+            const timelineParam = params.get('timeline');
+
+            let prefillMessage = '';
+
+            if (projectId) {
+                setActiveTab('project');
+                prefillMessage += `I am interested in commissioning a system similar to your past project: [${decodeURIComponent(projectId)}].\n\n`;
+            }
+
+            if (packageId) {
+                setActiveTab('project');
+                setFormData(prev => ({ ...prev, serviceType: packageId }));
+            }
+
+            if (timelineParam) {
+                setFormData(prev => ({ ...prev, timeline: decodeURIComponent(timelineParam) }));
+            }
+
+            if (addonsParam) {
+                const readableAddons = addonsParam.split(',').map(a => 
+                    a.replace(/([A-Z])/g, ' $1').trim().replace(/^\w/, c => c.toUpperCase())
+                ).join(', ');
+                setFormData(prev => ({ ...prev, addons: readableAddons }));
+            }
+
+            if (prefillMessage) {
+                setFormData(prev => ({ ...prev, message: prefillMessage }));
+            }
+        }
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -67,7 +105,7 @@ function ReachMe() {
 
             if (response.ok) {
                 setStatus({ type: 'success', message: 'Transmission Verified. ✅' });
-                setFormData({ firstName: '', lastName: '', email: '', message: '', serviceType: '', timeline: '' });
+                setFormData({ firstName: '', lastName: '', email: '', message: '', serviceType: '', timeline: '', addons: '' });
             } else {
                 const result = await response.json();
                 setStatus({ type: 'error', message: result.error || 'Server rejected the payload.' });
@@ -172,15 +210,16 @@ function ReachMe() {
                 {activeTab === 'project' && (
                     <div className={styles['row-group']}>
                         <div className={styles['form-group']}>
-                            <label className={styles['form-label']}>Service Required</label>
+                            <label className={styles['form-label']}>Architecture Required</label>
                             <select 
                                 name="serviceType" value={formData.serviceType || ''} onChange={handleChange} required
                                 className={styles['glass-select']}
                             >
-                                <option value="" disabled style={{color: '#000'}}>Select Service...</option>
-                                <option value="Frontend Web App" style={{color: '#000'}}>Frontend Web App</option>
-                                <option value="Backend API" style={{color: '#000'}}>Backend API</option>
-                                <option value="Fullstack Development" style={{color: '#000'}}>Fullstack Development</option>
+                                <option value="" disabled style={{color: '#000'}}>Select Architecture...</option>
+                                <option value="basic" style={{color: '#000'}}>Basic Webpage</option>
+                                <option value="starter" style={{color: '#000'}}>Starter (MVP)</option>
+                                <option value="growth" style={{color: '#000'}}>Growth (Custom)</option>
+                                <option value="enterprise" style={{color: '#000'}}>Enterprise</option>
                             </select>
                         </div>
 
@@ -198,14 +237,23 @@ function ReachMe() {
                         </div>
                     </div>
                 )}
+
+                {activeTab === 'project' && formData.addons && (
+                    <div className={styles['form-group']}>
+                        <label className={styles['form-label']}>Selected Add-ons</label>
+                        <div style={{ color: '#fff', fontSize: '0.95rem', padding: '0.8rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--profile-theme)', borderRadius: '8px' }}>
+                            {formData.addons}
+                        </div>
+                    </div>
+                )}
                 
                 <div className={styles['form-group']}>
                     <label className={styles['form-label']}>
-                        {activeTab === 'project' ? "Project Brief" : "Message"}
+                        {activeTab === 'project' ? "Additional Information" : "Message"}
                     </label>
                     <textarea 
-                        placeholder={activeTab === 'project' ? "Briefly describe your project scope..." : "Your Message..."}
-                        name="message" rows="5" className={styles['form-textarea']}
+                        placeholder={activeTab === 'project' ? "Provide any additional project details..." : "Your Message..."}
+                        name="message" rows="8" className={styles['form-textarea']}
                         value={formData.message || ''} onChange={handleChange} required
                     ></textarea>
                 </div>

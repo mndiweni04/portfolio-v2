@@ -48,9 +48,6 @@ function CoverPg(){
                    complex technical requirements and cross-platform business success.
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <Link href="/services" className={styles['action-btn']}>
-                        Request Architecture
-                    </Link>
                     <Link href="/projects" className={styles['action-btn']} style={{ background: 'transparent', border: '2px solid var(--profile-theme)', color: 'var(--text-color)' }}>
                         View My Work
                     </Link>
