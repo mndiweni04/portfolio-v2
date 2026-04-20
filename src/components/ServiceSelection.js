@@ -47,15 +47,10 @@ export default function ServiceSelection({ services, addons }) {
     const handleConfirmAndProceed = () => {
         if (!selectedPackage) return;
         
-        let defaultTimeline = 'Flexible';
-        if (isFastTrack) {
-            defaultTimeline = 'Priority Fast-Track';
-        } else {
-            if (['basic', 'starter'].includes(selectedPackage.id)) defaultTimeline = 'Less than 1 month';
-            else if (['growth', 'enterprise'].includes(selectedPackage.id)) defaultTimeline = '1-3 months';
-        }
+        // Dynamically pull the exact timeline based on Fast-Track toggle
+        const calculatedTimeline = isFastTrack ? selectedPackage.timelineFastTrack : selectedPackage.timelineStandard;
         
-        let url = `/contact?package=${selectedPackage.id}&timeline=${encodeURIComponent(defaultTimeline)}&fasttrack=${isFastTrack}`;
+        let url = `/contact?package=${selectedPackage.id}&timeline=${encodeURIComponent(calculatedTimeline)}&fasttrack=${isFastTrack}`;
         
         const addonStrings = Object.entries(selectedAddons).map(([id, qty]) => qty > 1 ? `${id}:${qty}` : id);
         if (addonStrings.length > 0) {
@@ -87,6 +82,9 @@ export default function ServiceSelection({ services, addons }) {
                         <h2 className={styles['tier-name']}>{service.name}</h2>
                         <p className={styles['tier-desc']}>{service.description}</p>
                         <div className={styles['tier-price']}>{service.price}</div>
+                        <p style={{color: 'var(--profile-theme)', fontWeight: 'bold', marginBottom: '1rem'}}>
+                            Timeline: {service.timelineStandard}
+                        </p>
                         <ul className={styles['tier-features']}>
                             {service.features.map((feature, idx) => (
                                 <li key={idx}>
@@ -115,7 +113,9 @@ export default function ServiceSelection({ services, addons }) {
                         <div style={{ marginBottom: '2rem', padding: '1.5rem', background: 'rgba(56, 189, 248, 0.05)', border: '1px solid var(--profile-theme)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div>
                                 <h3 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '0.3rem' }}><FontAwesomeIcon icon={faRocket} style={{ color: 'var(--profile-theme)', marginRight: '0.5rem' }} /> Priority Fast-Track</h3>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>Increases upfront Commitment Fee to 25% to guarantee priority queue placement.</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>
+                                    Reduces timeline to <strong>{selectedPackage.timelineFastTrack}</strong> by adjusting Commitment Fee to 25%.
+                                </p>
                             </div>
                             <label style={{ position: 'relative', display: 'inline-block', width: '50px', height: '26px' }}>
                                 <input type="checkbox" checked={isFastTrack} onChange={(e) => setIsFastTrack(e.target.checked)} style={{ opacity: 0, width: 0, height: 0 }} />

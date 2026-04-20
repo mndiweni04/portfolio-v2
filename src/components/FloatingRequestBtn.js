@@ -2,12 +2,31 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function FloatingRequestBtn() {
   const pathname = usePathname();
+  const [isHidden, setIsHidden] = useState(false);
 
-  // Prevent redundant routing by unmounting the CTA on the target destination
-  if (pathname === '/services') {
+  useEffect(() => {
+    // Determine initial state if landing directly on prefilled URL
+    if (typeof window !== 'undefined') {
+        const searchParams = new URLSearchParams(window.location.search);
+        if (pathname === '/contact' && searchParams.get('package')) {
+            setIsHidden(true);
+        }
+    }
+
+    const handleTabChange = (e) => {
+        // Hide button when Project tab is active
+        setIsHidden(e.detail === 'project');
+    };
+
+    window.addEventListener('reachme-tab-change', handleTabChange);
+    return () => window.removeEventListener('reachme-tab-change', handleTabChange);
+  }, [pathname]);
+
+  if (pathname === '/services' || isHidden) {
     return null;
   }
 

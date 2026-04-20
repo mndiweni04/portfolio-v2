@@ -18,7 +18,9 @@ const servicesData = [
             "Mobile-first design",
             "Basic SEO metadata"
         ],
-        isPrimary: false
+        isPrimary: false,
+        timelineStandard: "3-5 Business Days",
+        timelineFastTrack: "1-2 Business Days"
     },
     {
         id: "starter",
@@ -31,7 +33,9 @@ const servicesData = [
             "Standard analytics setup",
             "Domain & Email configuration"
         ],
-        isPrimary: true
+        isPrimary: true,
+        timelineStandard: "10-14 Business Days",
+        timelineFastTrack: "5-7 Business Days"
     },
     {
         id: "growth",
@@ -44,7 +48,9 @@ const servicesData = [
             "Performance & Speed optimization",
             "Advanced SEO & Monitoring"
         ],
-        isPrimary: false
+        isPrimary: false,
+        timelineStandard: "21-30 Business Days",
+        timelineFastTrack: "10-14 Business Days"
     },
     {
         id: "enterprise",
@@ -57,7 +63,9 @@ const servicesData = [
             "High-availability setup",
             "Multi-platform synchronization"
         ],
-        isPrimary: false
+        isPrimary: false,
+        timelineStandard: "45+ Business Days",
+        timelineFastTrack: "21-30 Business Days"
     }
 ];
 

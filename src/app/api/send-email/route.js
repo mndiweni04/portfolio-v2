@@ -3,35 +3,36 @@ import nodemailer from 'nodemailer';
 import { jsPDF } from 'jspdf';
 
 const PACKAGE_PRICES = {
-    basic: { name: "Basic Webpage", basePrice: 2500, delivery: "3-5 Days" },
-    starter: { name: "Starter (MVP)", basePrice: 12500, delivery: "10-14 Days" },
-    growth: { name: "Growth (Custom)", basePrice: 35000, delivery: "21-30 Days" },
-    enterprise: { name: "Enterprise", basePrice: 75000, delivery: "45+ Days" }
+    basic: { name: "Basic Webpage", basePrice: 2500 },
+    starter: { name: "Starter (MVP)", basePrice: 12500 },
+    growth: { name: "Growth (Custom)", basePrice: 35000 },
+    enterprise: { name: "Enterprise", basePrice: 75000 }
 };
 
 const ADDON_PRICES = {
-    additionalPages: 1000,
-    shareCode: 5000,
-    emailServer: 1500,
-    analytics: 1200,
-    cmsSetup: 3500,
-    chatbotDialogflow: 4500,
-    chatbotBotpress: 8500,
-    chatbotPowerVirtual: 12500,
-    chatbotRasa: 18500,
-    chatbotWatson: 32000
+    additionalPages: { name: "Additional Pages", price: 1000 },
+    shareCode: { name: "Full Source Ownership", price: 5000 },
+    emailServer: { name: "Domain & Email Configuration", price: 1500 },
+    analytics: { name: "Standard Analytics Setup", price: 1200 },
+    cmsSetup: { name: "Lightweight CMS", price: 3500 },
+    chatbotDialogflow: { name: "Website Chatbot (Dialogflow)", price: 4500 },
+    chatbotBotpress: { name: "Hybrid Chatbot (Botpress)", price: 8500 },
+    chatbotPowerVirtual: { name: "Internal Ops Bot", price: 12500 },
+    chatbotRasa: { name: "Private AI Agent (Rasa)", price: 18500 },
+    chatbotWatson: { name: "Enterprise Customer Support", price: 32000 }
 };
 
 export async function POST(req) {
     try {
         const body = await req.json();
-        const { firstName, lastName, email, message, inquiryType, serviceType, rawAddonIds, isFastTrack } = body;
+        const { firstName, lastName, email, message, inquiryType, serviceType, rawAddonIds, isFastTrack, timeline } = body;
 
         let mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
-            subject: `Portfolio Protocol: ${inquiryType.toUpperCase()} from ${firstName} ${lastName}`,
-            text: `Name: ${firstName} ${lastName}\nEmail: ${email}\n\nMessage:\n${message}`
+            subject: `Portfolio Protocol: ${isFastTrack ? '[PRIORITY] ' : ''}${inquiryType.toUpperCase()} from ${firstName} ${lastName}`,
+            text: `Name: ${firstName} ${lastName}\nEmail: ${email}\n\nMessage:\n${message}`,
+            attachments: []
         };
 
         let clientMailOptions = {
@@ -46,16 +47,21 @@ export async function POST(req) {
             const pkg = PACKAGE_PRICES[serviceType];
             
             let addonsTotal = 0;
+            let addonsDisplayString = "";
+
             if (rawAddonIds) {
                 const addonsArr = rawAddonIds.split(',');
                 addonsArr.forEach(pair => {
                     const id = pair.split(':')[0];
                     const qty = parseInt(pair.split(':')[1]) || 1;
-                    if (ADDON_PRICES[id]) addonsTotal += (ADDON_PRICES[id] * qty);
+                    if (ADDON_PRICES[id]) {
+                        const addonCost = ADDON_PRICES[id].price * qty;
+                        addonsTotal += addonCost;
+                        addonsDisplayString += `- ${ADDON_PRICES[id].name} (x${qty}): R ${addonCost.toLocaleString()}\n`;
+                    }
                 });
             }
 
-            // Zero-Sum Fast-Track Logic Implementation
             const commitmentPercentage = isFastTrack ? 0.25 : 0.10;
             const balancePercentage = isFastTrack ? 0.75 : 0.90;
 
@@ -87,7 +93,10 @@ Executed by and between: MCSAS (Developer) AND ${firstName} ${lastName} (Client)
 
 4. PAYMENT TRIGGER AND DELIVERY
 4.1 Full settlement is required prior to live migration or code handover.
-4.2 Failure to pay within 14 days results in Staging decommissioning.
+
+5. LIABILITY AND THIRD-PARTY INFRASTRUCTURE
+5.1 Liability is capped at total fees paid under the SOW.
+5.2 Third-Party Framework Dependency: For architectures integrating Conversational AI or external APIs, MCSAS is not liable for upstream outages or latency native to the third-party provider (e.g., Dialogflow, Watson).
 
 ----------------------------------------------------------------------------------
 PRIVACY POLICY (POPIA COMPLIANT)
@@ -114,33 +123,37 @@ SOW IDENTIFIER: ${generatedId} | Date of Issue: ${new Date().toISOString().split
 1. PROJECT SUMMARY
 Client Entity Name: ${firstName} ${lastName}
 Selected Base Architecture Tier: ${pkg.name}
-Delivery Timeline Modifier: ${isFastTrack ? "PRIORITY FAST-TRACK APPLIED" : "Standard"}
+Target Delivery Timeline: ${timeline || 'Determined by Tier'}
+Delivery Modifier: ${isFastTrack ? "PRIORITY FAST-TRACK APPLIED" : "Standard"}
 
 2. FINANCIAL BREAKDOWN
 Base Architecture Fee: R ${pkg.basePrice.toLocaleString()}
-Selected Add-ons Total: R ${addonsTotal.toLocaleString()}
+Add-ons Selected:
+${addonsDisplayString || "None"}
+
 Total Estimated Project Budget: R ${totalBudget.toLocaleString()}
 
 3. INVOICING SCHEDULE
 Upfront Commitment Fee (${commitmentPercentage * 100}% of Base): R ${commitmentFee.toLocaleString()}
 Remaining Balance Due Upon Acceptance: R ${remainingBalance.toLocaleString()}
 
-4. DELIVERY SCHEDULE AND REVISION PROTOCOL
-Revision Entitlement: Three (3) Formal Rounds on Staging environment.
-
-5. FORMAL AUTHORIZATION
-Payment of the Commitment Fee (R ${commitmentFee.toLocaleString()}) authorizes MCSAS to commence operations.
+4. FORMAL AUTHORIZATION
+Payment of the Commitment Fee authorizes MCSAS to commence operations.
             `;
             const splitSowText = sowDoc.splitTextToSize(sowText.trim(), 180);
             sowDoc.text(splitSowText, 15, 30);
             const sowPdfBuffer = Buffer.from(sowDoc.output('arraybuffer'));
 
-            clientMailOptions.attachments = [
+            const pdfAttachments = [
                 { filename: 'MCSAS_Legal_Agreement.pdf', content: legalPdfBuffer, contentType: 'application/pdf' },
                 { filename: `SOW_${generatedId}.pdf`, content: sowPdfBuffer, contentType: 'application/pdf' }
             ];
+
+            // Attach to BOTH client and developer notification
+            clientMailOptions.attachments = pdfAttachments;
+            mailOptions.attachments = pdfAttachments;
             
-            mailOptions.text += `\n\n[System Alert: SOW auto-generated. Budget: R${totalBudget} | Fast-Track: ${isFastTrack}]`;
+            mailOptions.text += `\n\n[System Alert: SOW auto-generated. Budget: R${totalBudget} | Fast-Track: ${isFastTrack}. Legal Artifacts attached.]`;
         }
 
         const transporter = nodemailer.createTransport({
