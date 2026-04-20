@@ -62,23 +62,40 @@ const servicesData = [
 ];
 
 const addonsData = [
+    // Scope Expansion
     {
-      id: "shareCode",
-      name: "Full Source Ownership",
-      price: "+ R 5,000",
-      description: "Complete handover of the git repository and intellectual property rights."
+        id: "additionalPages", category: "Scope Expansion", name: "Additional Pages", type: "scalar", price: "+ R 1,000 /page", description: "Expand your site's scope. Basic: Max 2. Starter: Max 5.", restrictedTo: ['basic', 'starter', 'growth'], maxLimit: { basic: 2, starter: 5, growth: 99, enterprise: 99 }
     },
     {
-      id: "hostingBasic",
-      name: "Managed Hosting",
-      price: "+ R 250 /mo",
-      description: "Reliable monthly hosting, backups, and security patches (Subscription)."
+        id: "shareCode", category: "Scope Expansion", name: "Full Source Ownership", type: "boolean", price: "+ R 5,000", description: "Complete handover of the git repository and intellectual property rights.", restrictedTo: ['basic', 'starter', 'growth', 'enterprise']
+    },
+    
+    // Infrastructure & Setup (Tier Protection Logic)
+    {
+        id: "emailServer", category: "Infrastructure", name: "Domain & Email Configuration", type: "boolean", price: "+ R 1,500", description: "Professional communication integration. (Native to Starter+).", restrictedTo: ['basic']
     },
     {
-      id: "seoOptimization",
-      name: "Advanced SEO",
-      price: "+ R 3,500",
-      description: "Comprehensive keyword strategy and technical SEO tuning."
+        id: "analytics", category: "Infrastructure", name: "Standard Analytics Setup", type: "boolean", price: "+ R 1,200", description: "Traffic monitoring and basic conversion tracking. (Native to Starter+).", restrictedTo: ['basic']
+    },
+    {
+        id: "cmsSetup", category: "Infrastructure", name: "Lightweight CMS", type: "boolean", price: "+ R 3,500", description: "Administrative interface for dynamic content edits. (Native to Starter+).", restrictedTo: ['basic']
+    },
+    
+    // Conversational AI Integrations
+    {
+        id: "chatbotDialogflow", category: "Conversational AI", name: "Website Chatbot (Quick Setup)", type: "boolean", price: "+ R 4,500", description: "Dialogflow/Tidio. Best for immediate lead capture and FAQ handling.", restrictedTo: ['basic', 'starter', 'growth', 'enterprise']
+    },
+    {
+        id: "chatbotBotpress", category: "Conversational AI", name: "Hybrid Chatbot (Botpress)", type: "boolean", price: "+ R 8,500", description: "Balanced visual logic with custom nodes for specialized user journeys.", restrictedTo: ['starter', 'growth', 'enterprise']
+    },
+    {
+        id: "chatbotPowerVirtual", category: "Conversational AI", name: "Internal Ops Bot", type: "boolean", price: "+ R 12,500", description: "Power Virtual Agents. Automation for employee-facing internal tools.", restrictedTo: ['growth', 'enterprise']
+    },
+    {
+        id: "chatbotRasa", category: "Conversational AI", name: "Private AI Agent (Rasa)", type: "boolean", price: "+ R 18,500", description: "Self-hosted AI for 100% data control and privacy compliance.", restrictedTo: ['growth', 'enterprise']
+    },
+    {
+        id: "chatbotWatson", category: "Conversational AI", name: "Enterprise Customer Support", type: "boolean", price: "+ R 32,000", description: "Amazon Lex/IBM Watson. High-volume, deep NLP for mission-critical platforms.", restrictedTo: ['enterprise']
     }
 ];
 
@@ -111,8 +128,8 @@ export default function ServicesPage() {
                     <div className={styles['legal-content']}>
                         <h3 className={styles['legal-title']}>The Commitment Model</h3>
                         <p className={styles['legal-text']}>
-                            Development begins with a non-refundable <span className={styles['highlight']}>10% Commitment Fee</span>. 
-                            The remaining 90% is strictly commitment-free until you approve the final Staging environment after a maximum of 3 formal revisions.
+                            Development begins with a non-refundable <span className={styles['highlight']}>10% Commitment Fee</span> (or 25% for Priority Fast-Track). 
+                            The remaining balance is strictly commitment-free until you approve the final Staging environment.
                         </p>
                     </div>
                 </div>
