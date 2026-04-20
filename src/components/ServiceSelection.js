@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimes, faRocket, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,25 @@ export default function ServiceSelection({ services, addons }) {
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [selectedAddons, setSelectedAddons] = useState({});
     const [isFastTrack, setIsFastTrack] = useState(false);
+
+    // Modal Overlay System State Management
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if (selectedPackage) {
+                document.body.classList.add('overlay-active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.classList.remove('overlay-active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        return () => {
+            if (typeof window !== 'undefined') {
+                document.body.classList.remove('overlay-active');
+                document.body.style.overflow = 'auto';
+            }
+        };
+    }, [selectedPackage]);
 
     const handleSelectArchitecture = (pkg) => {
         setSelectedPackage(pkg);

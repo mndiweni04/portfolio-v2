@@ -9,16 +9,20 @@ export default function FloatingRequestBtn() {
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
-    // Determine initial state if landing directly on prefilled URL
     if (typeof window !== 'undefined') {
         const searchParams = new URLSearchParams(window.location.search);
+        
+        // Handle prefilled URL hit
         if (pathname === '/contact' && searchParams.get('package')) {
             setIsHidden(true);
+        } else if (pathname !== '/contact') {
+            // Guarantee reset when navigating away
+            setIsHidden(false);
         }
     }
 
     const handleTabChange = (e) => {
-        // Hide button when Project tab is active
+        // Hide button when Project tab is active on the contact page
         setIsHidden(e.detail === 'project');
     };
 
