@@ -1,3 +1,4 @@
+/* src/components/cover-page.js */
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -47,8 +48,8 @@ function CoverPg(){
                    I provide transparent, high-quality development services tailored to bridge the gap between 
                    complex technical requirements and cross-platform business success.
                 </p>
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <Link href="/projects" className={styles['action-btn']} style={{ background: 'transparent', border: '2px solid var(--profile-theme)', color: 'var(--text-color)' }}>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', width: '100%', padding: '0 1rem', boxSizing: 'border-box' }}>
+                    <Link href="/projects" className={styles['action-btn']} style={{ background: 'transparent', border: '2px solid var(--profile-theme)', color: 'var(--text-color)', textAlign: 'center', maxWidth: '100%' }}>
                         View My Work
                     </Link>
                 </div>

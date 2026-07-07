@@ -1,10 +1,11 @@
+/* src/components/aboutme.js */
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '../app/styles/aboutme.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-    faUserGraduate, faBriefcase, faGlobe, faRunning, faBookReader 
+     faUserGraduate, faBriefcase, faGlobe, faRunning, faBookReader 
 } from "@fortawesome/free-solid-svg-icons";
 
 const Images = [
@@ -20,15 +21,13 @@ function AboutMe() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setIndex(prev => (prev + 1) % Images.length); 
-        }, 3500); 
-
-        return () => clearInterval(interval); 
-    }, []);
+            setIndex(prev => (prev + 1) % Images.length);
+         }, 3500);
+         return () => clearInterval(interval);
+     }, []);
 
     return (
         <section className="section-container">
-            
             <div className="section-header animate-fade">
                 <h1 className="section-title">Professional Overview</h1>
                 <p className="section-subtitle">
@@ -47,7 +46,7 @@ function AboutMe() {
                 </div>
                 
                 <div className={styles['education-grid']}>
-                    <div className={`${styles['edu-block']} ${styles['highlight'] || ''}`}>
+                    <div className={styles['edu-block']}>
                         <h3 className={styles['edu-title']}>IBM & SkillUp (Coursera)</h3>
                         <span className={styles['time-badge']}>Completed: Apr 2026</span>
                         <p className={styles['edu-desc']}>Specialization: Developing Mobile Apps with Flutter</p>
@@ -80,12 +79,13 @@ function AboutMe() {
                             ensure that whether a user is on a browser or a mobile device, the logic and performance 
                             remain deterministic and robust.
                         </p>
-                        <p className={styles['exp-text-para']} style={{ marginTop: '1rem' }}>
+                        <p className={styles['exp-text-para']} style={{ marginTop: '1.25rem' }}>
                             My background in sales allows me to translate complex cross-platform requirements into 
                             clear, actionable insights for non-technical stakeholders, ensuring technical products 
                             perfectly align with business objectives.
                         </p>
                     </div>
+
                     <div className={styles['exp-skills']}>
                         <h4 className={styles['exp-skills-title']}>Applied Experience</h4>
                         <ul className={styles['exp-skills-list']}>
@@ -117,17 +117,16 @@ function AboutMe() {
                 <div className={`${styles['glass-card-bottom']} ${styles['carousel-card']}`}>
                     <div className={styles['img-contain']}>
                         <Image 
-                            src={Images[index]} 
-                            alt={`Portfolio slide ${index + 1}`} 
-                            className={styles['abt-img-large']}
-                            width={500}
-                            height={667} 
-                            priority={index === 0}
+                             src={Images[index]} 
+                             alt={`Portfolio slide ${index + 1}`} 
+                             className={styles['abt-img-large']}
+                             width={500}
+                             height={667} 
+                             priority={index === 0}
                         />
                     </div>
                 </div>
             </div>
-
         </section>
     );
 }

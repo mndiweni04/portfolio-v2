@@ -1,10 +1,8 @@
 /* src/app/styles/services.module.css */
-
 .back-link-container {
     margin-bottom: 2rem;
     text-align: center;
 }
-
 .back-link {
     color: var(--text-secondary);
     text-decoration: none;
@@ -14,30 +12,25 @@
     gap: 0.5rem;
     transition: color 0.3s ease;
 }
-
 .back-link:hover {
     color: var(--profile-theme);
 }
-
 .services-header {
     text-align: center;
     margin-bottom: 4rem;
 }
-
 .services-header h1 {
     font-size: 3rem;
     color: var(--text-color);
     margin-bottom: 1rem;
     font-weight: 800;
 }
-
 .services-header p {
     font-size: 1.2rem;
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
 }
-
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -46,7 +39,6 @@
     max-width: 1100px;
     margin: 0 auto;
 }
-
 .pricing-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -57,29 +49,28 @@
     box-shadow: var(--glass-shadow);
     -webkit-backdrop-filter: var(--apple-blur);
     backdrop-filter: var(--apple-blur);
+    will-change: transform, border-color;
+    transform: translateZ(0);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
-
 .pricing-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) translateZ(0);
     border-color: var(--profile-theme);
 }
-
 .tier-name {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-color);
     margin-bottom: 0.5rem;
 }
-
 .tier-desc {
     color: var(--text-secondary);
     font-size: 1rem;
     margin-bottom: 1.5rem;
     line-height: 1.5;
-    height: 60px;
+    min-height: 60px;
+    height: auto;
 }
-
 .tier-price {
     font-size: 2.5rem;
     font-weight: 800;
@@ -88,14 +79,12 @@
     border-bottom: 1px solid var(--glass-border);
     padding-bottom: 1.5rem;
 }
-
 .tier-features {
     list-style: none;
     padding: 0;
     margin: 0 0 2rem 0;
     flex-grow: 1;
 }
-
 .tier-features li {
     display: flex;
     align-items: flex-start;
@@ -104,12 +93,10 @@
     color: var(--text-color);
     font-size: 1.05rem;
 }
-
 .feature-icon {
     color: var(--profile-theme);
     margin-top: 4px;
 }
-
 .service-btn {
     width: 100%;
     padding: 1rem;
@@ -124,52 +111,49 @@
     text-align: center;
     text-decoration: none;
 }
-
 .service-btn:hover {
     background: var(--profile-theme);
     color: #fff;
 }
-
 .service-btn.primary {
     background: var(--profile-theme);
     color: #fff;
 }
-
 .service-btn.primary:hover {
     box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
     transform: translateY(-2px);
 }
-
-/* --- Improved Modal & Add-ons Interceptor Styles --- */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.7); /* Darkened for higher contrast */
-    backdrop-filter: blur(16px);    /* Stronger blur to obscure underlying text */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    will-change: opacity;
+    transition: opacity 0.3s ease;
     animation: fadeIn 0.3s ease;
 }
-
 .modal-content {
-    background: rgba(15, 23, 42, 0.95); /* Deep solid slate to block out background noise completely */
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--bg-color);
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
     width: 100%;
     max-width: 600px;
     padding: 2.5rem;
     position: relative;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    box-shadow: var(--glass-shadow);
+    will-change: transform, opacity;
+    transform: translateZ(0);
     animation: slideUp 0.3s ease;
 }
-
 .modal-close {
     position: absolute;
     top: 1.5rem;
@@ -181,24 +165,20 @@
     cursor: pointer;
     transition: color 0.2s ease;
 }
-
 .modal-close:hover {
     color: var(--profile-theme);
 }
-
 .modal-title {
     font-size: 1.8rem;
-    color: #fff;
+    color: var(--text-color);
     font-weight: 800;
     margin-bottom: 0.5rem;
 }
-
 .modal-subtitle {
     color: var(--text-secondary);
     font-size: 1rem;
     margin-bottom: 2rem;
 }
-
 .modal-addons-list {
     display: flex;
     flex-direction: column;
@@ -207,28 +187,24 @@
     max-height: 50vh;
     overflow-y: auto;
 }
-
 .modal-addon-item {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
     padding: 1.2rem;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
 .modal-addon-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(127, 127, 127, 0.08);
 }
-
 .modal-addon-item.active {
     border-color: var(--profile-theme);
     background: rgba(56, 189, 248, 0.08);
 }
-
 .modal-checkbox {
     margin-top: 5px;
     width: 18px;
@@ -236,56 +212,47 @@
     accent-color: var(--profile-theme);
     cursor: pointer;
 }
-
 .modal-addon-info {
     flex: 1;
 }
-
 .modal-addon-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.3rem;
 }
-
 .modal-addon-name {
     font-weight: 700;
-    color: #fff;
+    color: var(--text-color);
 }
-
 .modal-addon-price {
     font-weight: 700;
     color: var(--profile-theme);
 }
-
 .modal-addon-desc {
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.4;
 }
-
 .modal-actions {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--glass-border);
     padding-top: 1.5rem;
 }
-
 .modal-btn-secondary {
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    border: 1px solid var(--glass-border);
+    color: var(--text-color);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
 .modal-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(127, 127, 127, 0.05);
 }
-
 .modal-btn-primary {
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
@@ -297,22 +264,18 @@
     transition: all 0.2s ease;
     box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
 }
-
 .modal-btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
 }
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @media (max-width: 992px) {
     .pricing-grid {
         grid-template-columns: 1fr;
@@ -322,9 +285,9 @@
     }
     .tier-desc {
         height: auto;
+        min-height: auto;
     }
 }
-
 @media (max-width: 600px) {
     .modal-content {
         padding: 1.5rem;
@@ -337,21 +300,17 @@
         text-align: center;
     }
 }
-
-/* --- Read Only Contact Badges --- */
 .readonly-badge {
-    color: #fff;
+    color: var(--text-color);
     font-size: 0.95rem;
     font-weight: 600;
     padding: 0.8rem;
-    background: rgba(255,255,255,0.02);
+    background: var(--glass-bg);
     border: 1px solid var(--profile-theme);
     border-radius: 8px;
     cursor: not-allowed;
     width: 100%;
 }
-
-/* --- Legal Summary Section --- */
 .legal-summary-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -359,7 +318,6 @@
     max-width: 1100px;
     margin: 0 auto;
 }
-
 .legal-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -371,31 +329,28 @@
     box-shadow: var(--glass-shadow);
     -webkit-backdrop-filter: var(--apple-blur);
     backdrop-filter: var(--apple-blur);
+    will-change: transform, border-color;
+    transform: translateZ(0);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
-
 .legal-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) translateZ(0);
     border-color: var(--profile-theme);
 }
-
 .legal-icon-wrapper {
     background: rgba(255, 255, 255, 0.05);
     padding: 1rem;
     border-radius: 16px;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
 }
-
 .legal-icon {
     font-size: 2rem;
     color: var(--profile-theme);
 }
-
 .legal-content {
     width: 100%;
 }
-
 .legal-title {
     font-size: 1.5rem;
     color: var(--text-color);
@@ -403,18 +358,15 @@
     font-weight: 800;
     letter-spacing: -0.02em;
 }
-
 .legal-text {
     font-size: 1.05rem;
     color: var(--text-secondary);
     line-height: 1.6;
 }
-
 .highlight {
     color: var(--profile-theme);
     font-weight: 700;
 }
-
 @media (max-width: 768px) {
     .legal-summary-section {
         grid-template-columns: 1fr;

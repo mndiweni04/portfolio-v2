@@ -1,15 +1,15 @@
+/* src/app/layout.js */
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/navbar"; 
-import HeroBackground from "../components/HeroBackground"; 
+import Navbar from "../components/navbar";  
+import HeroBackground from "../components/HeroBackground";  
 import ThemeToggle from "../components/ThemeToggle";
 import FloatingRequestBtn from "../components/FloatingRequestBtn";
 
-// Initialize Nunito
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"], // Loading the weights needed for design
+  weight: ["400", "600", "700", "800"],
 });
 
 export const metadata = {
@@ -25,8 +25,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${nunito.variable} antialiased`}>
         <HeroBackground>
-          <div className="wrap">
-            <Navbar /> 
+          <div className="wrap" style={{ width: '100%', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Navbar />
             
             <ThemeToggle />
             <FloatingRequestBtn />

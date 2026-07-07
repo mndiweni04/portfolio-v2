@@ -1,3 +1,4 @@
+/* src/components/reachme.js */
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -26,7 +27,6 @@ function ReachMe() {
     const [status, setStatus] = useState({ type: '', message: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Sync with global Floating Request Button
     useEffect(() => {
         if (typeof window !== 'undefined') {
             window.dispatchEvent(new CustomEvent('reachme-tab-change', { detail: activeTab }));
@@ -139,23 +139,21 @@ function ReachMe() {
             </div>
 
             <div className={styles['contact-form']}>
-                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '8px' }}>
-                    <button type="button" onClick={() => setActiveTab('general')} className={styles['btn-submit']} style={{ flex: 1, margin: 0, background: activeTab === 'general' ? 'var(--profile-theme)' : 'transparent', color: activeTab === 'general' ? '#fff' : '#ccc', cursor: 'pointer' }}>General Inquiry</button>
-                    <button type="button" onClick={() => setActiveTab('project')} className={styles['btn-submit']} style={{ flex: 1, margin: 0, background: activeTab === 'project' ? 'var(--profile-theme)' : 'transparent', color: activeTab === 'project' ? '#fff' : '#ccc', cursor: 'pointer' }}>Project Request</button>
+                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '8px', flexWrap: 'wrap' }}>
+                    <button type="button" onClick={() => setActiveTab('general')} className={styles['btn-submit']} style={{ flex: '1 1 120px', margin: 0, background: activeTab === 'general' ? 'var(--profile-theme)' : 'transparent', color: activeTab === 'general' ? '#fff' : 'var(--text-secondary)', cursor: 'pointer' }}>General Inquiry</button>
+                    <button type="button" onClick={() => setActiveTab('project')} className={styles['btn-submit']} style={{ flex: '1 1 120px', margin: 0, background: activeTab === 'project' ? 'var(--profile-theme)' : 'transparent', color: activeTab === 'project' ? '#fff' : 'var(--text-secondary)', cursor: 'pointer' }}>Project Request</button>
                 </div>
 
                 {activeTab === 'project' && !isPrefilled ? (
-                    // Gateway Phase 1: Redirect Block
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '4rem 0', gap: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed var(--glass-border)' }}>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', textAlign: 'center', maxWidth: '80%' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 'clamp(2rem, 8vw, 4rem) 1rem', gap: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed var(--glass-border)', boxSizing: 'border-box', width: '100%' }}>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', textAlign: 'center', maxWidth: '80%', margin: 0 }}>
                             To ensure deterministic scoping, please select your base architecture and configurations before proceeding.
                         </p>
-                        <button type="button" onClick={() => router.push('/services')} className={styles['btn-submit']} style={{ fontSize: '1.4rem', padding: '1.5rem 3rem', borderRadius: '50px' }}>
+                        <button type="button" onClick={() => router.push('/services')} className={styles['btn-submit']} style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', padding: '1rem clamp(1.5rem, 5vw, 3rem)', borderRadius: '50px', width: 'auto', maxWidth: '100%' }}>
                             Request Architecture
                         </button>
                     </div>
                 ) : (
-                    // General Inquiry or Gateway Phase 2 (Prefilled Form)
                     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                         {activeTab === 'project' && (
                             <div className={styles['row-group']}>
@@ -165,7 +163,7 @@ function ReachMe() {
                                 </div>
                                 <div className={styles['form-group']}>
                                     <label className={styles['form-label']}>Target Timeline</label>
-                                    <div className={styles['readonly-badge']} style={{ color: formData.isFastTrack ? 'var(--profile-theme)' : '#fff' }}>
+                                    <div className={styles['readonly-badge']} style={{ color: formData.isFastTrack ? 'var(--profile-theme)' : 'var(--text-color)' }}>
                                         {formData.timeline} {formData.isFastTrack && "⚡"}
                                     </div>
                                 </div>

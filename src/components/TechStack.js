@@ -1,11 +1,12 @@
+/* src/components/TechStack.js */
 'use client';
 import styles from '../app/styles/techStack.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-    faReact, faNodeJs, faHtml5, faCss3Alt, faJava, faJs, faGitAlt, faNpm 
+     faReact, faNodeJs, faHtml5, faCss3Alt, faJava, faJs, faGitAlt, faNpm 
 } from "@fortawesome/free-brands-svg-icons";
 import { 
-    faDatabase, faCode, faLaptopCode, faServer, faTerminal, faMobileAlt 
+     faDatabase, faCode, faLaptopCode, faServer, faTerminal, faMobileAlt 
 } from "@fortawesome/free-solid-svg-icons";
 
 const coreStack = [
@@ -70,7 +71,7 @@ const categories = [
     }
 ];
 
-function TechStack() {
+export default function TechStack() {
   return (
     <section className="section-container" id="tech-stack">
         <div className="section-header animate-fade">
@@ -97,9 +98,9 @@ function TechStack() {
             <div className={styles['category-grid']}>
                 {categories.map((category, index) => (
                     <div key={index} className={`${styles['category-section']} ${styles['tech-card']}`}>
-                        <div style={{ width: '100%', textAlign: 'left' }}>
+                        <div style={{ width: '100%', textAlign: 'left', display: 'flex', flexDirection: 'column', height: '100%' }}>
                             <h3>
-                                <FontAwesomeIcon icon={category.icon} style={{ fontSize: '1.2rem', color: 'var(--profile-theme)' }} />
+                                <FontAwesomeIcon icon={category.icon} style={{ fontSize: '1.2rem', color: 'var(--profile-theme)', marginRight: '0.5rem' }} />
                                 {category.title}
                             </h3>
                             <p className={styles['category-desc']}>{category.description}</p>
@@ -120,5 +121,3 @@ function TechStack() {
     </section>
   );
 }
-
-export default TechStack;

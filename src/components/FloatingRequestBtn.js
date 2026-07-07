@@ -1,5 +1,5 @@
+/* src/components/FloatingRequestBtn.js */
 'use client';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -11,18 +11,14 @@ export default function FloatingRequestBtn() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
         const searchParams = new URLSearchParams(window.location.search);
-        
-        // Handle prefilled URL hit
         if (pathname === '/contact' && searchParams.get('package')) {
             setIsHidden(true);
         } else if (pathname !== '/contact') {
-            // Guarantee reset when navigating away
             setIsHidden(false);
         }
     }
 
     const handleTabChange = (e) => {
-        // Hide button when Project tab is active on the contact page
         setIsHidden(e.detail === 'project');
     };
 
@@ -35,32 +31,33 @@ export default function FloatingRequestBtn() {
   }
 
   return (
-    <Link 
-      href="/services"
-      className="glass-button"
-      style={{ 
-        position: "fixed", 
-        bottom: "20px", 
-        right: "20px", 
-        zIndex: 100,
-        height: "50px",
-        padding: "0 1.5rem",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "30px",
-        cursor: "pointer",
-        transition: "transform 0.2s ease, box-shadow 0.3s ease",
-        backgroundColor: "var(--profile-theme)",
-        color: "#fff",
-        boxShadow: "0 4px 15px rgba(56, 189, 248, 0.4)",
-        textDecoration: "none",
-        fontWeight: "700",
-        fontSize: "0.95rem",
-        whiteSpace: "nowrap"
-      }}
-      title="Request Architecture"
-      aria-label="Request Architecture"
+    <Link
+        href="/services"
+        className="glass-button"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          zIndex: 100,
+          height: "50px",
+          padding: "0 1.25rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "30px",
+          cursor: "pointer",
+          transition: "transform 0.2s ease, box-shadow 0.3s ease, bottom 0.2s ease, right 0.2s ease",
+          backgroundColor: "var(--profile-theme)",
+          color: "#fff",
+          boxShadow: "0 4px 15px rgba(56, 189, 248, 0.4)",
+          textDecoration: "none",
+          fontWeight: "700",
+          fontSize: "0.9rem",
+          whiteSpace: "nowrap",
+          maxWidth: "calc(100vw - 40px)"
+        }}
+        title="Request Architecture"
+        aria-label="Request Architecture"
     >
       Request Architecture
     </Link>

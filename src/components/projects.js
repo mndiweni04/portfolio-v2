@@ -1,3 +1,4 @@
+/* src/components/projects.js */
 'use client';
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -22,15 +23,14 @@ export default function Projects() {
             document.body.style.overflow = 'auto';
             document.body.classList.remove('overlay-active');
         }
-        return () => { 
-            document.body.style.overflow = 'auto'; 
-            document.body.classList.remove('overlay-active');
+        return () => {
+             document.body.style.overflow = 'auto';
+             document.body.classList.remove('overlay-active');
         };
     }, [selectedProject]);
 
     return (
         <section className="section-container" id="projects">
-            
             <div className="section-header animate-fade">
                 <h1 className="section-title">Selected Works</h1>
                 <p className="section-subtitle">Engineering robust systems & exploring new technologies.</p>
@@ -71,11 +71,9 @@ export default function Projects() {
                                             ))}
                                         </div>
                                     </div>
-
                                     <div className={styles['card-body']}>
                                         <p className={styles['card-desc']}>{project.shortDesc}</p>
                                     </div>
-
                                     <div className={styles['card-footer']}>
                                         <div className={styles['links-group']}>
                                             <a href={project.githubLink} target="_blank" rel="noreferrer" className={styles['btn-glass']}>
@@ -120,7 +118,7 @@ export default function Projects() {
                         className={styles['swiper-container']}
                     >
                         {experimentProjects.map((project) => (
-                        <SwiperSlide key={project.id}>
+                            <SwiperSlide key={project.id}>
                                 <div className={`${styles['glass-card']} ${styles['experiment-card']}`}>
                                     <div className={styles['exp-left']}>
                                         <h3>{project.title}</h3>
@@ -155,7 +153,7 @@ export default function Projects() {
 
             {selectedProject && (
                 <div className={styles['overlay-backdrop']} onClick={() => setSelectedProject(null)}>
-                    <div className={`${styles['overlay-panel']} ${styles['a4-glass']}`} onClick={(e) => e.stopPropagation()}>
+                    <div className={styles['a4-glass']} onClick={(e) => e.stopPropagation()}>
                         
                         <button className={styles['close-floating']} onClick={() => setSelectedProject(null)} aria-label="Close modal">
                             <FontAwesomeIcon icon={faTimes} />

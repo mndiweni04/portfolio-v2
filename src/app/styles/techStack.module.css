@@ -1,27 +1,23 @@
 ﻿/* src/app/styles/techStack.module.css */
-
 .tech-header {
     text-align: center;
     margin-bottom: 5rem;
 }
-
 .tech-header h1 {
-    font-size: 3.5rem; 
+    font-size: 3.5rem;
     font-weight: 1000;
     font-family: var(--font-nunito), sans-serif;
     margin-bottom: 1rem;
     color: var(--text-color);
 }
-
 .tech-header p {
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
     color: var(--text-body);
     max-width: 700px;
     margin: 0 auto;
     font-weight: 600;
-    text-align: center; 
+    text-align: center;
 }
-
 .section-label {
     display: block;
     text-align: center;
@@ -34,22 +30,17 @@
     font-weight: 1000;
     opacity: 0.9;
 }
-
-/* --- Core Stack (Hero) --- */
 .core-stack-section {
     margin-bottom: 7rem;
     width: 100%;
 }
-
 .core-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem; 
+    gap: 3rem;
     width: 100%;
 }
-
-/* --- Liquid Glass Card Styles --- */
 .tech-card {
     position: relative;
     background: var(--glass-bg);
@@ -59,56 +50,48 @@
     backdrop-filter: var(--apple-blur);
     border-radius: 24px;
     overflow: hidden;
+    will-change: transform, border-color, box-shadow;
+    transform: translateZ(0);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
-/* Core Card Specifics */
 .core-card {
     flex: 1 1 200px;
     max-width: 250px;
-    aspect-ratio: 1 / 1; 
+    aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem; 
+    padding: 1.5rem;
     text-align: center;
-    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.1) 100%);
 }
-
 .core-card:hover {
-    transform: translateY(-12px);
+    transform: translateY(-12px) translateZ(0);
     border-color: var(--profile-theme);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
-
 .core-card .tech-icon {
-    font-size: 4rem; 
+    font-size: 4rem;
     margin-bottom: 1rem;
     color: var(--profile-theme);
     filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2));
     transition: transform 0.3s ease;
 }
-
 .core-card:hover .tech-icon {
     transform: scale(1.15) rotate(5deg);
 }
-
 .tech-name {
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--text-color);
 }
-
-/* --- Detailed Categories --- */
 .category-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: center;
     gap: 2rem;
     width: 100%;
 }
-
 .category-section {
     flex: 0 0 calc(50% - 1rem);
     display: flex;
@@ -116,11 +99,10 @@
     align-items: center;
     text-align: center;
     padding: 2.5rem;
-    min-width: 280px; 
+    min-width: 280px;
 }
-
 .category-section h3 {
-    font-size: 2rem; 
+    font-size: 2rem;
     margin: 0 0 0.5rem 0;
     color: var(--text-color);
     display: flex;
@@ -130,16 +112,13 @@
     font-weight: 700;
     width: 100%;
 }
-
 .category-desc {
     color: var(--text-secondary);
     font-size: 1.05rem;
     margin-bottom: 2rem;
     line-height: 1.6;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
-
-/* Tech Badges List */
 .tech-list {
     display: flex;
     flex-wrap: wrap;
@@ -147,9 +126,8 @@
     gap: 0.8rem;
     width: 100%;
 }
-
 .tech-badge {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(127, 127, 127, 0.03);
     border: 1px solid var(--glass-border);
     padding: 0.75rem 1.25rem;
     border-radius: 12px;
@@ -159,16 +137,14 @@
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-color);
+    will-change: transform, background-color, border-color;
     transition: all 0.3s ease;
 }
-
 .tech-badge:hover {
     background: rgba(56, 189, 248, 0.15);
     border-color: var(--profile-theme);
     transform: translateY(-2px);
 }
-
-/* --- Shimmer Animation --- */
 .tech-card::before {
     content: '';
     position: absolute;
@@ -181,40 +157,31 @@
     pointer-events: none;
     z-index: 2;
 }
-
 .tech-card:hover::before {
     left: 100%;
     transition: left 0.8s ease-in-out;
 }
-
-/* --- Animation Classes --- */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade {
     animation: fadeInUp 0.8s ease forwards;
 }
 .delay-1 { animation-delay: 0.15s; }
 .delay-2 { animation-delay: 0.3s; }
-
-/* Responsive Breakpoints */
 @media (max-width: 768px) {
     .tech-header h1 {
         font-size: 2.5rem;
     }
-
     .category-section {
-        flex: 1 1 100%; 
+        flex: 1 1 100%;
         min-width: auto;
         padding: 2rem;
     }
-    
     .core-grid {
         gap: 1.5rem;
     }
-    
     .core-card, .tech-badge {
         display: flex;
         flex-direction: column;
@@ -222,24 +189,21 @@
         justify-content: center;
         text-align: center;
     }
-
     .core-card {
         flex: 1 1 140px;
         max-width: 180px;
         padding: 1rem;
     }
-    
     .tech-badge {
-        width: 110px; 
-        height: 100px; 
+        width: auto;
+        height: auto;
+        min-width: 110px;
         padding: 1rem;
     }
-    
     .tech-badge span {
         margin-top: 0.5rem;
         font-size: 0.9rem;
     }
-    
     .tech-badge svg {
         font-size: 1.5rem;
     }
