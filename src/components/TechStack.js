@@ -2,17 +2,17 @@
 'use client';
 import styles from '../app/styles/techStack.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-     faReact, faNodeJs, faHtml5, faCss3Alt, faJava, faJs, faGitAlt, faNpm 
+import {
+       faReact, faNodeJs, faHtml5, faCss3Alt, faJava, faJs, faGitAlt
 } from "@fortawesome/free-brands-svg-icons";
-import { 
-     faDatabase, faCode, faLaptopCode, faServer, faTerminal, faMobileAlt 
+import {
+       faDatabase, faCode, faLaptopCode, faServer, faTerminal, faMobileAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 const coreStack = [
     { name: "React", icon: faReact },
     { name: "Flutter", icon: faMobileAlt },
-    { name: "C#", icon: faCode }, 
+    { name: "C#", icon: faCode },
     { name: "SQL", icon: faDatabase }
 ];
 
@@ -78,7 +78,6 @@ export default function TechStack() {
             <h1 className="section-title">Technical Ecosystem</h1>
             <p className="section-subtitle">The technologies I use to build modern, deterministic full-stack systems across Web and Mobile.</p>
         </div>
-
         <div className={`animate-fade ${styles['core-stack-section']} ${styles['delay-1'] || ''}`}>
             <span className={styles['section-label']}>Core Technologies</span>
             <div className={styles['core-grid']}>
@@ -92,7 +91,6 @@ export default function TechStack() {
                 ))}
             </div>
         </div>
-
         <div className={`animate-fade ${styles['categories-wrapper']} ${styles['delay-2'] || ''}`}>
             <span className={styles['section-label']}>Full Technical Stack</span>
             <div className={styles['category-grid']}>

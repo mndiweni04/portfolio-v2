@@ -9,7 +9,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 function ReachMe() {
     const router = useRouter();
-    const [activeTab, setActiveTab] = useState('general'); 
+    const [activeTab, setActiveTab] = useState('general');
     const [isPrefilled, setIsPrefilled] = useState(false);
     
     const [formData, setFormData] = useState({
@@ -40,7 +40,6 @@ function ReachMe() {
             const addonsParam = params.get('addons');
             const timelineParam = params.get('timeline');
             const fastTrackParam = params.get('fasttrack');
-
             if (packageId) {
                 setActiveTab('project');
                 setIsPrefilled(true);
@@ -52,15 +51,12 @@ function ReachMe() {
                 };
                 setFormData(prev => ({ ...prev, serviceType: packageId, displayServiceType: displayNames[packageId] || packageId }));
             }
-
             if (timelineParam) {
                 setFormData(prev => ({ ...prev, timeline: decodeURIComponent(timelineParam) }));
             }
-
             if (fastTrackParam === 'true') {
                 setFormData(prev => ({ ...prev, isFastTrack: true }));
             }
-
             if (addonsParam) {
                 const readableAddons = addonsParam.split(',').map(a => {
                     const parts = a.split(':');
@@ -93,19 +89,16 @@ function ReachMe() {
             setStatus({ type: 'error', message: validationError });
             return;
         }
-
         setIsSubmitting(true);
         setStatus({ type: 'info', message: 'Generating legal artifacts and executing transmission...' });
-
         try {
             const response = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, inquiryType: activeTab }),
             });
-
             if (response.ok) {
-                setStatus({ type: 'success', message: 'Transmission Verified. ✅ Check your email for Staging Documents.' });
+                setStatus({ type: 'success', message: 'Transmission Verified. Check your email for Staging Documents.' });
                 setFormData({ firstName: '', lastName: '', email: '', message: '', serviceType: '', timeline: '', addons: '', rawAddonIds: '', displayServiceType: '', isFastTrack: false });
                 setIsPrefilled(false);
                 setActiveTab('general');
@@ -137,13 +130,11 @@ function ReachMe() {
                     <div className={styles['info-item']}><FontAwesomeIcon icon={faMapLocationDot}/><span>Johannesburg, South Africa</span></div>
                 </div>
             </div>
-
             <div className={styles['contact-form']}>
                 <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem', borderRadius: '8px', flexWrap: 'wrap' }}>
                     <button type="button" onClick={() => setActiveTab('general')} className={styles['btn-submit']} style={{ flex: '1 1 120px', margin: 0, background: activeTab === 'general' ? 'var(--profile-theme)' : 'transparent', color: activeTab === 'general' ? '#fff' : 'var(--text-secondary)', cursor: 'pointer' }}>General Inquiry</button>
                     <button type="button" onClick={() => setActiveTab('project')} className={styles['btn-submit']} style={{ flex: '1 1 120px', margin: 0, background: activeTab === 'project' ? 'var(--profile-theme)' : 'transparent', color: activeTab === 'project' ? '#fff' : 'var(--text-secondary)', cursor: 'pointer' }}>Project Request</button>
                 </div>
-
                 {activeTab === 'project' && !isPrefilled ? (
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 'clamp(2rem, 8vw, 4rem) 1rem', gap: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed var(--glass-border)', boxSizing: 'border-box', width: '100%' }}>
                         <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', textAlign: 'center', maxWidth: '80%', margin: 0 }}>
@@ -164,19 +155,17 @@ function ReachMe() {
                                 <div className={styles['form-group']}>
                                     <label className={styles['form-label']}>Target Timeline</label>
                                     <div className={styles['readonly-badge']} style={{ color: formData.isFastTrack ? 'var(--profile-theme)' : 'var(--text-color)' }}>
-                                        {formData.timeline} {formData.isFastTrack && "⚡"}
+                                        {formData.timeline} {formData.isFastTrack && " (Fast-Tracked)"}
                                     </div>
                                 </div>
                             </div>
                         )}
-
                         {activeTab === 'project' && formData.addons && (
                             <div className={styles['form-group']}>
                                 <label className={styles['form-label']}>Selected Add-ons</label>
                                 <div className={styles['readonly-badge']}>{formData.addons}</div>
                             </div>
                         )}
-
                         <div className={styles['row-group']}>
                             <div className={styles['form-group']}>
                                 <label className={styles['form-label']}>First Name</label>
@@ -191,6 +180,14 @@ function ReachMe() {
                         <div className={styles['form-group']}>
                             <label className={styles['form-label']}>Email Address</label>
                             <input type="email" placeholder="mndiweni04@gmail.com" name="email" className={styles['form-input']} value={formData.email || ''} onChange={handleChange} required />
+                        </div>
+                        
+                        <div style={{ display: 'none' }}>
+                            <input type="hidden" name="serviceType" value={formData.serviceType || ''} />
+                            <input type="hidden" name="timeline" value={formData.timeline || ''} />
+                            <input type="hidden" name="addons" value={formData.addons || ''} />
+                            <input type="hidden" name="rawAddonIds" value={formData.rawAddonIds || ''} />
+                            <input type="hidden" name="isFastTrack" value={formData.isFastTrack || false} />
                         </div>
                         
                         <div className={styles['form-group']}>

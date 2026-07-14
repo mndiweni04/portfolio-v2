@@ -17,11 +17,9 @@ export default function FloatingRequestBtn() {
             setIsHidden(false);
         }
     }
-
     const handleTabChange = (e) => {
         setIsHidden(e.detail === 'project');
     };
-
     window.addEventListener('reachme-tab-change', handleTabChange);
     return () => window.removeEventListener('reachme-tab-change', handleTabChange);
   }, [pathname]);

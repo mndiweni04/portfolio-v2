@@ -1,8 +1,7 @@
-/* src/app/layout.js */
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/navbar";  
-import HeroBackground from "../components/HeroBackground";  
+import Navbar from "../components/navbar";
+import HeroBackground from "../components/HeroBackground";
 import ThemeToggle from "../components/ThemeToggle";
 import FloatingRequestBtn from "../components/FloatingRequestBtn";
 
@@ -27,16 +26,13 @@ export default function RootLayout({ children }) {
         <HeroBackground>
           <div className="wrap" style={{ width: '100%', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Navbar />
-            
             <ThemeToggle />
             <FloatingRequestBtn />
-            
             <main className="scroll-container">
-                {children}
+              {children}
             </main>
-
             <div className="pgFooter">
-              <p className="CopyRight">© 2026 Mandla Ndiweni. All Rights Reserved</p>
+              <p className="CopyRight">2026 Mandla Ndiweni. All Rights Reserved</p>
             </div>
           </div>
         </HeroBackground>

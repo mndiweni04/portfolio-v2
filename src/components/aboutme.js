@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '../app/styles/aboutme.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-     faUserGraduate, faBriefcase, faGlobe, faRunning, faBookReader 
+import {
+       faUserGraduate, faBriefcase, faGlobe, faRunning, faBookReader
 } from "@fortawesome/free-solid-svg-icons";
 
 const Images = [
@@ -18,13 +18,12 @@ const Images = [
 
 function AboutMe() {
     const [index, setIndex] = useState(0);
-
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex(prev => (prev + 1) % Images.length);
-         }, 3500);
-         return () => clearInterval(interval);
-     }, []);
+        }, 3500);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <section className="section-container">
@@ -36,7 +35,6 @@ function AboutMe() {
                     consistent, high-performance systems designed for cross-platform scalability and operational value.
                 </p>
             </div>
-
             <div className={`${styles['glass-section']} animate-fade ${styles['delay-1'] || ''}`}>
                 <div className={styles['section-label-row']}>
                     <div className={styles['section-icon']}>
@@ -44,7 +42,7 @@ function AboutMe() {
                     </div>
                     <span className={styles['section-label']}>Academic & Certifications</span>
                 </div>
-                
+                                                 
                 <div className={styles['education-grid']}>
                     <div className={styles['edu-block']}>
                         <h3 className={styles['edu-title']}>IBM & SkillUp (Coursera)</h3>
@@ -54,7 +52,6 @@ function AboutMe() {
                             <li className={styles['edu-list-item']}><strong>Focus:</strong> Cross-platform development, state management, and API integration.</li>
                         </ul>
                     </div>
-
                     <div className={styles['edu-block']}>
                         <h3 className={styles['edu-title']}>Belgium Campus ITversity</h3>
                         <span className={styles['time-badge']}>Expected Graduation: Oct 2025</span>
@@ -62,7 +59,6 @@ function AboutMe() {
                     </div>
                 </div>
             </div>
-
             <div className={`${styles['glass-section']} animate-fade ${styles['delay-2'] || ''}`}>
                 <div className={styles['section-label-row']}>
                      <div className={styles['section-icon']}>
@@ -70,34 +66,31 @@ function AboutMe() {
                     </div>
                     <span className={styles['section-label']}>Experience & Competencies</span>
                 </div>
-
                 <div className={styles['experience-content']}>
-                    <div className={styles['exp-text']}>
-                        <p className={styles['exp-text-para']}>
-                            I have spent over a year as a freelance developer interfacing directly with clients to deliver 
-                            data-driven platforms. My focus is on the seamless integration of React and Flutter to 
-                            ensure that whether a user is on a browser or a mobile device, the logic and performance 
-                            remain deterministic and robust.
-                        </p>
-                        <p className={styles['exp-text-para']} style={{ marginTop: '1.25rem' }}>
-                            My background in sales allows me to translate complex cross-platform requirements into 
-                            clear, actionable insights for non-technical stakeholders, ensuring technical products 
-                            perfectly align with business objectives.
-                        </p>
-                    </div>
-
-                    <div className={styles['exp-skills']}>
-                        <h4 className={styles['exp-skills-title']}>Applied Experience</h4>
-                        <ul className={styles['exp-skills-list']}>
-                            <li className={styles['exp-skill-item']}>React & Next.js (Web & Mobile)</li>
-                            <li className={styles['exp-skill-item']}>Flutter & Dart (Web & Mobile)</li>
-                            <li className={styles['exp-skill-item']}>Cross-Platform UI/UX Standardization</li>
-                            <li className={styles['exp-skill-item']}>Stakeholder Communication & Technical Translation</li>
-                        </ul>
-                    </div>
+                     <div className={styles['exp-text']}>
+                         <p className={styles['exp-text-para']}>
+                             I have spent over a year as a freelance developer interfacing directly with clients to deliver 
+                             data-driven platforms. My focus is on the seamless integration of React and Flutter to 
+                             ensure that whether a user is on a browser or a mobile device, the logic and performance 
+                             remain deterministic and robust.
+                         </p>
+                         <p className={styles['exp-text-para']} style={{ marginTop: '1.25rem' }}>
+                             My background in sales allows me to translate complex cross-platform requirements into 
+                             clear, actionable insights for non-technical stakeholders, ensuring technical products 
+                             perfectly align with business objectives.
+                         </p>
+                     </div>
+                     <div className={styles['exp-skills']}>
+                         <h4 className={styles['exp-skills-title']}>Applied Experience</h4>
+                         <ul className={styles['exp-skills-list']}>
+                             <li className={styles['exp-skill-item']}>React & Next.js (Web & Mobile)</li>
+                             <li className={styles['exp-skill-item']}>Flutter & Dart (Web & Mobile)</li>
+                             <li className={styles['exp-skill-item']}>Cross-Platform UI/UX Standardization</li>
+                             <li className={styles['exp-skill-item']}>Stakeholder Communication & Technical Translation</li>
+                         </ul>
+                     </div>
                 </div>
             </div>
-
             <div className={`${styles['split-section']} animate-fade ${styles['delay-3'] || ''}`}>
                 <div className={`${styles['glass-card-bottom']} ${styles['interest-card']}`}>
                     <h3 className={styles['interest-title']}>Interests & Pursuits</h3>
@@ -113,16 +106,15 @@ function AboutMe() {
                         </li>
                     </ul>
                 </div>
-
                 <div className={`${styles['glass-card-bottom']} ${styles['carousel-card']}`}>
                     <div className={styles['img-contain']}>
-                        <Image 
-                             src={Images[index]} 
-                             alt={`Portfolio slide ${index + 1}`} 
-                             className={styles['abt-img-large']}
-                             width={500}
-                             height={667} 
-                             priority={index === 0}
+                        <Image
+                              src={Images[index]}
+                              alt={`Portfolio slide ${index + 1}`}
+                              className={styles['abt-img-large']}
+                              width={500}
+                              height={667}
+                              priority={index === 0}
                         />
                     </div>
                 </div>

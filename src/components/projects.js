@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faExternalLinkAlt, faInfoCircle, faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { flagshipProjects, experimentProjects } from '../data/projectsData';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from '../app/styles/projects.module.css';
@@ -16,16 +15,34 @@ export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
 
     useEffect(() => {
-        if (selectedProject) {
-            document.body.style.overflow = 'hidden';
-            document.body.classList.add('overlay-active');
-        } else {
-            document.body.style.overflow = 'auto';
-            document.body.classList.remove('overlay-active');
+        if (typeof window !== 'undefined') {
+            if (selectedProject) {
+                const scrollY = window.scrollY;
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${scrollY}px`;
+                document.body.style.width = '100%';
+                document.body.style.overflow = 'hidden';
+                document.body.classList.add('overlay-active');
+            } else {
+                const scrollY = document.body.style.top;
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                document.body.classList.remove('overlay-active');
+                if (scrollY) {
+                    window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+                }
+            }
         }
         return () => {
-             document.body.style.overflow = 'auto';
-             document.body.classList.remove('overlay-active');
+            if (typeof window !== 'undefined') {
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                document.body.classList.remove('overlay-active');
+            }
         };
     }, [selectedProject]);
 
@@ -35,7 +52,6 @@ export default function Projects() {
                 <h1 className="section-title">Selected Works</h1>
                 <p className="section-subtitle">Engineering robust systems & exploring new technologies.</p>
             </div>
-
             <div className={`animate-fade ${styles['tier-section']} ${styles['delay-1'] || ''}`}>
                 <h2 className={styles['tier-title']}>Flagship Work</h2>
                 
@@ -46,7 +62,6 @@ export default function Projects() {
                     <button className={`${styles['custom-nav-btn']} ${styles['next-flag']}`} aria-label="Next project">
                         <FontAwesomeIcon icon={faChevronRight} />
                     </button>
-
                     <Swiper
                         modules={[Navigation]}
                         navigation={{
@@ -95,7 +110,6 @@ export default function Projects() {
                     </Swiper>
                 </div>
             </div>
-
             <div className={`animate-fade ${styles['tier-section']} ${styles['delay-2'] || ''}`}>
                 <h2 className={styles['tier-title']}>Experiments & Academic Implementations</h2>
                 
@@ -106,7 +120,6 @@ export default function Projects() {
                     <button className={`${styles['custom-nav-btn']} ${styles['next-exp']}`} aria-label="Next experiment">
                         <FontAwesomeIcon icon={faChevronRight} />
                     </button>
-
                     <Swiper
                         modules={[Navigation]}
                         navigation={{
@@ -133,7 +146,6 @@ export default function Projects() {
                                             ))}
                                         </div>
                                     </div>
-
                                     <div className={styles['exp-right']}>
                                         <a href={project.githubLink} target="_blank" rel="noreferrer" className={styles['btn-icon-only']} title="View Code">
                                             <FontAwesomeIcon icon={faGithub} />
@@ -150,7 +162,6 @@ export default function Projects() {
                     </Swiper>
                 </div>
             </div>
-
             {selectedProject && (
                 <div className={styles['overlay-backdrop']} onClick={() => setSelectedProject(null)}>
                     <div className={styles['a4-glass']} onClick={(e) => e.stopPropagation()}>
@@ -158,36 +169,29 @@ export default function Projects() {
                         <button className={styles['close-floating']} onClick={() => setSelectedProject(null)} aria-label="Close modal">
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
-
                         <div className={styles['overlay-content']}>
                             <div className={styles['ov-header']}>
                                 <h2>{selectedProject.title}</h2>
                                 <span className={styles['ov-date']}>{selectedProject.date}</span>
                             </div>
-
                             <div className={styles['ov-tech']}>
                                 {selectedProject.techStack.map((tech, i) => (
                                     <span key={i} className={styles['tech-pill-dark']}>{tech}</span>
                                 ))}
                             </div>
-
                             <hr className={styles['glass-divider']} />
-
                             <section className={styles['ov-section']}>
                                 <h4>System Objective</h4>
                                 <p>{selectedProject.problem}</p>
                             </section>
-
                             <section className={styles['ov-section']}>
                                 <h4>Architectural Solution</h4>
                                 <div dangerouslySetInnerHTML={{ __html: selectedProject.solution }} />
                             </section>
-
                             <section className={styles['ov-section']}>
                                 <h4>Implementation Journey</h4>
                                 <p>{selectedProject.journey}</p>
                             </section>
-
                             <section className={`${styles['ov-section']} ${styles['highlight-box']}`}>
                                 <h4>Technical Reflections</h4>
                                 <div 
