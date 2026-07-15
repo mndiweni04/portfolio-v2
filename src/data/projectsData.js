@@ -6,7 +6,7 @@ export const flagshipProjects = [
                  date: "Apr 2026",
                  shortDesc: "A production-grade cross-platform application engineered with Flutter and Dart, featuring complex state management and API integration.",
                  techStack: ["Flutter", "Dart", "Firebase", "REST API"],
-                 githubLink: "#",
+                 githubLink: "https://github.com/mndiweni04/habit_tracker",
                  liveLink: "#",
                  problem: "The objective was to engineer a high-performance mobile solution capable of handling real-time data persistence and notifications while maintaining a single codebase for iOS and Android.",
                  solution: "I utilized Flutter's widget architecture and Dart's asynchronous programming to build a responsive UI. Key features include full-cycle API integrations, Provider-based state management, and local database persistence for offline functionality.",
@@ -19,7 +19,7 @@ export const flagshipProjects = [
                  date: "Mar 2026",
                  shortDesc: "A rigorous 12-step engineering framework (SWF) designed to manage and verify complex algorithmic trading logic.",
                  techStack: ["Python", "Standard Engineering Workflow", "Data Analysis"],
-                 githubLink: "#",
+                 githubLink: "https://github.com/mndiweni04/mlTrader",
                  liveLink: "#",
                  problem: "Algorithmic trading environments are high-risk. The challenge was creating a system-level reviewer framework to ensure stability, risk mitigation, and automated verification.",
                  solution: "I developed a 'Standard Engineering Workflow' that enforces context acquisition, impact analysis, and verification loops before any logic is executed.",
@@ -32,7 +32,7 @@ export const flagshipProjects = [
                  date: "Sep 2025",
                  shortDesc: "A real-time driver drowsiness detection system using IR sensors and a lightweight ML model. I engineered the ML logic and managed WebSocket telemetry.",
                  techStack: ["C++", "Python", "ESP32", "IoT"],
-                 githubLink: "#",
+                 githubLink: "https://github.com/mndiweni04/IRIS_Detection_System",
                  liveLink: "#",
                  problem: "The engineering objective was to develop an AI-enhanced system capable of detecting fatigue within edge computing constraints.",
                  solution: "We engineered a hardware-software system using an ESP32-C3 and a Hidden Markov Model (HMM) for low-latency drowsiness detection based on sensor telemetry.",
@@ -61,7 +61,7 @@ export const experimentProjects = [
                  date: "Aug 2025",
                  shortDesc: "A desktop application applying OOP principles to create robust CRUD functionality.",
                  techStack: ["Java", "Swing", "PostgreSQL"],
-                 githubLink: "https://github.com/mndiweni04"
+                 githubLink: "https://github.com/mndiweni04/PRG361-EmployeeApp"
          },
          {
                  id: 'e2',

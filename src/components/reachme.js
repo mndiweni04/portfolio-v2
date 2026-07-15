@@ -1,7 +1,8 @@
 /* src/components/reachme.js */
 'use client';
+
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import styles from '../app/styles/reachme.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +10,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 function ReachMe() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [activeTab, setActiveTab] = useState('general');
     const [isPrefilled, setIsPrefilled] = useState(false);
     
@@ -18,6 +20,7 @@ function ReachMe() {
         email: '',
         message: '',
         serviceType: '',
+        displayServiceType: '', // Added explicitly to prevent dynamic structural variation during hydration
         timeline: '',
         addons: '',
         rawAddonIds: '',
@@ -34,40 +37,62 @@ function ReachMe() {
     }, [activeTab]);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const params = new URLSearchParams(window.location.search);
-            const packageId = params.get('package');
-            const addonsParam = params.get('addons');
-            const timelineParam = params.get('timeline');
-            const fastTrackParam = params.get('fasttrack');
-            if (packageId) {
-                setActiveTab('project');
-                setIsPrefilled(true);
-                const displayNames = {
-                    basic: "Basic Webpage",
-                    starter: "Starter (MVP)",
-                    growth: "Growth (Custom)",
-                    enterprise: "Enterprise"
-                };
-                setFormData(prev => ({ ...prev, serviceType: packageId, displayServiceType: displayNames[packageId] || packageId }));
-            }
-            if (timelineParam) {
-                setFormData(prev => ({ ...prev, timeline: decodeURIComponent(timelineParam) }));
-            }
-            if (fastTrackParam === 'true') {
-                setFormData(prev => ({ ...prev, isFastTrack: true }));
-            }
-            if (addonsParam) {
-                const readableAddons = addonsParam.split(',').map(a => {
-                    const parts = a.split(':');
-                    const name = parts[0].replace(/([A-Z])/g, ' $1').trim().replace(/^\w/, c => c.toUpperCase());
-                    return parts.length > 1 ? `${name} (x${parts[1]})` : name;
-                }).join(', ');
-                
-                setFormData(prev => ({ ...prev, addons: readableAddons, rawAddonIds: addonsParam }));
-            }
+        const packageId = searchParams.get('package');
+        const addonsParam = searchParams.get('addons');
+        const timelineParam = searchParams.get('timeline');
+        const fastTrackParam = searchParams.get('fasttrack');
+
+        if (packageId) {
+            setActiveTab('project');
+            setIsPrefilled(true);
+            const displayNames = {
+                basic: "Basic Webpage",
+                starter: "Starter (MVP)",
+                growth: "Growth (Custom)",
+                enterprise: "Enterprise"
+            };
+            setFormData(prev => ({ 
+                ...prev, 
+                serviceType: packageId, 
+                displayServiceType: displayNames[packageId] || packageId 
+            }));
+        } else {
+            setIsPrefilled(false);
+            setFormData(prev => ({
+                ...prev,
+                serviceType: '',
+                displayServiceType: '',
+                timeline: '',
+                addons: '',
+                rawAddonIds: '',
+                isFastTrack: false
+            }));
         }
-    }, []);
+
+        if (timelineParam) {
+            setFormData(prev => ({ ...prev, timeline: decodeURIComponent(timelineParam) }));
+        } else {
+            setFormData(prev => ({ ...prev, timeline: '' }));
+        }
+
+        if (fastTrackParam === 'true') {
+            setFormData(prev => ({ ...prev, isFastTrack: true }));
+        } else {
+            setFormData(prev => ({ ...prev, isFastTrack: false }));
+        }
+
+        if (addonsParam) {
+            const readableAddons = addonsParam.split(',').map(a => {
+                const parts = a.split(':');
+                const name = parts[0].replace(/([A-Z])/g, ' $1').trim().replace(/^\w/, c => c.toUpperCase());
+                return parts.length > 1 ? `${name} (x${parts[1]})` : name;
+            }).join(', ');
+            
+            setFormData(prev => ({ ...prev, addons: readableAddons, rawAddonIds: addonsParam }));
+        } else {
+            setFormData(prev => ({ ...prev, addons: '', rawAddonIds: '' }));
+        }
+    }, [searchParams]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -89,19 +114,38 @@ function ReachMe() {
             setStatus({ type: 'error', message: validationError });
             return;
         }
+
         setIsSubmitting(true);
         setStatus({ type: 'info', message: 'Generating legal artifacts and executing transmission...' });
+
         try {
             const response = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, inquiryType: activeTab }),
             });
+
             if (response.ok) {
                 setStatus({ type: 'success', message: 'Transmission Verified. Check your email for Staging Documents.' });
-                setFormData({ firstName: '', lastName: '', email: '', message: '', serviceType: '', timeline: '', addons: '', rawAddonIds: '', displayServiceType: '', isFastTrack: false });
+                setFormData({ 
+                    firstName: '', 
+                    lastName: '', 
+                    email: '', 
+                    message: '', 
+                    serviceType: '', 
+                    timeline: '', 
+                    addons: '', 
+                    rawAddonIds: '', 
+                    displayServiceType: '', 
+                    isFastTrack: false 
+                });
                 setIsPrefilled(false);
                 setActiveTab('general');
+
+                // Soft state cleaning - removes URL query flags cleanly in history without a browser refresh
+                if (typeof window !== 'undefined') {
+                    window.history.replaceState(null, '', '/contact');
+                }
             } else {
                 const result = await response.json();
                 setStatus({ type: 'error', message: result.error || 'Server rejected the payload.' });
