@@ -1,20 +1,25 @@
 ﻿/* src/app/styles/cover-page.module.css */
-.profile, .profile * {
+
+.profile,
+.profile * {
     box-sizing: border-box;
 }
+
 .profile {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
-    gap: 1.5rem;
+    gap: 2.5rem;
     font-family: var(--font-nunito), sans-serif;
 }
+
 .profile .name {
-    font-size: 6rem;
+    font-size: clamp(3.5rem, 8vw, 6rem);
     color: var(--text-color);
     font-family: var(--font-nunito), sans-serif;
     font-weight: 900;
@@ -22,151 +27,183 @@
     line-height: 1.1;
     width: 100%;
 }
+
+/* Center-Out Bio Distribution */
 .bio {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 3.5rem;
     width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
+
 .CVimg {
-    justify-self: end;
-    width: 100%;
-    max-width: 400px;
+    flex: 0 1 360px;
+    max-width: 380px;
+    display: flex;
+    justify-content: center;
 }
-.CVimg img, .grid-image {
+
+.CVimg img,
+.grid-image {
     width: 100%;
     height: auto;
-    border-radius: 50% 50% 12px 12px;
+    border-radius: 50% 50% 16px 16px;
     display: block;
     object-fit: cover;
     border: 1px solid var(--glass-border);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
+
 .bcard {
-    justify-self: start;
+    flex: 1 1 450px;
+    max-width: 620px;
     text-align: left;
 }
-.bcard-para {
-    color: var(--text-secondary);
-    font-size: 1.3rem;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-}
-.text-link {
-    color: var(--profile-theme);
-    text-decoration: underline;
-    font-weight: bold;
-    transition: opacity 0.3s ease;
-}
-.text-link:hover {
-    opacity: 0.8;
-}
+
 .prof {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.3rem);
     font-family: var(--font-nunito), sans-serif;
     color: var(--text-color);
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.25rem 0;
     font-weight: 800;
-    width: fit-content;
-    white-space: nowrap;
+    line-height: 1.25;
 }
+
+.bcard-para {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Symmetrical Centered Pyramid */
 .icon-pyramid {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    margin: 1rem 0;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 1.5rem 0;
     width: 100%;
 }
+
 .icon-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: clamp(2rem, 5vw, 4.5rem);
     flex-wrap: wrap;
+    width: 100%;
 }
+
 .tech-icon {
-    font-size: 8rem;
+    font-size: clamp(4.5rem, 8vw, 7rem);
     color: var(--text-color);
-    width: 10rem;
-    height: 10rem;
-    margin: 0 clamp(1rem, 5vw, 7rem);
-    will-change: color;
-    transition: color 0.3s ease;
+    width: clamp(5rem, 8vw, 8rem);
+    height: clamp(5rem, 8vw, 8rem);
+    will-change: color, transform;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .tech-icon:hover {
     color: var(--profile-theme);
+    transform: translateY(-5px);
 }
-.intro-section {
-    width: 100%;
-    max-width: 1000px;
-    text-align: center;
-}
+
+/* Introduction Paragraph & Dual Centered CTAs */
 .intro-para {
-    max-width: 1000px;
+    max-width: 850px;
     text-align: center;
     width: 100%;
+    margin: 0 auto;
 }
+
 .paragraph {
     color: var(--text-secondary);
-    font-size: 1.4rem;
-    line-height: 1.5;
+    font-size: 1.25rem;
+    line-height: 1.6;
     margin-bottom: 2rem;
 }
-.action-btn {
-    display: inline-block;
-    padding: 1rem 2rem;
+
+.cta-group {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.action-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.25rem;
     background-color: var(--profile-theme);
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 50px;
     cursor: pointer;
     border: none;
     font-family: var(--font-nunito), sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 800;
+    font-size: 1.05rem;
     will-change: transform, box-shadow;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
 }
-.action-btn:hover {
+
+.action-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
 }
-@media (max-width: 1200px) {
-    .profile .name {
-          font-size: 5rem;
-    }
-    .tech-icon {
-          font-size: 6rem;
-          width: 7rem;
-          height: 7rem;
-    }
+
+.action-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.25rem;
+    background: transparent;
+    border: 2px solid var(--profile-theme);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: var(--font-nunito), sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
 }
+
+.action-btn-secondary:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--profile-theme);
+    transform: translateY(-2px);
+}
+
 @media (max-width: 1024px) {
-    .bio {
-          grid-template-columns: 1fr;
-          text-align: center;
-          gap: 2rem;
-    }
-    .CVimg {
-          justify-self: center;
-    }
     .bcard {
-          justify-self: center;
-          text-align: center;
-    }
-    .prof {
-          width: 100%;
-          white-space: normal;
-          font-size: 2rem;
-    }
-    .profile .name {
-          font-size: 4.5rem;
+        text-align: center;
     }
 }
+
 @media (max-width: 768px) {
-    .profile .name { font-size: 3.5rem; }
-    .prof { font-size: 1.8rem; }
-    .tech-icon { font-size: 2.5rem; width: 2.5rem; height: 2.5rem; margin: 0; }
-    .icon-row { gap: 2rem; }
+    .bio {
+        gap: 2rem;
+    }
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    .action-btn-primary,
+    .action-btn-secondary {
+        width: 100%;
+        max-width: 320px;
+    }
 }
